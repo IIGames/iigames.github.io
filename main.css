@@ -84,7 +84,7 @@ a {
   /* background-color: #03acb7; */
   background: linear-gradient(145deg, #039ba5, #03b8c4);
   box-shadow: 3px 3px 7px #03a2ac, -3px -3px 7px #03b6c2;
-  transition: 0.3s;
+  transition: 0.5s;
 
   color: #151b1b;
 }
@@ -128,7 +128,7 @@ a {
   color: white;
   font-weight: bold;
   font-size: 18px;
-  transition: 0.6s ease;
+  transition: 0.5s ease;
   border-radius: 0 6px 6px 0;
   user-select: none;
 }
@@ -163,8 +163,7 @@ a {
   background-color: #353a3a;
   border-radius: 50px;
   display: inline-block;
-  transition: background-color 0.6s ease;
-  transition: 0.3s;
+  transition: background-color 0.5s ease;
 }
 
 .game-dot {
@@ -176,7 +175,7 @@ a {
   /* background-color: #03acb7; */
   background: linear-gradient(145deg, #039ba5, #03b8c4);
   box-shadow: 1px 1px 17px #014549, -1px -1px 17px #05ffff;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 @keyframes fade {
