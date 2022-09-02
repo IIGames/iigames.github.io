@@ -38,10 +38,12 @@ a {
 
 ::-moz-selection {
   background: #03acb7;
+  color: white;
 }
 
 ::selection {
   background: #03acb7;
+  color: white;
 }
 
 /* Header */
@@ -194,7 +196,7 @@ a {
 
 /* Our Mission */
 .mission {
-  background-image: url("./Assets/Night_at_School_Beta.PNG");
+  background-image: url("./Assets/GamePage_NightatSchool_Pic_3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: inherit;
@@ -235,6 +237,7 @@ a {
 .mission-txt {
   font-size: 30px;
   color: white;
+  filter: drop-shadow(5px 5px 1px black);
 }
 
 .mission-btn {
@@ -321,6 +324,19 @@ a {
   transition: 0.5s;
 }
 
+@media screen and (max-width: 630px) {
+  .footer {
+    padding-bottom: 15px;
+  }
+  .footer .logo {
+    width: 20% !important;
+    height: fit-content;
+  }
+  .copyright {
+    flex-direction: column;
+  }
+}
+
 /* About us */
 .about-us {
   background-image: url("./Assets/SlowlyStrangeGame\ Banner.PNG");
@@ -344,6 +360,10 @@ a {
   padding-right: 20px;
 
   border-radius: 6px;
+}
+
+.about-us-div h2 {
+  color: #03acb7;
 }
 
 .about-us-div .social-media-logos img {
@@ -528,7 +548,7 @@ a {
 
 .game-page-logo {
   margin-bottom: 7px;
-  width: 100%;
+  /* width: 100%; */
   height: 151px;
   border-radius: 0px 6px 0px 0px;
 }
