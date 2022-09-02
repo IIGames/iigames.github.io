@@ -744,6 +744,14 @@ a {
   .game-page-os {
     margin-left: 15px;
   }
+
+  .footer {
+    position: inherit !important;
+  }
+
+  .bottom-footer {
+    position: absolute !important;
+  }
 }
 
 @media screen and (max-width: 1500px) {
