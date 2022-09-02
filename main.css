@@ -669,8 +669,8 @@ a {
   }
 
   .about-us-div {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .teaser-div {
@@ -723,6 +723,8 @@ a {
 
   .game-page-logo {
     border-radius: 0px 0px 0px 0px;
+    width: 100%;
+    height: auto;
   }
 
   .dot-holder {
