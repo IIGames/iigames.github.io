@@ -1,4 +1,14 @@
-/* Font */
+:root {
+  --background-color-1: rgba(0, 41, 66, 1);
+  --background-color-2: rgba(3, 12, 28, 1);
+  --background-color-3: rgba(20, 4, 20, 1);
+
+  --div-background-color-1: rgba(217, 217, 217, 0.14);
+  --div-background-color-2: rgba(217, 217, 217, 0.1);
+
+  --text-color-1: white;
+}
+
 @font-face {
   font-family: "nevis Bold";
   font-style: normal;
@@ -7,759 +17,136 @@
     url("./Fonts/nevis-cufonfonts-webfont/nevis.woff") format("woff");
 }
 
-/* Body sizing and color */
-html,
 body {
-  background-color: #151b1b;
-  margin: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+
+  padding: 0px;
+  margin: 0px;
 
   font-family: "nevis Bold";
 }
 
-* {
-  box-sizing: border-box;
-}
+.main-div {
+  background: radial-gradient(
+    circle,
+    var(--background-color-1) 0%,
+    var(--background-color-2) 35%,
+    var(--background-color-3) 100%
+  );
 
-/* Text stuff */
-.text,
-p,
-h2,
-h3 {
-  /* color: #03acb7; */
-  margin: 0;
-  color: white;
-}
-
-a {
-  cursor: pointer;
-}
-
-::-moz-selection {
-  background: #03acb7;
-  color: white;
-}
-
-::selection {
-  background: #03acb7;
-  color: white;
-}
-
-/* Header */
-.header {
-  background-color: #353a3a;
-
-  overflow: hidden;
-  padding: 10px 10px;
-}
-
-.header a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 6px;
-}
-
-.header img.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.header a {
-  color: white;
-  transition: 0.5s;
-}
-
-.header a:hover {
-  background-color: #151b1b;
-  color: #03acb7;
-  border-color: #03acb7;
-  transition: 0.5s;
-}
-
-.header a.active {
-  /* background-color: #03acb7; */
-  background: linear-gradient(145deg, #039ba5, #03b8c4);
-  box-shadow: 3px 3px 7px #03a2ac, -3px -3px 7px #03b6c2;
-  transition: 0.5s;
-
-  color: #151b1b;
-}
-
-.header-right {
-  float: right;
-  padding-top: 10px;
-}
-
-/* Games Slideshow */
-.games-header {
-  text-align: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  font-size: 50px;
-}
-
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-  /* max-height: 499px; */
-}
-
-.round-slideshow img {
-  border-radius: 6px;
-}
-
-.slides {
-  display: none;
-}
-
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.5s ease;
-  border-radius: 0 6px 6px 0;
-  user-select: none;
-}
-
-.next {
-  right: 0;
-  border-radius: 6px 0 0 6px;
-}
-
-.prev:hover,
-.next:hover {
-  background-color: #353a3a;
-  color: #03acb7;
-  /* background: linear-gradient(145deg, #039ba5, #03b8c4); */
-  box-shadow: 3px 3px 7px #03a2ac, -3px -3px 7px #03b6c2;
-}
-
-.text {
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #353a3a;
-  border-radius: 50px;
-  display: inline-block;
-  transition: background-color 0.5s ease;
-}
-
-.game-dot {
-  background-color: #151b1b;
-}
-
-.active,
-.dot:hover {
-  /* background-color: #03acb7; */
-  background: linear-gradient(145deg, #039ba5, #03b8c4);
-  box-shadow: 1px 1px 17px #014549, -1px -1px 17px #05ffff;
-  transition: 0.5s;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-/* Our Mission */
-.mission {
-  background-image: url("./Assets/GamePage_NightatSchool_Pic_3.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: inherit;
-
-  display: flex;
-  width: 100%;
-  /* height: 600px; */
-
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-bottom: 300px;
-  margin-top: 40px;
-}
-
-.mission-content {
-  height: inherit;
-  width: 100%;
-}
-
-.mission-space {
-  height: inherit;
-  width: 100%;
-  padding-right: 35%;
-}
-
-.mission-img {
-  background-image: url("./Assets/Night_at_School_Beta.PNG");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.mission-header {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  font-size: 50px;
-}
-
-.mission-txt {
-  font-size: 30px;
-  color: white;
-  filter: drop-shadow(5px 5px 1px black);
-}
-
-.mission-btn {
-  border-color: white;
-  background-color: transparent;
-  border-style: solid;
-  border-radius: 6px;
-  border-width: 2px;
-
-  width: 150px;
-  height: 40px;
-
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  font-style: normal;
-
-  margin-top: 30px;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.mission-btn:hover {
-  color: #03acb7;
-  border-color: #03acb7;
-  background-color: #222222;
-  /* background: linear-gradient(145deg, #039ba5, #03b8c4); */
-  box-shadow: 3px 3px 7px #03a2ac, -3px -3px 7px #03b6c2;
-  transition: 0.5s;
-}
-
-/* Footer */
-.footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #222222;
-  color: white;
-
-  display: flex;
-  flex-direction: row;
-}
-
-.footer img.logo {
-  font-size: 25px;
-  font-weight: bold;
-
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-bottom: 20px;
-}
-
-.footer-text {
-  padding-left: 20px;
-}
-
-.footer-text h1 {
-  margin-bottom: 10px;
-}
-
-.copyright {
-  display: flex;
-  flex-direction: row;
-}
-
-.copyright p {
-  padding-right: 30px;
-}
-
-.footer .social-media-logos img {
-  margin-right: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-}
-
-.social-media-logos img {
-  transition: 0.5s;
-}
-
-.social-media-logos img:hover {
-  background: linear-gradient(145deg, #039ba5, #03b8c4);
-  box-shadow: 3px 3px 6px #03a9b3, -3px -3px 6px #03afbb;
-  transition: 0.5s;
-}
-
-@media screen and (max-width: 630px) {
-  .footer {
-    padding-bottom: 15px;
-  }
-  .footer .logo {
-    width: 20% !important;
-    height: fit-content;
-  }
-  .copyright {
-    flex-direction: column;
-  }
-}
-
-/* About us */
-.about-us {
-  background-image: url("./Assets/SlowlyStrangeGame\ Banner.PNG");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  padding-bottom: 50px;
-}
-
-.about-us-div {
-  /* background-color: #222222; */
-  background: linear-gradient(145deg, #1f1f1f, #242424);
-  box-shadow: 11px 11px 21px #202020, -11px -11px 21px #242424;
-
-  margin-left: 25%;
-  margin-right: 25%;
-
-  padding-bottom: 20px;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  border-radius: 6px;
-}
-
-.about-us-div h2 {
-  color: #03acb7;
-}
-
-.about-us-div .social-media-logos img {
-  margin-right: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-}
-
-/* Teaser Page */
-.teaser-div {
-  margin-left: 0%;
-  margin-right: 0%;
-  box-shadow: 3px 3px 7px #03a2ac, -3px -3px 7px #03b6c2;
-}
-
-#overlay {
-  position: fixed;
-  display: none;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  cursor: pointer;
+
+  display: flex;
 }
 
-#text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 50px;
-  color: white;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
+.sidebar {
+  background: linear-gradient(
+    159deg,
+    var(--div-background-color-1) 0%,
+    var(--div-background-color-2) 86%
+  );
+  backdrop-filter: blur(40px);
+  width: 300px;
 
-/* Games List */
-.game-list-parent-div {
-  margin-bottom: 30px;
-}
-
-.game-list-div {
-  background-color: #353a3a;
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-bottom: 20px;
-
-  /* height: 80px; */
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
 
-  padding-bottom: 5px;
+.sidebar img {
+  margin-top: 26px;
+  margin-bottom: 26px;
+}
+
+.sidebar .buttons {
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar .full-sized-buttons {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar .full-sized {
+  width: calc(100% - 39px);
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 10px;
   text-decoration: none;
+  color: var(--text-color-1);
 
-  cursor: pointer;
-  border-radius: 6px;
-  transition: 0.5s;
+  padding: 5px;
+  margin-bottom: 13px;
 }
 
-.game-list-div:hover {
-  box-shadow: 3px 3px 7px #03a2ac, -3px -3px 7px #03b6c2;
-  transition: 0.5s;
+.sidebar .active {
+  background: linear-gradient(
+    159deg,
+    var(--div-background-color-1) 0%,
+    var(--div-background-color-2) 86%
+  );
+  backdrop-filter: blur(40px);
 }
 
-.row-positioning {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-list-div img {
-  /* padding-left: 5px; */
-  /* padding-right: 5px; */
-  /* padding-top: 5px; */
-  /* padding-bottom: 5px; */
-  border-radius: 6px 0px 0px 0px;
-}
-
-.game-list-right {
-  padding-top: 10px;
-  padding-left: 10px;
-  /* margin-bottom: 10px; */
-}
-
-.game-list-right p {
-  padding-top: 4px;
-}
-
-.game-list-div small {
-  padding-left: 5px;
-}
-
-.game-list-bottom img {
-  margin-top: 5px;
-}
-
-.game-list-parent-div .game-tags {
-  font-weight: bold;
-  color: #03acb7;
-}
-
-.game-list-parent-div .game-tags b {
-  color: lightgray;
-  font-weight: normal;
-}
-
-/* Game Page */
-.game-page {
-  /* margin-left: 15%;
-  margin-right: 15%; */
-
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
-
-  background-color: #353a3a;
-  /* border-radius: 6px; */
-
-  margin-bottom: 5%;
-  border-radius: 6px;
-
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1300px;
-}
-
-.game-page-header {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  font-size: 26px;
-  /* padding-left: 10%; */
-  margin: 0;
-  color: white;
-  margin-top: 5%;
-
-  text-align: center;
-}
-
-.game-info-container {
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 30px;
-}
-
-.game-space {
-  height: inherit;
-  /* width: 100%; */
-}
-
-.game-slideshow {
+.sidebar .full-sized img {
+  padding: 0px;
   margin: 0px;
-  margin-right: 16px;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-.game-slideshow video,
-.game-slideshow img {
-  border-radius: 6px 0px 0px 0px;
+.sidebar .full-sized p {
+  margin: 0px;
+  margin-left: 13px;
+  font-size: 20px;
 }
 
-.game-desc {
-  /* padding-left: 5px; */
-  /* padding-top: 5px; */
-
-  /* margin-left: 20px; */
-  /* margin-right: 20px; */
-
-  /* width: 50%; */
-  max-width: 324px;
-  /* height: 432px; */
+.sidebar .small-sized-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.game-page-desc {
-  max-height: 111px;
-  overflow: hidden;
-  font-size: 13px;
-  line-height: 18px;
-  padding-right: 16px;
+.sidebar .small-sized-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 13px;
+  width: fit-content;
 }
 
-.game-page-logo {
-  margin-bottom: 7px;
-  /* width: 100%; */
-  height: 151px;
-  border-radius: 0px 6px 0px 0px;
+.sidebar .small-sized {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text-color-1);
+
+  padding: 5px;
+  margin-bottom: 13px;
 }
 
-.game-page-tags {
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #03acb7;
+.sidebar .small-sized img {
+  padding: 0px;
+  margin: 5px;
 }
 
-.game-page-tags b,
-.game-page-release b,
-.game-page-dev b,
-.game-page-pub b {
-  font-size: 10px;
-  color: lightgray;
-  font-weight: normal;
-  line-height: 16px;
+.sidebar .small-sized-buttons .copyright {
+  color: var(--text-color-1);
+  margin: 0px;
 }
 
-.game-page-dev {
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #03acb7;
-}
-
-.game-page-pub {
-  font-size: 12px;
-  font-weight: bold;
-  color: #03acb7;
-}
-
-.game-page-release small {
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.game-page-release {
-  padding-top: 9px;
-}
-
-.game-page-os {
-  padding-top: 5px;
-}
-
-.dot-holder {
-  text-align: center;
-  padding-top: 30px;
-}
-
-.game-download-container {
-  /* background-color: #151b1b; */
-  padding-top: 10px;
-}
-
-.game-download-container .section-header {
-  padding-bottom: 8px;
-}
-
-.game-download-container .download-logo {
-  border-radius: 6px;
-  margin-right: 10px;
-}
-
-.game-download-container .download-logo {
-  transition: 0.5s;
-}
-
-.game-download-container .download-logo:hover {
-  background: linear-gradient(145deg, #039ba5, #03b8c4);
-  box-shadow: 3px 3px 6px #03a9b3, -3px -3px 6px #03afbb;
-  transition: 0.5s;
-}
-
-/* Responsiveness */
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .header-right {
-    float: none;
-    padding-top: 10px;
-  }
-
-  .header img.logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .games-header {
-    font-size: 30px;
-  }
-
-  .mission {
-    padding-bottom: 30px;
-  }
-
-  .mission-space {
-    width: 0%;
-    padding-right: 0%;
-  }
-
-  .mission-txt {
-    text-align: center;
-  }
-
-  .mission-header {
-    text-align: center;
-  }
-
-  .copyright {
-    flex-direction: column;
-  }
-
-  .about-us-div {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .teaser-div {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
-  .game-list-div {
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-  }
-
-  .game-list-right p {
-    padding-top: 8px;
-  }
-
-  /* .game-list-bottom {
-    display: flex;
-    flex-direction: row;
-  } */
-  /* 
-  .game-list-bottom img {
-    margin-left: 10px;
-    margin-top: 8px;
-  } */
-
-  .game-info-container {
-    flex-direction: column;
-  }
-
-  .game-page {
-    margin-left: 5%;
-    margin-right: 5%;
-  }
-
-  .game-page-header {
-    text-align: center;
-    padding-left: 0px;
-    padding-bottom: 20px;
-  }
-
-  .game-slideshow {
-    margin-right: 0px;
-  }
-
-  .game-slideshow video,
-  .game-slideshow img {
-    border-radius: 6px 6px 0px 0px;
-  }
-
-  .game-page-logo {
-    border-radius: 0px 0px 0px 0px;
-    width: 100%;
-    height: auto;
-  }
-
-  .dot-holder {
-    padding-top: 10px;
-    padding-bottom: 30px;
-  }
-
-  .game-desc {
-    max-width: 500px;
-  }
-
-  .game-desc p,
-  .game-download-container {
-    margin-left: 20px;
-  }
-
-  .game-page-os {
-    margin-left: 15px;
-  }
-
-  .footer {
-    position: inherit !important;
-  }
-
-  .bottom-footer {
-    position: absolute !important;
-  }
-}
-
-@media screen and (max-width: 1500px) {
-  .game-page {
-    max-width: 1200px;
-  }
-
-  .mission {
-    padding-bottom: 100px;
-  }
+.sidebar .page-content {
+  width: calc(100% - 300px);
 }

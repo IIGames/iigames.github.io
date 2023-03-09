@@ -11,79 +11,47 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <div class="header">
-    <img src="../Assets/II Games _ Profile Transparent.png" width="70px" class="logo" />
+  <div class="main-div">
+    <div class="sidebar">
+      <img src="./Assets/Logos/II Games Logo Horizontal_FullTransparent.png" alt="II Games Logo" width="250px">
+      <div class="buttons">
+        <div class="full-sized-buttons">
+          <a href="./index.html" class="full-sized active">
+            <img src="./Assets/Icons/icons8-home-page-64 (1).png" width="39px">
+            <p>Home</p>
+          </a>
 
-    <div class="header-right">
-      <a class="active" href="./">Home</a>
-      <a href="./Games">Games</a>
-      <a href="./Teaser">Teaser</a>
-      <a href="./About">About Us</a>
-    </div>
-  </div>
+          <a href="./Games.html" class="full-sized">
+            <img src="./Assets/Icons/icons8-game-controller-64.png" width="39px">
+            <p>Games</p>
+          </a>
 
-  <!-- Games -->
-  <h2 class="games-header">Recent Games</h2>
-  <div class="slideshow-container round-slideshow">
-    <a class="slides fade" href="./Games/CubeGame">
-      <img src="../Assets/CubeGameIcon_Big-Copy.PNG" style="width: 100%" />
-      <div class="text">Cube Game</div>
-    </a>
+          <a href="./AddOns.html" class="full-sized">
+            <img src="./Assets/Icons/icons8-puzzle-64.png" width="39px">
+            <p>Add-Ons</p>
+          </a>
 
-    <a class="slides fade" href="./Games/SlowlyStrange"">
-        <img src=" ../Assets/SlowlyStrangeGame Banner.PNG" style="width: 100%" />
-    <div class="text">Slowly Strange</div>
-    </a>
-
-    <!-- <a class="slides fade" href="../Pages/Games/NightAtSchool"">
-        <img src="../Assets/Night_at_School_Beta.PNG" style="width: 100%" />
-        <div class="text">Night at School Beta</div>
-      </a> -->
-
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  </div>
-  <br />
-
-  <div style="text-align: center">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <!-- <span class="dot" onclick="currentSlide(3)"></span> -->
-  </div>
-
-  <!-- Our Mission -->
-  <div class="mission">
-    <div class="mission-space"></div>
-    <div class="mission-content mission-txt">
-      <h2 class="mission-header">Our Mission</h2>
-      <p src="mission-txt">
-        We create games that we believe are familiar and easy to understand, but with a touch of creative flair for
-        added appeal!
-      </p>
-      <a href="./About">
-        <button class="mission-btn">Learn More</button>
-      </a>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer" id="footer">
-    <img src="../Assets/SoftwareSS_Rectangle@4x.png" width="150px" class="logo" />
-    <div class="footer-text">
-      <h1>SoftwareSS</h1>
-      <p>II Games is owned by SoftwareSS</p>
-      <div class="social-media-logos">
-        <a href="https://www.instagram.com/softwaress.ss/"><img src="../Assets/Instagram.jpg" width="30px" /></a>
-        <a href="mailto:softwaress.company@gmail.com"><img src="../Assets/gmail.jpg" width="30px" /></a>
-        <a href="https://www.reddit.com/r/SoftwareSS/"><img src="../Assets/reddit 2.png" width="30px" /></a>
+          <a href="./AddOns.html" class="full-sized">
+            <img src="./Assets/Icons/icons8-shopping-cart-64.png" width="39px">
+            <p>Assets</p>
+          </a>
+        </div>
+        <div class="small-sized-buttons">
+          <div class="small-sized-buttons-container">
+            <a href="./News.html" class="small-sized">
+              <img src="./Assets/Icons/icons8-news-64.png" width="39px">
+            </a>
+            <a href="./About.html" class="small-sized">
+              <img src="./Assets/Icons/icons8-info-64.png" width="39px">
+            </a>
+          </div>
+          <p class="copyright">© II Games™ 2020 - 2023</p>
+        </div>
       </div>
-      <div class="copyright">
-        <p>© SoftwareSS</p>
-        <p>© II Games</p>
-      </div>
+
     </div>
-  </footer>
+    <div class="page-content"></div>
+  </div>
 </body>
 
 <script src="../main.js"></script>
