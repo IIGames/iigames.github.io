@@ -7,117 +7,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../main.css" />
   <link rel="icon" type="image/x-icon" href="../Assets/II Games _ Profile Transparent.ico" sizes="32x32 64x64" />
-  <title>II Games | Games</title>
+  <title>II Games</title>
 </head>
 
 <body>
-  <!-- Header -->
-  <div class="header">
-    <img src="../Assets/II Games _ Profile Transparent.png" width="70px" class="logo" />
+  <div class="main-div">
+    <div class="sidebar">
+      <img src="./Assets/Logos/II Games Logo Horizontal_FullTransparent.png" alt="II Games Logo" width="250px">
+      <div class="buttons">
+        <div class="full-sized-buttons">
+          <a href="./index.html" class="full-sized">
+            <img src="./Assets/Icons/icons8-home-page-64 (1).png" width="39px">
+            <p>Home</p>
+          </a>
 
-    <div class="header-right">
-      <a href="./">Home</a>
-      <a class="active" href="./Games">Games</a>
-      <a href="./Teaser">Teaser</a>
-      <a href="./About">About Us</a>
-    </div>
-  </div>
-  <!-- Games -->
-  <h2 class="games-header">Games</h2>
-  <div class="game-list-parent-div">
-    <a href="./Games/CubeGame" class="game-list-div">
-      <div class="row-positioning">
-        <div>
-          <img src="../Assets/GamePage_CubeGame_Logo.png" height="90px" />
+          <a href="./Games.html" class="full-sized active">
+            <img src="./Assets/Icons/icons8-game-controller-64.png" width="39px">
+            <p>Games</p>
+          </a>
+
+          <a href="./AddOns.html" class="full-sized">
+            <img src="./Assets/Icons/icons8-puzzle-64.png" width="39px">
+            <p>Add-Ons</p>
+          </a>
+
+          <a href="./AddOns.html" class="full-sized">
+            <img src="./Assets/Icons/icons8-shopping-cart-64.png" width="39px">
+            <p>Assets</p>
+          </a>
         </div>
-        <div class="game-list-right">
-          <h3>CubeGame</h3>
-          <div class="game-list-bottom">
-            <p class="game-tags">2D<b>,</b> Platformer<b>,</b> Retro</p>
-            <img src="../Assets/icons8-windows-11-240.png" width="25px" height="25px" alt="Windows" title="Windows" />
-            <img src="../Assets/icons8-html-5-480.png" width="25px" height="25px" alt="WebGL" title="WebGL" />
+        <div class="small-sized-buttons">
+          <div class="small-sized-buttons-container">
+            <a href="./News.html" class="small-sized">
+              <img src="./Assets/Icons/icons8-news-64.png" width="39px">
+            </a>
+            <a href="./About.html" class="small-sized">
+              <img src="./Assets/Icons/icons8-info-64.png" width="39px">
+            </a>
           </div>
+          <p class="copyright">© II Games™ 2020 - 2023</p>
         </div>
       </div>
-      <p><small>22 September, 2022</small></p>
-    </a>
-    <!-- <a href="../Pages/Games/NightAtSchool" class="game-list-div">
-        <div class="row-positioning">
-          <div>
-            <img src="../Assets/Icon.PNG" height="90px" />
-          </div>
-          <div class="game-list-right">
-            <h3>Night at School <u>Beta</u></h3>
-            <div class="game-list-bottom">
-              <p class="game-tags">3D<b>,</b> Horror<b>,</b> Puzzle</p>
-              <img
-                src="../Assets/icons8-windows-11-240.png"
-                width="25px"
-                height="25px"
-                alt="Windows"
-                title="Windows"
-              />
-              <img
-                src="../Assets/macos icon.jpg"
-                width="25px"
-                height="25px"
-                alt="MacOS"
-                title="MacOS"
-              />
+
+    </div>
+    <div class="page-content">
+      <p class="header-text">All Games</p>
+      <div class="product-list">
+        <a class="product-container" href="./Games/NightAtSchool.html">
+          <img src="./Assets/SchoolScreenshot.png" alt="" class="product-image">
+          <div class="product-details">
+            <p class="product-name">Project Khaje</p>
+            <p class="tags"><product-tag>3D</product-tag>, <product-tag>Shooter</product-tag>,
+              <product-tag>Story</product-tag>
+            </p>
+            <div class="product-platforms">
+              <div class="platform">
+                <img src="./Assets/itchio.png" alt="">
+              </div>
+              <div class="platform">
+                <img src="./Assets/Gamejolt.jpg" alt="">
+              </div>
+              <spacer></spacer>
+              <div class="platform">
+                <img src="./Assets/icons8-windows-11-240.png" alt="">
+              </div>
+              <div class="platform">
+                <img src="./Assets/icons8-android-os-240.png" alt="">
+              </div>
+              <div class="platform">
+                <img src="./Assets/icons8-html-5-480.png" alt="">
+              </div>
             </div>
+            <p class="release-date">27 December, 2022</p>
           </div>
-        </div>
-        <p><small>17 January, 2021</small></p>
-      </a> -->
-    <a href="./Games/SlowlyStrange" class="game-list-div">
-      <div class="row-positioning">
-        <div>
-          <img src="../Assets/Slowly Strange Icon_ Big.png" height="90px" />
-        </div>
-        <div class="game-list-right">
-          <h3>Slowly Strange <u>Beta</u></h3>
-          <div class="game-list-bottom">
-            <p class="game-tags">3D<b>,</b> Horror</p>
-            <img src="../Assets/icons8-windows-11-240.png" width="25px" height="25px" alt="Windows" title="Windows" />
+        </a>
+        <a class="product-container" href="./Games/CubeGame.html">
+          <img src="./Assets/CubeGameIcon_Big-Copy.PNG" alt="" class="product-image">
+          <div class="product-details">
+            <p class="product-name">CubeGame</p>
+            <p class="tags"><product-tag>2D</product-tag>, <product-tag>Platformer</product-tag>,
+              <product-tag>Retro</product-tag>
+            </p>
+            <div class="product-platforms">
+              <div class="platform">
+                <img src="./Assets/itchio.png" alt="">
+              </div>
+              <div class="platform">
+                <img src="./Assets/Gamejolt.jpg" alt="">
+              </div>
+              <spacer></spacer>
+              <div class="platform">
+                <img src="./Assets/icons8-windows-11-240.png" alt="">
+              </div>
+              <div class="platform">
+                <img src="./Assets/icons8-html-5-480.png" alt="">
+              </div>
+            </div>
+            <p class="release-date">22 September, 2022</p>
           </div>
-        </div>
-      </div>
-      <p><small>2 September, 2021</small></p>
-    </a>
-    <a href="./Games/CubeGame-Alpha" class="game-list-div">
-      <div class="row-positioning">
-        <div>
-          <img src="../Assets/GamePage_CubeGameAlpha_Log.png" height="90px" />
-        </div>
-        <div class="game-list-right">
-          <h3>CubeGame <u>Alpha</u></h3>
-          <div class="game-list-bottom">
-            <p class="game-tags">2D<b>,</b> Platformer<b>,</b> Puzzle</p>
-            <img src="../Assets/icons8-windows-11-240.png" width="25px" height="25px" alt="Windows" title="Windows" />
-            <img src="../Assets/icons8-html-5-480.png" width="25px" height="25px" alt="WebGL" title="WebGL" />
+        </a>
+        <a class="product-container" href="./Games/SlowlyStrange.html">
+          <img src="./Assets/GamePage_SlowlyStrange_Pic_1.PNG" alt="" class="product-image">
+          <div class="product-details">
+            <p class="product-name">Slowly Strange</p>
+            <p class="tags"><product-tag>3D</product-tag>, <product-tag>Horror</product-tag>
+            </p>
+            <div class="product-platforms">
+              <div class="platform">
+                <img src="./Assets/Gamejolt.jpg" alt="">
+              </div>
+              <spacer></spacer>
+              <div class="platform">
+                <img src="./Assets/icons8-windows-11-240.png" alt="">
+              </div>
+            </div>
+            <p class="release-date">22 September, 2022</p>
           </div>
-        </div>
-      </div>
-      <p><small>27 May, 2020</small></p>
-    </a>
-  </div>
-  <!-- Footer -->
-  <footer class="footer" id="footer" style="position: absolute">
-    <img src="../Assets/SoftwareSS_Rectangle@4x.png" width="150px" class="logo" />
-    <div class="footer-text">
-      <h1>SoftwareSS</h1>
-      <p>II Games is owned by SoftwareSS</p>
-      <div class="social-media-logos">
-        <a href="https://www.instagram.com/softwaress.ss/"><img src="../Assets/Instagram.jpg" width="30px" /></a>
-        <a href="mailto:softwaress.company@gmail.com"><img src="../Assets/gmail.jpg" width="30px" /></a>
-        <a href="https://www.reddit.com/r/SoftwareSS/"><img src="../Assets/reddit 2.png" width="30px" /></a>
-      </div>
-      <div class="copyright">
-        <p>© SoftwareSS</p>
-        <p>© II Games</p>
+        </a>
       </div>
     </div>
-  </footer>
+  </div>
 </body>
+
+<script src="../main.js"></script>
 
 </html>
