@@ -5,6 +5,8 @@
 
   --div-background-color-1: rgba(217, 217, 217, 0.14);
   --div-background-color-2: rgba(217, 217, 217, 0.1);
+  --div-warning-background-color-1: rgba(255, 234, 0, 0.6);
+  --div-warning-background-color-2: rgba(255, 251, 0, 0.5);
 
   --div-border-color-1: rgba(255, 255, 255, 0.49);
   --div-border-color-2: rgba(255, 255, 255, 0.21);
@@ -194,6 +196,37 @@ body {
 
 .page-content .header-text {
   font-size: 30px;
+}
+
+.wip-warning {
+  background: linear-gradient(
+    159deg,
+    var(--div-warning-background-color-1) 0%,
+    var(--div-warning-background-color-2) 86%
+  );
+  backdrop-filter: blur(40px);
+  box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+
+  padding: 13px;
+  margin-top: 26px;
+  width: fit-content;
+  max-width: 70%;
+
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.wip-warning img {
+  height: 39px;
+  margin-right: 13px;
+}
+
+.wip-warning p {
+  margin: 0px;
+  max-width: 100%;
+
+  text-align: justify;
 }
 
 /* * Main Page Content */
