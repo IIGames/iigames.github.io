@@ -12,6 +12,7 @@
   --div-border-color-2: rgba(255, 255, 255, 0.21);
 
   --text-color-1: white;
+  --text-color-2: rgb(218, 218, 218);
 }
 
 @font-face {
@@ -448,10 +449,15 @@ body {
   font-size: 25px;
 }
 
-.page-content .product-container .product-details .tags {
+.page-content .product-container .product-details .tags,
+.page-content .product-container .product-details .author {
   font-size: 18px;
   margin: 0px;
   margin-top: 6.5px;
+}
+
+.page-content .product-container .product-details .author {
+  color: var(--text-color-2);
 }
 
 .page-content .product-container .product-details product-tag {
