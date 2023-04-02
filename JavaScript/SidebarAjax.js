@@ -1,9 +1,10 @@
 window.onload = function () {
-  window.location.href.indexOf("index.html");
-  if (window.location.href.indexOf("index.html") > -1) {
+  if (
+    window.location.pathname === "/index.html" ||
+    window.location.pathname === "/"
+  ) {
+    console.log(window.location.href);
     updateSidebar(window.location.href);
-    ("yep first time");
-    // Your function here
   }
 };
 
