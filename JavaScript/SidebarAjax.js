@@ -1,13 +1,3 @@
-window.onload = function () {
-  if (
-    window.location.pathname === "/index.html" ||
-    window.location.pathname === "/"
-  ) {
-    console.log(window.location.href);
-    updateSidebar(window.location.href);
-  }
-};
-
 // Add click event listener to sidebar links
 document.querySelectorAll(".sidebar-link").forEach(function (link) {
   link.addEventListener("click", function (event) {
