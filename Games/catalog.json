@@ -1,0 +1,221 @@
+[
+  {
+    "title": "No man's land",
+    "slug": "NoMansLand",
+    "genre": "3D · First-person shooter",
+    "platforms": [
+      "Browser",
+      "Windows"
+    ],
+    "summary": "A first-person, PS1-style WW1 game.",
+    "color": "#807344",
+    "links": [
+      {
+        "label": "Play or download on itch.io",
+        "url": "https://iigamesofficial.itch.io/no-mans-land"
+      },
+      {
+        "label": "View on Game Jolt",
+        "url": "https://gamejolt.com/games/no-mans-land/912024"
+      }
+    ],
+    "details": "<h2>About the game</h2><p>A PS1-style FPS about trench warfare in WW1. War is a sad and often scary experience. This game tries to show that experience in a short period of time.</p><h2>Controls</h2><p>Move: WASD<br>Shoot: Left click<br>Jump: Space</p><h2>Credits</h2><p>Sound effects from freesound.org. Models from Sketchfab.</p><p>PSX font: Suikoden (Monospaced) by Patrick H. Lauke, cloned from Suikoden by the same author. Both are licensed under Creative Commons Attribution 3.0.</p><p><a href=\"https://fontstruct.com/fontstructions/show/1723095\">Suikoden (Monospaced)</a> · <a href=\"https://fontstruct.com/fontstructions/show/1723013\">Suikoden</a> · <a href=\"https://creativecommons.org/licenses/by/3.0/\">CC BY 3.0 license</a></p>",
+    "cover": "Assets/optimized/NoMansLand-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/NoMansLand-shot-1.jpg",
+      "Assets/optimized/NoMansLand-shot-2.jpg"
+    ],
+    "status": "In development",
+    "date": "16 July, 2024"
+  },
+  {
+    "title": "SCP 173 Simulator",
+    "slug": "SCP173Simulator",
+    "genre": "3D · Horror · Simulation",
+    "platforms": [
+      "Windows"
+    ],
+    "status": "Released",
+    "summary": "Play as SCP 173 in a small SCP facility map. Now it's your turn to take revenge on the humans!",
+    "color": "#9a4041",
+    "links": [
+      {
+        "label": "Download on itch.io",
+        "url": "https://iigamesofficial.itch.io/scp-173-simulator"
+      }
+    ],
+    "details": "<h2>About the game</h2><p>Made for GMTK 2023.</p><p class=\"notice\">This game contains animations of humans dying, but no visible blood.</p><h2>Controls</h2><p>Keyboard and mouse. Credits are in the game.</p><h2>Install instructions</h2><p>Download the ZIP file, extract it, and run SCP 173 Simulator.exe.</p>",
+    "cover": "Assets/optimized/SCP173Simulator-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/SCP173Simulator-shot-1.jpg",
+      "Assets/optimized/SCP173Simulator-shot-2.jpg"
+    ]
+  },
+  {
+    "title": "Crystal Stealer",
+    "slug": "CrystalStealer",
+    "genre": "3D · Platformer",
+    "platforms": [
+      "Browser",
+      "Windows",
+      "macOS"
+    ],
+    "status": "Released",
+    "summary": "A short 3D platformer where you play as an astronaut and collect 3 crystals!",
+    "color": "#715ab3",
+    "links": [
+      {
+        "label": "Play or download on itch.io",
+        "url": "https://iigamesofficial.itch.io/crystal-stealer"
+      }
+    ],
+    "details": "<h2>About the game</h2><p>Made for the 3D Platformer course in Coursera. The game has two new levels, post processing, lava, and tutorial text.</p><h2>Credits</h2><p>Made by Iliya Soleimani using assets from MSU.</p>",
+    "cover": "Assets/optimized/CrystalStealer-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/CrystalStealer-shot-1.jpg",
+      "Assets/optimized/CrystalStealer-shot-2.jpg"
+    ]
+  },
+  {
+    "title": "Neon Shooter Mayhem",
+    "slug": "NeonShooterMayhem",
+    "genre": "2D · Top-down shooter",
+    "platforms": [
+      "Windows"
+    ],
+    "status": "Prototype",
+    "summary": "Choose an ability and see how it changes your next run. A small top-down shooter made for Brackeys Game Jam 2023.1 in 2 days!",
+    "color": "#b32781",
+    "links": [
+      {
+        "label": "Download on itch.io",
+        "url": "https://iigamesofficial.itch.io/neon-shooter-mayhem"
+      }
+    ],
+    "details": "<h2>About the game</h2><p>There are two abilities to choose from. The game is short and still a work in progress.</p><h2>Controls</h2><p>Press Esc to return to the main menu.</p><h2>Install instructions</h2><p>Unzip the download and run Neon Shooter Mayhem.exe.</p>",
+    "cover": "Assets/optimized/NeonShooterMayhem-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/NeonShooterMayhem-shot-1.jpg",
+      "Assets/optimized/NeonShooterMayhem-shot-2.jpg"
+    ]
+  },
+  {
+    "title": "CubeGame",
+    "slug": "CubeGame",
+    "genre": "2D · Platformer · Story",
+    "platforms": [
+      "Windows"
+    ],
+    "status": "Released",
+    "date": "23 September, 2022",
+    "summary": "In a world where bosses rule, how can a simple cube save the day? Maybe he has some secret powers we aren't aware of.",
+    "cover": "Assets/optimized/CubeGame-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/CubeGame-shot-1.jpg",
+      "Assets/optimized/CubeGame-shot-2.jpg",
+      "Assets/optimized/CubeGame-shot-3.jpg",
+      "Assets/optimized/CubeGame-shot-4.jpg",
+      "Assets/optimized/CubeGame-shot-5.jpg",
+      "Assets/optimized/CubeGame-shot-6.jpg",
+      "Assets/optimized/CubeGame-shot-7.jpg"
+    ],
+    "links": [
+      {
+        "label": "Download on itch.io",
+        "url": "https://iigamesofficial.itch.io/cubegame"
+      },
+      {
+        "label": "View on Game Jolt",
+        "url": "https://gamejolt.com/games/CubeGame/748864"
+      }
+    ],
+    "details": "<div class=\"legacy-copy\">In a world where bosses rule, how can a simple cube save the day by jumping on platforms, or does he have\r\n          some\r\n          secret powers we aren't aware of?<br /><br />\r\n\r\n          <h2>Features</h2><br />\r\n\r\n          <strong>Respawn Flag:</strong><br />\r\n          Like most platformers, if you hit the lava your health decreases, and you get sent back to the starting point,\r\n          unless you put down a respawn flag, which will send you to the flag when you hit lava!<br /><br />\r\n\r\n          <strong>Electrical Platforms:</strong><br />\r\n          Sometimes a section of a level can be really hard and frustrating, but you can skip them with the use of an\r\n          electrical platform! Use them wisely because they use one charge of your battery (which can be bought at the\r\n          shop).<br /><br />\r\n\r\n          <h2>Controls</h2><br />\r\n\r\n          Move: WASD Keys<br />\r\n          Jump: Space Bar<br />\r\n          Shoot: E Key<br />\r\n          Interact: R Key<br />\r\n          Place Flag: F Key<br />\r\n          UI Interact: Enter Key / Mouse Left Click<br />\r\n          UI Navigation: Arrow Keys<br /><br />\r\n\r\n          <span>Note: To learn about the controls for a game pad, visit the \"controls\" menu in the game.\r\n            PlayStation\r\n            controllers\r\n            are supported, and it is recommended to not use DS4 Windows to play the game.</span><br /><br />\r\n\r\n          <h2>Credits</h2><br />\r\n\r\n          <strong>Programming:</strong><br />\r\n          Iliya Soleymani<br />\r\n          Radin Nasiri<br /><br />\r\n\r\n          <strong>Art:</strong><br />\r\n          Iliya Soleymani<br /><br />\r\n\r\n          <strong>Game design:</strong><br />\r\n          Iliya Soleymani<br />\r\n          Radin Nasiri<br /><br />\r\n\r\n          <strong>Sound effects (freesound.org):</strong><br />\r\n          8-bit damage sound by EVRetro<br />\r\n          shoot02 by V-ktor<br />\r\n          Jump_C_03 by cabled_mess<br />\r\n          laser1 by nsstudios<br />\r\n          UI 03 by rhodesmas<br /><br />\r\n\r\n          <strong>Music (freesound.org):</strong><br />\r\n          Loop_Computer_Feeling_Good_03 by LittleRobotSoundFactory<br />\r\n          hornier remix of victor-natas Freesound #641728 by Timbre<br />\r\n          Success Resolution Video Game Fanfare Sound Effect by FunWithSound<br /><br />\r\n\r\n          <h2>Game Testers:</h2><br />\r\n\r\n          Mohammad Shayan<br />\r\n          Mohammad Hajikandi<br />\r\n          Parsa Mardani<br />\r\n          MohammadReza Namvar<br /><br />\r\n\r\n          © II Games<br />\r\n        </div>"
+  },
+  {
+    "title": "Station Invasion",
+    "slug": "StationInvasion",
+    "genre": "3D · Shooter",
+    "platforms": [
+      "Windows",
+      "macOS"
+    ],
+    "summary": "A 3D shooter made for a Coursera assignment, with new levels and an options menu.",
+    "color": "#2b777b",
+    "links": [
+      {
+        "label": "Play or download on itch.io",
+        "url": "https://iigamesofficial.itch.io/station-invasion"
+      }
+    ],
+    "details": "<h2>About the game</h2><p>Made for Coursera’s 3D Shooter assignment. Changes include an options menu, a new first level, a redesigned second level, extra details in the third level, and post processing.</p><h2>Credits</h2><p>Eilia Soleimani, with assets from MSU.</p>",
+    "cover": "Assets/optimized/StationInvasion-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/StationInvasion-shot-1.jpg",
+      "Assets/optimized/StationInvasion-shot-2.jpg"
+    ],
+    "status": "Released"
+  },
+  {
+    "title": "Slowly Strange",
+    "slug": "SlowlyStrange",
+    "genre": "3D · Horror",
+    "platforms": [
+      "Windows"
+    ],
+    "date": "18 August, 2021",
+    "archive": true,
+    "summary": "It's a normal day. Do your tasks! Everything is definitely as it should be, and nothing is off!",
+    "cover": "Assets/optimized/SlowlyStrange-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/SlowlyStrange-shot-1.jpg",
+      "Assets/optimized/SlowlyStrange-shot-2.jpg"
+    ],
+    "links": [
+      {
+        "label": "Download on Game Jolt",
+        "url": "https://gamejolt.com/games/SlowlyStrange/637229"
+      }
+    ],
+    "details": "\r\n        <p>It's a normal day, do your tasks! Everything is definitely as it should be, and nothing is off!<br /><br />\r\n\r\n          Special thanks to u/mh06941 on reddit for the idea.<br /><br />\r\n\r\n          <span>Note: This game is old and does not represent the quality of our studio's works as of\r\n            2023</span><br /><br />\r\n\r\n          © II Games<br />\r\n        </p>\r\n      "
+  },
+  {
+    "title": "CubeGame Alpha",
+    "slug": "CubeGame-Alpha",
+    "genre": "2D · Platformer · Puzzle",
+    "platforms": [
+      "Windows",
+      "Browser"
+    ],
+    "date": "27 May, 2020",
+    "archive": true,
+    "summary": "A simple platformer. The early version of CubeGame.",
+    "cover": "Assets/optimized/CubeGame-Alpha-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/CubeGame-Alpha-shot-1.jpg",
+      "Assets/optimized/CubeGame-Alpha-shot-2.jpg"
+    ],
+    "links": [
+      {
+        "label": "Download on Game Jolt",
+        "url": "https://gamejolt.com/games/CubeGameAlpha/625063"
+      }
+    ],
+    "details": "<h2>About this version</h2><p>This is the alpha version of CubeGame, developed and published by II Games.</p>",
+    "trailer": "Assets/CubeGameVideo.mp4"
+  },
+  {
+    "title": "Night At School",
+    "slug": "NightAtSchool",
+    "genre": "3D",
+    "platforms": [],
+    "hidden": true,
+    "summary": "An archived II Games project.",
+    "cover": "Assets/optimized/NightAtSchool-cover.jpg",
+    "screenshots": [
+      "Assets/optimized/NightAtSchool-shot-1.jpg",
+      "Assets/optimized/NightAtSchool-shot-2.jpg"
+    ],
+    "links": [],
+    "details": "<p>This hidden project page is kept in the archive.</p>"
+  }
+]
