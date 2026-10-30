@@ -8,7 +8,7 @@ const write = (p, value) => fs.writeFileSync(path.join(root, p), value);
 const escape = text => String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
 const absoluteUrl = path => `${siteOrigin}${path.startsWith('/') ? path : `/${path}`}`;
 const catalog = JSON.parse(read('Games/catalog.json'));
-const gameAccents = {NoMansLand:'#e7ba72', SCP173Simulator:'#ffa1a7', CrystalStealer:'#c1a5ff', NeonShooterMayhem:'#ff9bda', CubeGame:'#54e6ff', StationInvasion:'#80e6cc', SlowlyStrange:'#c1a5ff', 'CubeGame-Alpha':'#ffc58b'};
+const gameAccents = {NoMansLand:'#825b23', SCP173Simulator:'#934350', CrystalStealer:'#6551a1', NeonShooterMayhem:'#8a3c75', CubeGame:'#2855b4', StationInvasion:'#236b5e', SlowlyStrange:'#6551a1', 'CubeGame-Alpha':'#825b23'};
 const nav = [['Home',''],['Games','games'],['Add-Ons','addons'],['Assets','assets'],['News','news'],['About','about']];
 function shell(title, body, current, prefix = './', seo = {}) {
   const pageTitle = seo.title || `${title} · II Games`;
@@ -39,14 +39,21 @@ function shell(title, body, current, prefix = './', seo = {}) {
 <body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="${prefix}" aria-label="II Games home"><img src="${prefix}Assets/optimized/ii-games-logo.png" width="230" height="70" alt="II Games"></a><button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" aria-label="Main navigation">${nav.map(([label,url]) => `<a href="${prefix}${url}"${current === label ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav></header>
 <main id="main" tabindex="-1">${body.replace('Small team.<br>Different worlds.', 'Small team.<br><span class="hero-color">Different worlds.</span>')}</main><footer class="site-footer"><div><p>© II Games · 2020–${new Date().getFullYear()}</p></div><div><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a><a href="${prefix}about">About the studio</a></div></footer></body></html>`;
 }
-function image(src, alt, eager = false) {
+// Reserve shared names for covers only; screenshots never duplicate a portal.
+const mediaSizes = {
+  feature: '(max-width: 760px) 92vw, (max-width: 1050px) 51vw, (max-width: 1440px) 58vw, 834px',
+  card: '(max-width: 520px) 88vw, (max-width: 1050px) 43vw, (max-width: 1440px) 28vw, 392px',
+  lead: '(max-width: 520px) 88vw, (max-width: 1050px) 43vw, (max-width: 1440px) 60vw, 834px',
+  screenshot: '(max-width: 520px) 92vw, (max-width: 1440px) 45vw, 654px'
+};
+function image(src, alt, eager = false, portal = '', size = 'screenshot') {
  const small = src.replace(/\.jpg$/, '-small.jpg');
  const smallPath = small.replace(/^\.\.\//, '').replace(/^\.\//, '');
- const responsive = small !== src && fs.existsSync(path.join(root,smallPath)) ? ` srcset="${escape(small)} 640w, ${escape(src)} 1440w" sizes="(max-width: 520px) 100vw, (max-width: 1050px) 50vw, 55vw"` : '';
- return `<img src="${escape(src)}"${responsive} alt="${escape(alt)}" width="1280" height="720" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+ const responsive = small !== src && fs.existsSync(path.join(root,smallPath)) ? ` srcset="${escape(small)} 640w, ${escape(src)} 1440w" sizes="${mediaSizes[size]}"` : '';
+ return `<img${portal ? ` class="world-portal" style="view-transition-name:world-${portal.toLowerCase()}"` : ''} src="${escape(src)}"${responsive} alt="${escape(alt)}" width="1280" height="720" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
-function card(game, eager = false) {
- return `<article class="game-card" style="--game-accent:${gameAccents[game.slug] || '#54e6ff'}"><a href="./Games/${game.slug.toLowerCase()}">${game.cover ? image('./'+game.cover, game.title+' gameplay', eager) : `<div class="type-cover" style="--game-color:${game.color}"><span>${escape(game.title)}</span></div>`}<div class="card-meta"><p>${escape(game.genre)}</p><span>${escape(game.platforms.join(' / '))}</span></div><h2>${escape(game.title)}</h2><p class="card-description">${escape(game.summary)}</p><span class="text-link">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a></article>`;
+function card(game, eager = false, size = 'card') {
+ return `<article class="game-card" style="--game-accent:${gameAccents[game.slug] || '#2855b4'}"><a href="./Games/${game.slug.toLowerCase()}">${game.cover ? image('./'+game.cover, game.title+' gameplay', eager, game.slug, size) : `<div class="type-cover" style="--game-color:${game.color}"><span>${escape(game.title)}</span></div>`}<div class="card-meta"><p>${escape(game.genre)}</p><span>${escape(game.platforms.join(' / '))}</span></div><h2>${escape(game.title)}</h2><p class="card-description">${escape(game.summary)}</p><span class="text-link">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a></article>`;
 }
 const cube = catalog.find(g => g.slug === 'CubeGame');
 const studioStructuredData = {
@@ -70,7 +77,7 @@ const studioStructuredData = {
     }
   ]
 };
-write('index.html', shell('Home', `<section class="home-intro"><h1>Small team.<br>Different worlds.</h1><p>We make simple 2D and 3D games for fun, with a touch of creative spice.</p><a class="button" href="./games">Explore the games</a></section><section class="featured-game" aria-labelledby="featured-title"><a class="feature-art" href="./Games/cubegame">${image('./'+cube.cover,'CubeGame: a cube in a pixel-art world',true)}</a><div class="feature-copy"><p class="game-meta">${cube.genre} · ${cube.platforms.join(' / ')}</p><h2 id="featured-title">CubeGame</h2><p>${cube.summary}</p><a class="button button-light" href="./Games/cubegame">Meet the cube</a></div></section><section class="section"><div class="section-heading"><h2>More worlds to try.</h2><a class="text-link" href="./games">All games</a></div><div class="game-grid">${catalog.filter(g=>['SCP173Simulator','CrystalStealer','NeonShooterMayhem'].includes(g.slug)).map(g=>card(g)).join('')}</div></section><section class="studio-note"><h2>Made for the fun of it.</h2><div><p>II Games is a small game development team. It’s just me for now, with more people joining soon.</p><p>We make games that are familiar and easy to understand, then add something a little different.</p><a class="text-link" href="./about">About II Games</a></div></section>`, 'Home', './', {
+write('index.html', shell('Home', `<section class="home-intro"><h1>Small team.<br>Different worlds.</h1><p>We make simple 2D and 3D games for fun, with a touch of creative spice.</p><a class="button" href="./games">Explore the games <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></section><section class="featured-game" aria-labelledby="featured-title"><a class="feature-art" href="./Games/cubegame">${image('./'+cube.cover,'CubeGame: a cube in a pixel-art world',true,cube.slug,'feature')}</a><div class="feature-copy"><p class="game-meta">${cube.genre} · ${cube.platforms.join(' / ')}</p><h2 id="featured-title">CubeGame</h2><p>${cube.summary}</p><a class="button button-light" href="./Games/cubegame">Meet the cube <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></section><section class="section"><div class="section-heading"><h2>More worlds to try.</h2><a class="text-link" href="./games">All games</a></div><div class="game-grid">${catalog.filter(g=>['SCP173Simulator','CrystalStealer','NeonShooterMayhem'].includes(g.slug)).map(g=>card(g)).join('')}</div></section><section class="studio-note"><h2>Made for the fun of it.</h2><div><p>II Games is a small game development team. It’s just me for now, with more people joining soon.</p><p>We make games that are familiar and easy to understand, then add something a little different.</p><a class="text-link" href="./about">About II Games</a></div></section>`, 'Home', './', {
   canonicalPath: '/',
   title: 'II Games — Indie 2D and 3D Games',
   description: 'Discover original 2D and 3D indie games from II Games, including platformers, horror games, and creative game jam projects.',
@@ -80,7 +87,7 @@ write('index.html', shell('Home', `<section class="home-intro"><h1>Small team.<b
   headExtra: '<meta name="google-site-verification" content="KfsYoNDCpkQhF7QEryFJC1IH0r2B3b7TfLn7jHr0Cg0">'
 }));
 const publicGames = catalog.filter(g=>!g.hidden && !g.archive);
-write('games.html', shell('Games', `<header class="page-intro"><h1>Find your<br>next game.</h1><p>Platformers, horror games, and game jam experiments. Pick a world and give it a try.</p></header><div class="game-grid catalog-grid">${publicGames.map((g,i)=>card(g,i===0)).join('')}</div><section class="section"><div class="section-heading"><h2>Earlier experiments</h2></div><div class="game-grid archive-grid">${catalog.filter(g=>g.archive&&!g.hidden).map(g=>card(g)).join('')}</div></section>`, 'Games', './', {
+write('games.html', shell('Games', `<header class="page-intro"><h1>Find your<br>next game.</h1><p>Platformers, horror games, and game jam experiments. Pick a world and give it a try.</p></header><div class="game-grid catalog-grid">${publicGames.map((g,i)=>card(g,i===0,i===0?'lead':'card')).join('')}</div><section class="section"><div class="section-heading"><h2>Earlier experiments</h2></div><div class="game-grid archive-grid">${catalog.filter(g=>g.archive&&!g.hidden).map(g=>card(g)).join('')}</div></section>`, 'Games', './', {
   canonicalPath: '/games',
   title: 'Indie Games — II Games',
   description: 'Browse 2D and 3D indie games from II Games, from platformers and horror games to shooters and game jam experiments.',
@@ -130,7 +137,7 @@ for (const game of catalog) {
    publisher: { '@id': `${siteOrigin}/#organization` },
    inLanguage: 'en'
  } : undefined;
- write(oldFile, shell(game.title, `<a class="back-link" href="../games">Back to games</a><header class="game-intro"><h1>${escape(game.title)}</h1><p>${escape(game.summary)}</p><div class="game-facts"><span>${escape(game.genre)}</span><span>${escape(game.platforms.join(' / '))}</span>${game.status ? `<span>${escape(game.status)}</span>`:''}</div></header>${game.hidden ? '<p class="notice">This is an archived, hidden project page.</p>':''}<section class="game-stage">${game.cover ? image('../'+game.cover,game.title+' gameplay',true) : `<div class="type-cover" style="--game-color:${game.color}"><span>${escape(game.title)}</span></div>`}<div class="download-panel"><h2>Play ${escape(game.title)}</h2><p>${escape(game.downloadNote || 'Choose a platform below for the game and available downloads.')}</p><div class="actions">${actions || '<p>No public download is available on this page.</p>'}</div>${game.date?`<p class="game-meta">Released ${escape(game.date)}</p>`:''}</div></section>${details?`<section class="game-details section">${details}</section>`:''}${media}<section class="more-games"><h2>Something else to try?</h2><a class="button button-secondary" href="../games">Browse all games</a></section>`, 'Games', '../', {
+ write(oldFile, shell(game.title, `<a class="back-link" href="../games">Back to games</a><header class="game-intro"><h1>${escape(game.title)}</h1><p>${escape(game.summary)}</p><div class="game-facts"><span>${escape(game.genre)}</span><span>${escape(game.platforms.join(' / '))}</span>${game.status ? `<span>${escape(game.status)}</span>`:''}</div></header>${game.hidden ? '<p class="notice">This is an archived, hidden project page.</p>':''}<section class="game-stage">${game.cover ? image('../'+game.cover,game.title+' gameplay',true,game.slug,'feature') : `<div class="type-cover" style="--game-color:${game.color}"><span>${escape(game.title)}</span></div>`}<div class="download-panel"><h2>Play ${escape(game.title)}</h2><p>${escape(game.downloadNote || 'Choose a platform below for the game and available downloads.')}</p><div class="actions">${actions || '<p>No public download is available on this page.</p>'}</div>${game.date?`<p class="game-meta">Released ${escape(game.date)}</p>`:''}</div></section>${details?`<section class="game-details section">${details}</section>`:''}${media}<section class="more-games"><h2>Something else to try?</h2><a class="button button-secondary" href="../games">Browse all games</a></section>`, 'Games', '../', {
    canonicalPath,
    title: `Play ${game.title} | II Games`,
    description: gameDescription,

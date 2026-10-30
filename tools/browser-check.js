@@ -22,12 +22,18 @@ async (page) => {
   await menu.click();
   await page.getByRole('navigation').getByRole('link',{name:'Games',exact:true}).click();
   if(!page.url().endsWith('/games.html'))failures.push('Local games navigation mismatch');
+  // Let the authored cross-document animation finish before synthetic redirects.
+  await page.waitForTimeout(450);
   await page.goto('http://127.0.0.1:4173/game.html?game=CubeGame');
   await page.waitForURL('**/Games/cubegame.html');
+  await page.waitForTimeout(450);
   await page.reload();
   if(await page.getByRole('heading',{name:'CubeGame',exact:true,level:1}).count()!==1)failures.push('Direct game reload failed');
+  await page.waitForTimeout(450);
   await page.goBack();
+  await page.waitForTimeout(450);
   await page.goto('http://127.0.0.1:4173/');
+  await page.waitForTimeout(450);
   await page.emulateMedia({reducedMotion:'reduce'});
   for(const width of [320,768,1440]) {
     await page.setViewportSize({width,height:900});
@@ -37,6 +43,10 @@ async (page) => {
   }
   for(const [route,name] of [['/','home'],['/games.html','games'],['/Games/nomansland.html','game']]) {
     await page.goto('http://127.0.0.1:4173'+route);
+    await page.evaluate(async()=>{
+      await document.fonts.ready;
+      await Promise.all([...document.images].map(image=>{image.loading='eager';return image.decode().catch(()=>{});}));
+    });
     for(const [width,size] of [[1440,'desktop'],[375,'mobile']]) {
       await page.setViewportSize({width,height:900});
       await page.screenshot({path:'output/playwright/'+name+'-'+size+'.png',fullPage:true});
