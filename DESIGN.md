@@ -1,13 +1,29 @@
 # II Games design
 
-The site keeps the dark/cyan identity and Nevis lettering. Gameplay is the signature element. Deep violet surfaces echo CubeGame's world, with cyan headings and actions. Each game gets a readable accent drawn from its art: warm amber for No man's land, pink for SCP, lavender for Crystal Stealer, and magenta for Neon Shooter Mayhem.
+II Games uses a dark, artwork-led studio identity. Preserve the logo, self-hosted Nevis lettering, cyan primary actions, real game imagery, accurate credits, and informal small-team voice. All routes share the same neutral palette and navigation.
 
-Use Nevis for display headings and primary actions; use the system sans serif for body copy and navigation. Body starts at 17px, headings scale fluidly up to 96px, and long descriptions stay within 75 characters per line.
+## Tokens
 
-Colors: surface `#0b0d1b`, raised surface `#20203d`, text `#f4f1ff`, secondary text `#c2bfd9`, action `#54e6ff`, focus `#ffd75e`, violet `#bea4ff`. Secondary text on raised surfaces is 8.80:1. Feature text on `#30214f` is 10.19:1; cyan is 9.71:1. Focus uses a visible 3px outline. A static violet atmosphere is deliberate; the detector's radial-halo warnings refer to this backdrop rather than a shadow effect.
+Surface `#0b0c12`, raised surface `#171820`, text `#f3f0fa`, secondary text `#bdbbc9`, line `#34353f`, action `#54e6ff`, focus `#ffd75e`. The homepage studio panel uses `#c3adff` with dark text. Game-specific colors belong in artwork; card backgrounds, headings, and links use shared tokens. Do not reintroduce per-game container colors.
 
-Desktop: horizontal navigation; split introduction; large gameplay image beside its action; a three-column game grid. Tablet: two columns. Mobile: expandable navigation, stacked feature and game sections, and one-column games below 520px. Content stays visible without JavaScript, including the navigation.
+Nevis carries display headings, capped at 96px. System sans serif carries body and controls. Responsive layouts use natural content height, 44px or larger controls, visible focus, enlarged-text support, and native anchors/buttons.
 
-Native HTML anchors and buttons carry interaction. The feature opens once with a 720ms crop/brightness transition, like a level viewport opening. A 600ms companion panel movement completes that moment; mobile omits the spatial panel movement. Menu clipping and arrows confirm interaction, and supported browsers use brief cross-page fades. Reduced motion removes movement and fades; static hover colors remain. No looping animation, autoplay, extra library, or runtime platform embed. Images retain reserved ratios, local responsive variants, and lazy loading below the first view.
+## Homepage
 
-Apple references informed the web foundations, rather than native app conventions: `layout.md › Visual hierarchy`, `accessibility.md › Vision` and `Mobility`, `typography.md › Conveying hierarchy`, and `branding.md › Best practices`. Review judged game-first imagery and accurate small-team copy more useful here than a large permanent sidebar.
+The introduction parts as the visitor scrolls into CubeGame. The scene expands and its image reframes; game cards, the studio panel, and closing section move with the scroll position. GSAP ScrollTrigger runs these transforms on compact and regular screens without pinning, viewport-height gates, or artificial spacer gaps. Text remains present when scripts fail.
+
+Scroll motion follows the system reduced-motion setting automatically. There is no motion button or stored site preference. Enabling reduced motion reverts GSAP styles and triggers; a fresh reduced-motion visit does not load GSAP. Vendor files remain local to the homepage.
+
+The gameplay carousel uses native horizontal scroll and snapping, with previous/next buttons, a slide count, arrow/Home/End keys, and touch scrolling. It never advances automatically. Images reserve their dimensions and load lazily. Without JavaScript, visitors can still scroll the screenshots.
+
+Copy names the content and action directly: “Gameplay screenshots,” “More games,” and “View game.” Avoid slogans, forced wordplay, and decorative motion controls.
+
+## Other pages
+
+The catalog uses a two-column desktop grid and one-column mobile layout, neutral game cards, readable platform metadata, and All games/Browser/Windows/macOS filters. The archive remains visible separately. Without JavaScript, every game remains available.
+
+Game details use a neutral download panel and restrained platform tags. About connects its introduction to actual game artwork and readable editorial sections. News uses an article feature panel. Assets and Add-Ons explain their empty state beside real game imagery and a catalog action. All factual game descriptions, destination URLs, and credits remain intact.
+
+## Verification
+
+`node tools/validate-site.mjs` validates all 18 generated pages and repeatable generation. `tools/landing-catalog-check.js` is a Playwright CLI run-code function for actual scroll movement, carousel controls, catalog filters, responsive layouts, 200% text, and JavaScript-free fallbacks. See DESIGN-REVIEW.md for the completed verification and limits.
