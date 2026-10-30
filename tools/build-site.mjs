@@ -8,6 +8,7 @@ const write = (p, value) => fs.writeFileSync(path.join(root, p), value);
 const escape = text => String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
 const absoluteUrl = path => `${siteOrigin}${path.startsWith('/') ? path : `/${path}`}`;
 const catalog = JSON.parse(read('Games/catalog.json'));
+const gameAccents = {NoMansLand:'#e7ba72', SCP173Simulator:'#ffa1a7', CrystalStealer:'#c1a5ff', NeonShooterMayhem:'#ff9bda', CubeGame:'#54e6ff', StationInvasion:'#80e6cc', SlowlyStrange:'#c1a5ff', 'CubeGame-Alpha':'#ffc58b'};
 const nav = [['Home',''],['Games','games'],['Add-Ons','addons'],['Assets','assets'],['News','news'],['About','about']];
 function shell(title, body, current, prefix = './', seo = {}) {
   const pageTitle = seo.title || `${title} · II Games`;
@@ -36,7 +37,7 @@ function shell(title, body, current, prefix = './', seo = {}) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${metadata}<title>${escape(pageTitle)}</title><link rel="icon" href="${prefix}Assets/optimized/favicon.png"><link rel="stylesheet" href="${prefix}main.css"><script src="${prefix}JavaScript/site.js" defer></script></head>
 <body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="${prefix}" aria-label="II Games home"><img src="${prefix}Assets/optimized/ii-games-logo.png" width="230" height="70" alt="II Games"></a><button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" aria-label="Main navigation">${nav.map(([label,url]) => `<a href="${prefix}${url}"${current === label ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav></header>
-<main id="main" tabindex="-1">${body}</main><footer class="site-footer"><div><p>© II Games · 2020–${new Date().getFullYear()}</p></div><div><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a><a href="${prefix}about">About the studio</a></div></footer></body></html>`;
+<main id="main" tabindex="-1">${body.replace('Small team.<br>Different worlds.', 'Small team.<br><span class="hero-color">Different worlds.</span>')}</main><footer class="site-footer"><div><p>© II Games · 2020–${new Date().getFullYear()}</p></div><div><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a><a href="${prefix}about">About the studio</a></div></footer></body></html>`;
 }
 function image(src, alt, eager = false) {
  const small = src.replace(/\.jpg$/, '-small.jpg');
@@ -45,7 +46,7 @@ function image(src, alt, eager = false) {
  return `<img src="${escape(src)}"${responsive} alt="${escape(alt)}" width="1280" height="720" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
 function card(game, eager = false) {
- return `<article class="game-card"><a href="./Games/${game.slug.toLowerCase()}">${game.cover ? image('./'+game.cover, game.title+' gameplay', eager) : `<div class="type-cover" style="--game-color:${game.color}"><span>${escape(game.title)}</span></div>`}<div class="card-meta"><p>${escape(game.genre)}</p><span>${escape(game.platforms.join(' / '))}</span></div><h2>${escape(game.title)}</h2><p class="card-description">${escape(game.summary)}</p><span class="text-link">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a></article>`;
+ return `<article class="game-card" style="--game-accent:${gameAccents[game.slug] || '#54e6ff'}"><a href="./Games/${game.slug.toLowerCase()}">${game.cover ? image('./'+game.cover, game.title+' gameplay', eager) : `<div class="type-cover" style="--game-color:${game.color}"><span>${escape(game.title)}</span></div>`}<div class="card-meta"><p>${escape(game.genre)}</p><span>${escape(game.platforms.join(' / '))}</span></div><h2>${escape(game.title)}</h2><p class="card-description">${escape(game.summary)}</p><span class="text-link">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a></article>`;
 }
 const cube = catalog.find(g => g.slug === 'CubeGame');
 const studioStructuredData = {

@@ -720,3 +720,113 @@ main:focus {
   background: var(--signal);
   color: var(--surface);
 }
+
+/* Dark arcade palette: cyan actions, violet depth, artwork-specific accents. */
+:root {
+  --surface: #0b0d1b;
+  --raised: #20203d;
+  --text: #f4f1ff;
+  --muted: #c2bfd9;
+  --line: #47435f;
+  --violet: #bea4ff;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+body {
+  background: radial-gradient(ellipse at 92% 3%, #29204b 0, transparent 45rem), var(--surface);
+}
+.site-header { border-color: #47435f; }
+.site-header nav a {
+  position: relative;
+  border-radius: 8px;
+  transition: background 180ms ease, color 180ms ease;
+}
+.site-header nav a:hover { background: #27223f; }
+.site-header nav a[aria-current] { color: var(--accent); }
+.home-intro { padding-block: clamp(3rem, 6vw, 6rem); }
+.hero-color { color: var(--accent); }
+.home-intro h1 { line-height: 1.02; }
+.home-intro > p { color: #d5ccef; }
+.button {
+  border-radius: 8px;
+  transition: background 180ms ease, color 180ms ease, transform 180ms var(--ease-out);
+}
+.button:active { transform: scale(.97); }
+.button-secondary { border-color: #77708f; }
+.featured-game {
+  background: #30214f;
+  color: var(--text);
+  box-shadow: 0 24px 60px #03030c66;
+  isolation: isolate;
+}
+.feature-art { overflow: hidden; }
+.feature-art img { transition: transform 600ms var(--ease-out); }
+.feature-art:hover img { transform: scale(1.035); }
+.feature-copy { position: relative; }
+.feature-copy h2 { color: var(--accent); }
+.feature-copy .game-meta { color: #e0d2ff; }
+.feature-copy > p:not(.game-meta) { color: #e0d2ff; }
+.feature-copy .button { background: var(--accent); color: var(--surface); }
+.feature-copy .button:hover { background: var(--text); }
+.game-card > a {
+  height: 100%; padding: clamp(.85rem,1.5vw,1.25rem);
+  background: #15162c;
+  background: color-mix(in srgb, var(--game-accent) 7%, var(--surface));
+  border-radius: 16px;
+  transition: background 220ms ease;
+}
+.game-card > a:hover, .game-card > a:focus-visible {
+  background: #26213e;
+  background: color-mix(in srgb, var(--game-accent) 13%, var(--surface));
+  color: var(--text);
+}
+.game-card h2 { color: var(--game-accent); }
+.game-card .text-link { color: var(--game-accent); }
+.game-card .text-link svg { transition: transform 220ms var(--ease-out); }
+.game-card > a:hover .text-link svg, .game-card > a:focus-visible .text-link svg { transform: translateX(5px); }
+.card-meta { color: #cfcae1; }
+.game-card img { border-radius: 10px; }
+.studio-note { border-top-color: #77609f; }
+.studio-note h2 { color: var(--violet); }
+.page-intro h1 { color: var(--violet); }
+.game-intro h1 { color: var(--accent); }
+.game-facts span { color: #e0d2ff; background: #29213e; padding: .45rem .8rem; border: 0; border-radius: 8px; }
+.download-panel { background: #20203d; }
+.download-panel h2 { color: var(--violet); }
+.game-details h2, .more-games h2 { color: var(--violet); }
+.news-entry:hover { background: #201b36; }
+.nav-toggle { border-color: #77708f; border-radius: 8px; }
+@media (prefers-reduced-motion: no-preference) {
+  .featured-game .feature-art img { animation: level-open 720ms var(--ease-out) both; }
+  .featured-game .feature-copy { animation: panel-open 600ms 90ms var(--ease-out) both; }
+  .site-header nav.is-open { animation: menu-open 200ms var(--ease-out); }
+  @keyframes level-open {
+    from { clip-path: inset(0 12% 0 0); filter: brightness(.65); }
+    to { clip-path: inset(0); filter: brightness(1); }
+  }
+  @keyframes panel-open {
+    from { transform: translateX(16px); }
+    to { transform: translateX(0); }
+  }
+  @keyframes menu-open {
+    from { clip-path: inset(0 0 100%); }
+    to { clip-path: inset(0); }
+  }
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation-duration: 110ms; }
+  ::view-transition-new(root) { animation-duration: 180ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+@media (max-width: 760px) {
+  .home-intro { padding-block: 2.75rem; }
+  .featured-game .feature-copy { animation-name: none; }
+}
+@media (prefers-contrast: more) {
+  :root { --muted: #eee8ff; --line: #b5a7ce; }
+  .card-meta { color: var(--text); }
+}
+@media (forced-colors: active) {
+  .game-card > a, .game-facts span { border: 1px solid CanvasText; }
+  .hero-color, .game-card h2, .feature-copy h2 { color: CanvasText; }
+}
