@@ -11,6 +11,8 @@ node tools/build-site.mjs
 node tools/validate-site.mjs
 ```
 
+The builder also generates page-specific SEO metadata, `robots.txt`, and `sitemap.xml`. The canonical site origin is configured in `tools/build-site.mjs`.
+
 The builder keeps game pages as real HTML, including when JavaScript is disabled. `News/article.html` is the preserved article body used by the builder. Existing source artwork remains in `Assets`; delivered images are in `Assets/optimized`.
 
 `tools/optimize-assets.ps1` can resize new catalog images using Windows System.Drawing. It preserves original media and writes JPEG variants plus a small PNG logo. Use this before rebuilding when adding new images.
