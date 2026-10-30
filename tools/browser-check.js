@@ -1,6 +1,6 @@
 async (page) => {
   const widths = [320,375,768,1024,1280,1440,1920];
-  const routes = ['/', '/Games.html', '/game.html', '/About.html', '/Assets.html', '/AddOns.html', '/News.html', '/News/1.html', '/Teaser.html', ...['CubeGame','CubeGame-Alpha','SlowlyStrange','NightAtSchool','NoMansLand','SCP173Simulator','CrystalStealer','NeonShooterMayhem','StationInvasion'].map(x=>'/Games/'+x+'.html')];
+  const routes = ['/', '/games.html', '/game.html', '/about.html', '/assets.html', '/addons.html', '/news.html', '/News/1.html', '/teaser.html', ...['cubegame','cubegame-alpha','slowlystrange','nightatschool','nomansland','scp173simulator','crystalstealer','neonshootermayhem','stationinvasion'].map(x=>'/Games/'+x+'.html')];
   const failures=[];
   const errors=[];
   page.on('pageerror', e=>errors.push(e.message));
@@ -21,9 +21,9 @@ async (page) => {
   if(await menu.getAttribute('aria-expanded')!=='false')failures.push('Escape did not close menu');
   await menu.click();
   await page.getByRole('navigation').getByRole('link',{name:'Games',exact:true}).click();
-  if(!page.url().endsWith('/game.html'))failures.push('Local games navigation mismatch');
+  if(!page.url().endsWith('/games.html'))failures.push('Local games navigation mismatch');
   await page.goto('http://127.0.0.1:4173/game.html?game=CubeGame');
-  await page.waitForURL('**/Games/CubeGame.html');
+  await page.waitForURL('**/Games/cubegame.html');
   await page.reload();
   if(await page.getByRole('heading',{name:'CubeGame',exact:true,level:1}).count()!==1)failures.push('Direct game reload failed');
   await page.goBack();
@@ -35,7 +35,7 @@ async (page) => {
     if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))failures.push({width,zoom:'200%',overflow:true});
     await page.evaluate(()=>document.documentElement.style.fontSize='');
   }
-  for(const [route,name] of [['/','home'],['/Games.html','games'],['/Games/NoMansLand.html','game']]) {
+  for(const [route,name] of [['/','home'],['/games.html','games'],['/Games/nomansland.html','game']]) {
     await page.goto('http://127.0.0.1:4173'+route);
     for(const [width,size] of [[1440,'desktop'],[375,'mobile']]) {
       await page.setViewportSize({width,height:900});

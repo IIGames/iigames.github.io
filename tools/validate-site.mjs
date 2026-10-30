@@ -4,19 +4,21 @@ import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 const root=path.resolve(import.meta.dirname,'..');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'Games/catalog.json'),'utf8').replace(/^\uFEFF/,''));
-const pages=['index.html','Games.html','game.html','About.html','News.html','News/1.html','AddOns.html','Assets.html','Teaser.html',...catalog.map(g=>'Games/'+g.slug+'.html')];
+const pages=['index.html','games.html','game.html','about.html','news.html','News/1.html','addons.html','assets.html','teaser.html',...catalog.map(g=>'Games/'+g.slug.toLowerCase()+'.html')];
 const before=new Map(pages.map(p=>[p,fs.readFileSync(path.join(root,p),'utf8')]));
 execFileSync(process.execPath,['tools/build-site.mjs'],{cwd:root});
 for(const p of pages) {
+ assert.equal(path.basename(p),path.basename(p).toLowerCase(),'Page filename must be lowercase: '+p);
  const html=fs.readFileSync(path.join(root,p),'utf8');
  assert.equal(html,before.get(p),'Build is not repeatable: '+p);
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,'One primary heading required: '+p);
  for(const [,url] of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
   if(/^(https?:|mailto:|#)/.test(url))continue;
-  const target=path.resolve(root,path.dirname(p),decodeURIComponent(url.split(/[?#]/)[0]));
+  let target=path.resolve(root,path.dirname(p),decodeURIComponent(url.split(/[?#]/)[0]));
+  if(!path.extname(target)&&fs.existsSync(target+'.html')) target+='.html';
   assert.ok(fs.existsSync(target),'Missing local target: '+p+' -> '+url);
   let cursor=root;
-  for(const part of path.relative(root,target).split(path.sep)) {
+  for(const part of path.relative(root,target).split(path.sep).filter(Boolean)) {
     assert.ok(fs.readdirSync(cursor).includes(part),'Case mismatch: '+p+' -> '+url);
     cursor=path.join(cursor,part);
   }

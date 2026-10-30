@@ -6,4 +6,4 @@ The site is static HTML, CSS, and JavaScript hosted on GitHub Pages. Existing ga
 
 The writing is direct and informal, drawn from the existing site and game descriptions. Do not invent release dates, collaborators, platforms, or game capabilities.
 
-The catalog is `Games/catalog.json`. `node tools/build-site.mjs` regenerates committed HTML for authoring; visitors and GitHub Pages do not need Node or a build step.
+The catalog is `Games/catalog.json`. `node tools/build-site.mjs` regenerates committed lowercase HTML filenames for authoring; visitors and GitHub Pages do not need Node or a build step.

@@ -2,7 +2,7 @@
 
 Static website for GitHub Pages. Deploy the committed HTML, CSS, JavaScript, and assets as before. No production dependencies or build service are required.
 
-For a local preview, run `node tools/serve.mjs` and open `http://127.0.0.1:4173`. The Games links use `game.html` locally. Direct links such as `Games/CubeGame.html` work too; `game.html?game=CubeGame` is a local shortcut.
+For a local preview, run `node tools/serve.mjs` and open `http://127.0.0.1:4173`. Site links use clean, extensionless URLs on GitHub Pages; local links resolve to `.html` files so they also work with VS Code Live Server. Direct links such as `Games/cubegame.html` work too; `game.html?game=CubeGame` is a local shortcut.
 
 Edit `Games/catalog.json` to change game details, media, credits, and verified platform links. Then run:
 

@@ -10,8 +10,8 @@ http.createServer((req,res)=>{
   catch { res.writeHead(400).end(); return; }
   let file = path.resolve(root,'.'+pathname);
   if (file !== root && !file.startsWith(root+path.sep)) { res.writeHead(403).end(); return; }
-  if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file=path.join(file,'index.html');
-  if (!fs.existsSync(file) && !path.extname(file)) file+='.html';
+  if (!path.extname(file) && fs.existsSync(file+'.html')) file+='.html';
+  else if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file=path.join(file,'index.html');
   if (!fs.existsSync(file)) { res.writeHead(404).end('Not found'); return; }
   res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'});
   fs.createReadStream(file).pipe(res);
