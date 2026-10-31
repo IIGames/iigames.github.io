@@ -4,21 +4,21 @@ import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 const root=path.resolve(import.meta.dirname,'..');
 const siteOrigin='https://iigames.github.io';
-const catalog=JSON.parse(fs.readFileSync(path.join(root,'Games/catalog.json'),'utf8').replace(/^\uFEFF/,''));
-const pages=['index.html','games.html','game.html','about.html','news.html','News/1.html','addons.html','assets.html','teaser.html',...catalog.map(g=>'Games/'+g.slug.toLowerCase()+'.html')];
+const catalog=JSON.parse(fs.readFileSync(path.join(root,'games/catalog.json'),'utf8').replace(/^\uFEFF/,''));
+const pages=['index.html','games.html','game.html','about.html','news.html','news/1.html','addons.html','assets.html','teaser.html',...catalog.map(g=>'games/'+g.slug.toLowerCase()+'.html')];
 const outputs=[...pages,'robots.txt','sitemap.xml'];
 const before=new Map(outputs.map(p=>[p,fs.readFileSync(path.join(root,p),'utf8')]));
 execFileSync(process.execPath,['tools/build-site.mjs'],{cwd:root});
 const publicGames=catalog.filter(g=>!g.hidden&&!g.archive);
-const expectedRoutes=['/','/games','/about','/addons','/assets','/news','/News/1',...publicGames.map(g=>`/Games/${g.slug.toLowerCase()}`)];
+const expectedRoutes=['/','/games','/about','/addons','/assets','/news','/news/1',...publicGames.map(g=>`/games/${g.slug.toLowerCase()}`)];
 const routeForPage=p=>{
  if(p==='index.html')return '/';
  if(p==='game.html')return '/games';
  if(p==='teaser.html')return '/teaser';
  return `/${p.replace(/\.html$/,'')}`;
 };
-const indexablePages=new Set(['index.html','games.html','about.html','news.html','News/1.html','addons.html','assets.html',...publicGames.map(g=>`Games/${g.slug.toLowerCase()}.html`)]);
-const shouldNoIndex=p=>p==='game.html'||p==='teaser.html'||catalog.some(g=>(g.hidden||g.archive)&&`Games/${g.slug.toLowerCase()}.html`===p);
+const indexablePages=new Set(['index.html','games.html','about.html','news.html','news/1.html','addons.html','assets.html',...publicGames.map(g=>`games/${g.slug.toLowerCase()}.html`)]);
+const shouldNoIndex=p=>p==='game.html'||p==='teaser.html'||catalog.some(g=>(g.hidden||g.archive)&&`games/${g.slug.toLowerCase()}.html`===p);
 const metaContent=(html,regex)=>html.match(regex)?.[1];
 for(const p of pages) {
  assert.equal(path.basename(p),path.basename(p).toLowerCase(),'Page filename must be lowercase: '+p);
@@ -54,7 +54,7 @@ for(const p of pages) {
   assert.ok(data['@graph'].some(item=>item['@type']==='Organization'),'Organization structured data missing');
   assert.ok(data['@graph'].some(item=>item['@type']==='WebSite'),'Website structured data missing');
  }
- if(p.startsWith('Games/')&&!shouldNoIndex(p)) {
+ if(p.startsWith('games/')&&!shouldNoIndex(p)) {
   assert.ok(jsonLd,'VideoGame structured data required: '+p);
   assert.equal(JSON.parse(jsonLd[1])['@type'],'VideoGame','Invalid game structured data: '+p);
  }
@@ -80,7 +80,7 @@ assert.deepEqual(sitemapUrls,expectedRoutes.map(route=>siteOrigin+route),'Sitema
 const robotsTxt=fs.readFileSync(path.join(root,'robots.txt'),'utf8');
 assert.match(robotsTxt,/^User-agent: \*\nAllow: \/\nSitemap: https:\/\/iigames\.github\.io\/sitemap\.xml\n$/,'robots.txt must allow crawling and reference the sitemap');
 for(const p of outputs)assert.equal(fs.readFileSync(path.join(root,p),'utf8'),before.get(p),'Build is not repeatable: '+p);
-const article=fs.readFileSync(path.join(root,'News/article.html'),'utf8');
+const article=fs.readFileSync(path.join(root,'news/article.html'),'utf8');
 assert.ok(article.length>500,'Article content lost during build');
 assert.ok(catalog.find(g=>g.slug==='CubeGame').details.includes('Radin Nasiri'),'Original game credits lost');
 assert.ok(catalog.find(g=>g.slug==='CubeGame-Alpha').trailer,'Alpha trailer missing');

@@ -20,10 +20,10 @@
       }
     ],
     "details": "<h2>About the game</h2><p>A PS1-style FPS about trench warfare in WW1. War is a sad and often scary experience. This game tries to show that experience in a short period of time.</p><h2>Controls</h2><p>Move: WASD<br>Shoot: Left click<br>Jump: Space</p><h2>Credits</h2><p>Sound effects from freesound.org. Models from Sketchfab.</p><p>PSX font: Suikoden (Monospaced) by Patrick H. Lauke, cloned from Suikoden by the same author. Both are licensed under Creative Commons Attribution 3.0.</p><p><a href=\"https://fontstruct.com/fontstructions/show/1723095\">Suikoden (Monospaced)</a> · <a href=\"https://fontstruct.com/fontstructions/show/1723013\">Suikoden</a> · <a href=\"https://creativecommons.org/licenses/by/3.0/\">CC BY 3.0 license</a></p>",
-    "cover": "Assets/optimized/NoMansLand-cover.jpg",
+    "cover": "assets/optimized/NoMansLand-cover.jpg",
     "screenshots": [
-      "Assets/optimized/NoMansLand-shot-1.jpg",
-      "Assets/optimized/NoMansLand-shot-2.jpg"
+      "assets/optimized/NoMansLand-shot-1.jpg",
+      "assets/optimized/NoMansLand-shot-2.jpg"
     ],
     "status": "In development",
     "date": "16 July, 2024"
@@ -45,10 +45,10 @@
       }
     ],
     "details": "<h2>About the game</h2><p>Made for GMTK 2023.</p><p class=\"notice\">This game contains animations of humans dying, but no visible blood.</p><h2>Controls</h2><p>Keyboard and mouse. Credits are in the game.</p><h2>Install instructions</h2><p>Download the ZIP file, extract it, and run SCP 173 Simulator.exe.</p>",
-    "cover": "Assets/optimized/SCP173Simulator-cover.jpg",
+    "cover": "assets/optimized/SCP173Simulator-cover.jpg",
     "screenshots": [
-      "Assets/optimized/SCP173Simulator-shot-1.jpg",
-      "Assets/optimized/SCP173Simulator-shot-2.jpg"
+      "assets/optimized/SCP173Simulator-shot-1.jpg",
+      "assets/optimized/SCP173Simulator-shot-2.jpg"
     ]
   },
   {
@@ -70,10 +70,10 @@
       }
     ],
     "details": "<h2>About the game</h2><p>Made for the 3D Platformer course in Coursera. The game has two new levels, post processing, lava, and tutorial text.</p><h2>Credits</h2><p>Made by Iliya Soleimani using assets from MSU.</p>",
-    "cover": "Assets/optimized/CrystalStealer-cover.jpg",
+    "cover": "assets/optimized/CrystalStealer-cover.jpg",
     "screenshots": [
-      "Assets/optimized/CrystalStealer-shot-1.jpg",
-      "Assets/optimized/CrystalStealer-shot-2.jpg"
+      "assets/optimized/CrystalStealer-shot-1.jpg",
+      "assets/optimized/CrystalStealer-shot-2.jpg"
     ]
   },
   {
@@ -93,10 +93,10 @@
       }
     ],
     "details": "<h2>About the game</h2><p>There are two abilities to choose from. The game is short and still a work in progress.</p><h2>Controls</h2><p>Press Esc to return to the main menu.</p><h2>Install instructions</h2><p>Unzip the download and run Neon Shooter Mayhem.exe.</p>",
-    "cover": "Assets/optimized/NeonShooterMayhem-cover.jpg",
+    "cover": "assets/optimized/NeonShooterMayhem-cover.jpg",
     "screenshots": [
-      "Assets/optimized/NeonShooterMayhem-shot-1.jpg",
-      "Assets/optimized/NeonShooterMayhem-shot-2.jpg"
+      "assets/optimized/NeonShooterMayhem-shot-1.jpg",
+      "assets/optimized/NeonShooterMayhem-shot-2.jpg"
     ]
   },
   {
@@ -109,15 +109,15 @@
     "status": "Released",
     "date": "23 September, 2022",
     "summary": "In a world where bosses rule, how can a simple cube save the day? Maybe he has some secret powers we aren't aware of.",
-    "cover": "Assets/optimized/CubeGame-cover.jpg",
+    "cover": "assets/optimized/CubeGame-cover.jpg",
     "screenshots": [
-      "Assets/optimized/CubeGame-shot-1.jpg",
-      "Assets/optimized/CubeGame-shot-2.jpg",
-      "Assets/optimized/CubeGame-shot-3.jpg",
-      "Assets/optimized/CubeGame-shot-4.jpg",
-      "Assets/optimized/CubeGame-shot-5.jpg",
-      "Assets/optimized/CubeGame-shot-6.jpg",
-      "Assets/optimized/CubeGame-shot-7.jpg"
+      "assets/optimized/CubeGame-shot-1.jpg",
+      "assets/optimized/CubeGame-shot-2.jpg",
+      "assets/optimized/CubeGame-shot-3.jpg",
+      "assets/optimized/CubeGame-shot-4.jpg",
+      "assets/optimized/CubeGame-shot-5.jpg",
+      "assets/optimized/CubeGame-shot-6.jpg",
+      "assets/optimized/CubeGame-shot-7.jpg"
     ],
     "links": [
       {
@@ -148,10 +148,10 @@
       }
     ],
     "details": "<h2>About the game</h2><p>Made for Coursera’s 3D Shooter assignment. Changes include an options menu, a new first level, a redesigned second level, extra details in the third level, and post processing.</p><h2>Credits</h2><p>Eilia Soleimani, with assets from MSU.</p>",
-    "cover": "Assets/optimized/StationInvasion-cover.jpg",
+    "cover": "assets/optimized/StationInvasion-cover.jpg",
     "screenshots": [
-      "Assets/optimized/StationInvasion-shot-1.jpg",
-      "Assets/optimized/StationInvasion-shot-2.jpg"
+      "assets/optimized/StationInvasion-shot-1.jpg",
+      "assets/optimized/StationInvasion-shot-2.jpg"
     ],
     "status": "Released"
   },
@@ -165,10 +165,10 @@
     "date": "18 August, 2021",
     "archive": true,
     "summary": "It's a normal day. Do your tasks! Everything is definitely as it should be, and nothing is off!",
-    "cover": "Assets/optimized/SlowlyStrange-cover.jpg",
+    "cover": "assets/optimized/SlowlyStrange-cover.jpg",
     "screenshots": [
-      "Assets/optimized/SlowlyStrange-shot-1.jpg",
-      "Assets/optimized/SlowlyStrange-shot-2.jpg"
+      "assets/optimized/SlowlyStrange-shot-1.jpg",
+      "assets/optimized/SlowlyStrange-shot-2.jpg"
     ],
     "links": [
       {
@@ -189,10 +189,10 @@
     "date": "27 May, 2020",
     "archive": true,
     "summary": "A simple platformer. The early version of CubeGame.",
-    "cover": "Assets/optimized/CubeGame-Alpha-cover.jpg",
+    "cover": "assets/optimized/CubeGame-Alpha-cover.jpg",
     "screenshots": [
-      "Assets/optimized/CubeGame-Alpha-shot-1.jpg",
-      "Assets/optimized/CubeGame-Alpha-shot-2.jpg"
+      "assets/optimized/CubeGame-Alpha-shot-1.jpg",
+      "assets/optimized/CubeGame-Alpha-shot-2.jpg"
     ],
     "links": [
       {
@@ -201,7 +201,7 @@
       }
     ],
     "details": "<h2>About this version</h2><p>This is the alpha version of CubeGame, developed and published by II Games.</p>",
-    "trailer": "Assets/CubeGameVideo.mp4"
+    "trailer": "assets/CubeGameVideo.mp4"
   },
   {
     "title": "Night At School",
@@ -210,10 +210,10 @@
     "platforms": [],
     "hidden": true,
     "summary": "An archived II Games project.",
-    "cover": "Assets/optimized/NightAtSchool-cover.jpg",
+    "cover": "assets/optimized/NightAtSchool-cover.jpg",
     "screenshots": [
-      "Assets/optimized/NightAtSchool-shot-1.jpg",
-      "Assets/optimized/NightAtSchool-shot-2.jpg"
+      "assets/optimized/NightAtSchool-shot-1.jpg",
+      "assets/optimized/NightAtSchool-shot-2.jpg"
     ],
     "links": [],
     "details": "<p>This hidden project page is kept in the archive.</p>"

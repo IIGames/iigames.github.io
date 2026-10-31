@@ -36,7 +36,7 @@ if (local) {
 if (/\/game\.html$/i.test(location.pathname)) {
   const slug = new URLSearchParams(location.search).get('game');
   const known = ['CubeGame', 'SlowlyStrange', 'CubeGame-Alpha', 'NightAtSchool', 'NoMansLand', 'SCP173Simulator', 'CrystalStealer', 'NeonShooterMayhem', 'StationInvasion'];
-  if (slug && known.includes(slug)) location.replace(new URL(`Games/${slug.toLowerCase()}${local ? '.html' : ''}`, location.href));
+  if (slug && known.includes(slug)) location.replace(new URL(`games/${slug.toLowerCase()}${local ? '.html' : ''}`, location.href));
 }
 
 // Browse gameplay with native scrolling; arrows and keys are an optional enhancement.

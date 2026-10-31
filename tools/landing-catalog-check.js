@@ -20,7 +20,7 @@ async page => {
   const reducedMotion=await p.evaluate(()=>ScrollTrigger.getAll().length===0);
   await p.emulateMedia({reducedMotion:'no-preference'});
   await p.waitForFunction(()=>ScrollTrigger.getAll().length>8);
-  const routes=['/','/games','/about','/news','/assets','/addons','/Games/cubegame','/Games/nomansland','/News/1'];
+  const routes=['/','/games','/about','/news','/assets','/addons','/games/cubegame','/games/nomansland','/news/1'];
   for(const route of routes) {
     await p.goto('http://127.0.0.1:4173'+route);await ready();
     for(const width of [320,375,768,1024,1440,1920]) {
@@ -28,7 +28,7 @@ async page => {
       const s=await p.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,broken:[...document.images].filter(i=>i.complete&&!i.naturalWidth).map(i=>i.src)}));
       if(s.overflow||s.broken.length)failures.push({route,width,...s});
     }
-    if(['/','/games','/about','/news','/assets','/Games/cubegame'].includes(route)) {
+    if(['/','/games','/about','/news','/assets','/games/cubegame'].includes(route)) {
       for(const [width,size] of [[1440,'desktop'],[375,'mobile']]) {
         await p.setViewportSize({width,height:1000});await p.evaluate(()=>window.scrollTo(0,0));await p.waitForTimeout(700);
         await p.screenshot({path:'output/playwright/revision-'+(route==='/'?'home':route.replaceAll('/','-').slice(1))+'-'+size+'.png',fullPage:true});

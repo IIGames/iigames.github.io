@@ -1,6 +1,6 @@
 @font-face {
   font-family: Nevis;
-  src: url("./Fonts/nevis-cufonfonts-webfont/nevis.woff") format("woff");
+  src: url("./fonts/nevis-cufonfonts-webfont/nevis.woff") format("woff");
   font-weight: 700;
   font-display: swap;
 }
