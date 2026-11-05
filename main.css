@@ -284,7 +284,7 @@ main:focus {
   align-items: center;
   gap: 0.5rem;
   min-height: 44px;
-  font-weight: 650;
+  font-weight: 600;
   text-decoration: underline;
 }
 .game-grid {
@@ -736,15 +736,15 @@ main:focus {
 body { background: var(--surface); }
 .site-header { border-color: var(--line); padding-block: 1rem; }
 .brand img { width: 155px; height: 47px; }
-.site-header nav a { font-size: .875rem; padding-inline: 1rem; border-radius: 24px; transition: background 180ms, color 180ms; }
+.site-header nav a { font-size: .875rem; padding-inline: 1rem; border-radius: 4px; transition: background 180ms, color 180ms; }
 .site-header nav a:hover { background: #23242e; }
-.site-header nav a[aria-current] { color: var(--text); text-decoration: none; background: #23242e; }
-.button { gap: 1rem; border-radius: 8px; font-family: inherit; font-weight: 650; font-size: .95rem; transition: background 180ms, color 180ms, transform 180ms var(--ease-out); }
+.site-header nav a[aria-current] { color: var(--text); background: transparent; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: .5rem; }
+.button { gap: 1rem; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: .95rem; transition: background 180ms, color 180ms, transform 180ms var(--ease-out); }
 .button:active { transform: scale(.97); }
 .button-secondary { border-color: #5c5d68; }
 .nav-toggle { border-radius: 8px; border-color: #646470; }
 .page-intro { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 0 5rem; align-items: end; padding-block: clamp(3.5rem,7vw,7rem) clamp(2.5rem,5vw,5rem); }
-.page-intro h1 { grid-row: span 4; color: var(--text); margin: 0; font-size: clamp(3rem,6.5vw,6rem); }
+.page-intro h1 { grid-row: span 4; color: var(--text); margin: 0; font-size: clamp(2.5rem,5vw,4rem); }
 .page-intro > p { font-size: 1.0625rem; max-width: 48ch; }
 .page-intro > p:last-child { margin-bottom: .5rem; }
 .page-intro > .button { justify-self: start; align-self: start; }
@@ -787,7 +787,7 @@ body { background: var(--surface); }
 .screenshot-grid a { overflow: hidden; border-radius: 12px; }
 .screenshot-grid img { transition: transform 400ms var(--ease-out); }
 .screenshot-grid a:hover img { transform: scale(1.025); }
-.page-about .page-intro h1 { font-size: clamp(2.75rem,5.2vw,5rem); }
+.page-about .page-intro h1 { font-size: clamp(2.25rem,5vw,4rem); }
 .studio-gallery { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1rem; margin-bottom: 4rem; }
 .studio-gallery a { overflow: hidden; border-radius: 12px; }
 .studio-gallery img { width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; }
@@ -811,13 +811,13 @@ body:not(.landing) .studio-note p { max-width: 65ch; }
 .site-footer a:hover { text-decoration: underline; }
 @media (max-width: 1050px) {
   .page-intro, .game-intro { gap: 1.5rem 2rem; }
-  .page-intro h1 { font-size: clamp(3rem,6.5vw,5rem); }
+  .page-intro h1 { font-size: clamp(2.5rem,5vw,4rem); }
   .card-meta span { text-align: left; }
 }
 @media (max-width: 760px) {
   .site-header nav a { padding-inline: .5rem; }
   .page-intro, .game-intro { grid-template-columns: minmax(0,1fr); gap: 1.5rem; }
-  .page-intro h1 { font-size: clamp(2.75rem,9vw,4.5rem); }
+  .page-intro h1 { font-size: clamp(2.25rem,8vw,3rem); }
   .page-intro > p { margin: 0; }
   .page-games .game-grid { grid-template-columns: minmax(0,1fr); gap: 1.5rem; }
   .catalog-toolbar { align-items: flex-start; flex-direction: column; }
@@ -845,4 +845,41 @@ body:not(.landing) .studio-note p { max-width: 65ch; }
 @media (forced-colors: active) {
   .platform-filters button[aria-pressed="true"] { border-color: Highlight; }
   .game-card > a, .empty-state, .news-entry { border: 1px solid CanvasText; }
+}
+
+/* Shared navigation: larger wordmark, drawer on compact screens. */
+.brand img { width: 186px; height: auto; aspect-ratio: 230/70; }
+.nav-panel-top, .nav-panel-footer { display: none; }
+.nav-panel { min-width: 0; }
+.nav-close { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 4px; color: var(--text); background: transparent; }
+.nav-close svg { width: 20px; height: 20px; }
+@media (max-width: 760px) {
+  .site-header { flex-wrap: wrap; }
+  .nav-panel { width: 100%; }
+  .site-header .nav-panel nav, .js .site-header .nav-panel nav { display: flex; width: 100%; }
+  .js .site-header { flex-wrap: nowrap; }
+  .js .nav-panel { position: fixed; z-index: 1002; inset: 0 0 0 auto; width: min(320px, calc(100% - 1rem)); height: 100dvh; padding: 1.5rem; background: var(--surface); border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 2rem; overflow-y: auto; overscroll-behavior: contain; visibility: hidden; transform: translateX(100%); transition: transform 240ms var(--ease-out), visibility 240ms; }
+  .js .nav-panel.is-open { visibility: visible; transform: translateX(0); }
+  .js .nav-panel-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
+  .js .nav-panel-top > span { font-family: Nevis, system-ui, sans-serif; font-size: 1.25rem; }
+  .js .site-header .nav-panel nav { flex: 0 0 auto; flex-direction: column; align-items: stretch; gap: .5rem; }
+  .js .site-header .nav-panel nav a { flex: none; min-height: 48px; justify-content: flex-start; padding: .75rem; font-size: 1.125rem; }
+  .js .site-header .nav-panel nav a[aria-current] { background: var(--raised); text-decoration: none; }
+  .js .site-header .nav-panel nav a[aria-current]::after { content: ''; width: 6px; height: 6px; margin-left: auto; background: var(--accent); border-radius: 50%; }
+  .js .nav-panel-footer { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; }
+  .nav-backdrop { position: fixed; z-index: 1001; inset: 0; background: #0009; }
+  html.menu-open, html.menu-open body { overflow: hidden; }
+}
+@media (forced-colors: active) {
+  .nav-backdrop { background: Canvas; opacity: .75; }
+  .js .site-header .nav-panel nav a[aria-current]::after { background: Highlight; }
+}
+
+@media (max-width: 760px) {
+  .js .site-header { flex-wrap: wrap; gap: 1rem; }
+  .brand { min-width: 0; max-width: 100%; }
+  .brand img { max-width: 100%; }
+  .nav-toggle { flex-shrink: 0; max-width: 100%; }
+  .nav-panel-top > span { flex: 1 0 min(100%, 8rem); min-width: 0; max-width: 100%; }
+  .nav-close { flex-shrink: 0; margin-left: auto; }
 }

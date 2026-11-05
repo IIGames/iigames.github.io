@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "a-new-home-for-news",
+    "title": "A new home for II Games news",
+    "date": "2026-11-05",
+    "category": "studio",
+    "summary": "Game archives and development notes now have a place of their own on the II Games website.",
+    "cover": {
+      "gradient": "ember"
+    },
+    "body": "News now has its own space on the II Games website. You can browse game releases, read development notes and find updates from the studio.\n\n## Start with the archive\n\nThe first posts revisit games already in the catalog, from CubeGame Alpha to No man’s land. Their dates follow the dates recorded on the game pages. They are archive entries, rather than new release announcements.\n\n## A little easier to read\n\nEach article has a reading-time estimate and a link you can copy. Categories separate game releases from development notes, and you can sort the archive from newest or oldest.\n\nHave a game in mind? [Browse the games](/games), or [read about II Games](/about)."
+  },
+  {
+    "slug": "no-mans-land",
+    "title": "No man’s land: a different view of trench warfare",
+    "date": "2024-07-16",
+    "category": "game-releases",
+    "summary": "From the archive: a short, PS1-style first-person game about the frightening side of World War I.",
+    "cover": {
+      "image": "assets/optimized/NoMansLand-cover.jpg",
+      "alt": "A low-resolution trench scene from No man’s land"
+    },
+    "bodyFile": "posts/no-mans-land.md"
+  },
+  {
+    "slug": "1",
+    "title": "Game development notes",
+    "date": "2022-12-27",
+    "category": "development",
+    "summary": "Notes from the archive on choosing an audience, testing a prototype and finding a direction for a game.",
+    "cover": {
+      "gradient": "iris"
+    },
+    "bodyFile": "posts/game-development-notes.md"
+  },
+  {
+    "slug": "cubegame",
+    "title": "CubeGame: choose where to try again",
+    "date": "2022-09-23",
+    "category": "game-releases",
+    "summary": "From the archive: a platformer with bosses, electrical platforms and a flag that sets your respawn point.",
+    "cover": {
+      "image": "assets/optimized/CubeGame-cover.jpg",
+      "alt": "The glowing cube and purple forest platforms in CubeGame"
+    },
+    "bodyFile": "posts/cubegame.md"
+  },
+  {
+    "slug": "slowly-strange",
+    "title": "An ordinary day in Slowly Strange",
+    "date": "2021-08-18",
+    "category": "game-releases",
+    "summary": "From the archive: an early horror project about a normal day that may not be quite what it seems.",
+    "cover": {
+      "image": "assets/optimized/SlowlyStrange-cover.jpg",
+      "alt": "An interior scene from the horror game Slowly Strange"
+    },
+    "bodyFile": "posts/slowly-strange.md"
+  },
+  {
+    "slug": "cubegame-alpha",
+    "title": "Before CubeGame: the alpha",
+    "date": "2020-05-27",
+    "category": "game-releases",
+    "summary": "From the archive: the early platforming and puzzle version of CubeGame, preserved alongside the later game.",
+    "cover": {
+      "image": "assets/optimized/CubeGame-Alpha-cover.jpg",
+      "alt": "Platforming gameplay from CubeGame Alpha"
+    },
+    "bodyFile": "posts/cubegame-alpha.md"
+  }
+]

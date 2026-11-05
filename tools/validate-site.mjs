@@ -2,27 +2,32 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
+import {loadNews} from './news.mjs';
 const root=path.resolve(import.meta.dirname,'..');
 const siteOrigin='https://iigames.github.io';
+const news=loadNews(root);
+const newsPages=news.map(p=>'news/'+p.slug+'.html');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'games/catalog.json'),'utf8').replace(/^\uFEFF/,''));
-const pages=['index.html','games.html','game.html','about.html','news.html','news/1.html','addons.html','assets.html','teaser.html',...catalog.map(g=>'games/'+g.slug.toLowerCase()+'.html')];
+const pages=['index.html','games.html','game.html','about.html','news.html',...newsPages,'addons.html','assets.html','teaser.html',...catalog.map(g=>'games/'+g.slug.toLowerCase()+'.html')];
 const outputs=[...pages,'robots.txt','sitemap.xml'];
 const before=new Map(outputs.map(p=>[p,fs.readFileSync(path.join(root,p),'utf8')]));
 execFileSync(process.execPath,['tools/build-site.mjs'],{cwd:root});
 const publicGames=catalog.filter(g=>!g.hidden&&!g.archive);
-const expectedRoutes=['/','/games','/about','/addons','/assets','/news','/news/1',...publicGames.map(g=>`/games/${g.slug.toLowerCase()}`)];
+const expectedRoutes=['/','/games','/about','/addons','/assets','/news',...news.map(p=>'/news/'+p.slug),...publicGames.map(g=>`/games/${g.slug.toLowerCase()}`)];
 const routeForPage=p=>{
  if(p==='index.html')return '/';
  if(p==='game.html')return '/games';
  if(p==='teaser.html')return '/teaser';
  return `/${p.replace(/\.html$/,'')}`;
 };
-const indexablePages=new Set(['index.html','games.html','about.html','news.html','news/1.html','addons.html','assets.html',...publicGames.map(g=>`games/${g.slug.toLowerCase()}.html`)]);
+const indexablePages=new Set(['index.html','games.html','about.html','news.html',...newsPages,'addons.html','assets.html',...publicGames.map(g=>`games/${g.slug.toLowerCase()}.html`)]);
 const shouldNoIndex=p=>p==='game.html'||p==='teaser.html'||catalog.some(g=>(g.hidden||g.archive)&&`games/${g.slug.toLowerCase()}.html`===p);
 const metaContent=(html,regex)=>html.match(regex)?.[1];
 for(const p of pages) {
  assert.equal(path.basename(p),path.basename(p).toLowerCase(),'Page filename must be lowercase: '+p);
  const html=fs.readFileSync(path.join(root,p),'utf8');
+ assert.equal((html.match(/id="nav-panel"/g)||[]).length,1,'One shared drawer required: '+p);
+ assert.ok(html.includes('class="nav-close"'),'Drawer close control missing: '+p);
  assert.equal(html,before.get(p),'Build is not repeatable: '+p);
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,'One primary heading required: '+p);
  const pageTitle=html.match(/<title>([^<]+)<\/title>/)?.[1];
@@ -53,6 +58,16 @@ for(const p of pages) {
   const data=JSON.parse(jsonLd[1]);
   assert.ok(data['@graph'].some(item=>item['@type']==='Organization'),'Organization structured data missing');
   assert.ok(data['@graph'].some(item=>item['@type']==='WebSite'),'Website structured data missing');
+ }
+ if(newsPages.includes(p)) {
+  assert.ok(jsonLd,'Article structured data required: '+p);
+  const data=JSON.parse(jsonLd[1]);
+  const post=news.find(post=>'news/'+post.slug+'.html'===p);
+  assert.equal(data['@type'],'NewsArticle');
+  assert.equal(data.datePublished,post.date);
+  assert.ok(html.includes('datetime="'+post.date+'"'),'Article date missing: '+p);
+  assert.ok(html.includes('class="article-body"'),'Article body missing: '+p);
+  assert.ok(html.includes('id="nav-panel"'),'Shared drawer missing: '+p);
  }
  if(p.startsWith('games/')&&!shouldNoIndex(p)) {
   assert.ok(jsonLd,'VideoGame structured data required: '+p);

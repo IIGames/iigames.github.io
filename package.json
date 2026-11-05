@@ -1,0 +1,14 @@
+{
+  "name": "ii-games-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-site.mjs",
+    "validate": "node tools/validate-site.mjs",
+    "test": "node --test tools/news.test.mjs",
+    "preview": "node tools/serve.mjs"
+  },
+  "devDependencies": {
+    "markdown-it": "15.0.3"
+  }
+}

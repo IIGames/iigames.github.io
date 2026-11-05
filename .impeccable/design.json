@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T00:00:00Z",
+  "title": "II Games design",
+  "extensions": {
+    "motion": [
+      {"name": "ease-out", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "Shared control and drawer easing; reduced motion disables transitions."},
+      {"name": "drawer-duration", "value": "240ms", "purpose": "Compact navigation transform and visibility transition."}
+    ],
+    "breakpoints": [
+      {"name": "news-two-columns", "value": "1050px"},
+      {"name": "compact-navigation-and-news-single-column", "value": "760px"}
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action", "kind": "button",
+      "description": "Cyan catalog and download actions.",
+      "html": "<button class=\"ds-primary\">View game</button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:1rem;min-height:48px;padding:.8rem 1.35rem;border:1px solid transparent;border-radius:8px;background:var(--accent,#54e6ff);color:var(--surface,#0b0c12);font:600 .95rem/1.4 system-ui;cursor:pointer;transition:background 180ms,color 180ms,transform 180ms cubic-bezier(.16,1,.3,1)}.ds-primary:hover{background:var(--text,#f3f0fa)}.ds-primary:active{transform:scale(.97)}.ds-primary:focus-visible{outline:3px solid var(--signal,#ffd75e);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
+    },
+    {
+      "name": "Selected news category", "kind": "chip",
+      "description": "Underlined category filter; uses aria-pressed in the site.",
+      "html": "<button class=\"ds-category\" aria-pressed=\"true\">Development</button>",
+      "css": ".ds-category{min-height:44px;padding:.75rem 0;border:0;background:transparent;color:var(--text,#f3f0fa);font:.9375rem system-ui;text-decoration:underline;text-decoration-color:var(--accent,#54e6ff);text-underline-offset:.6rem;text-decoration-thickness:2px;cursor:pointer}.ds-category:hover{color:var(--accent,#54e6ff)}.ds-category:focus-visible{outline:3px solid var(--signal,#ffd75e);outline-offset:5px}"
+    },
+    {
+      "name": "News sort", "kind": "input",
+      "description": "Native archive sort control that wraps at enlarged text sizes.",
+      "html": "<label class=\"ds-sort\">Sort <select><option>Newest first</option><option>Oldest first</option></select></label>",
+      "css": ".ds-sort{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;max-width:100%;color:var(--muted,#bdbbc9);font:.875rem system-ui}.ds-sort select{font:inherit;min-height:44px;min-width:0;max-width:100%;color:var(--text,#f3f0fa);background:var(--surface,#0b0c12);padding:.5rem 1.5rem .5rem .5rem;border:1px solid var(--line,#34353f);border-radius:4px}.ds-sort select:focus-visible{outline:3px solid var(--signal,#ffd75e);outline-offset:4px}"
+    },
+    {
+      "name": "Current desktop navigation", "kind": "nav",
+      "description": "Current desktop route uses a cyan underline.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><a href=\"#news\" aria-current=\"page\">News</a></nav>",
+      "css": ".ds-nav{display:flex;gap:1rem}.ds-nav a{display:flex;align-items:center;min-height:44px;padding:.5rem 1rem;border-radius:4px;color:var(--text,#f3f0fa);font:.875rem system-ui;text-decoration:underline;text-decoration-color:var(--accent,#54e6ff);text-decoration-thickness:2px;text-underline-offset:.5rem}.ds-nav a:hover{background:#23242e}.ds-nav a:focus-visible{outline:3px solid var(--signal,#ffd75e);outline-offset:5px}"
+    },
+    {
+      "name": "News card", "kind": "card",
+      "description": "Unboxed editorial card with a decorative iris cover.",
+      "html": "<article class=\"ds-card\"><a href=\"#article\"><div class=\"ds-cover\" aria-hidden=\"true\"></div><h2>Game development notes</h2><div class=\"ds-meta\"><span>Development</span><time datetime=\"2022-12-27\">December 27, 2022</time></div></a></article>",
+      "css": ".ds-card{min-width:0;max-width:360px;font-family:system-ui;color:var(--text,#f3f0fa)}.ds-card>a{display:block;text-decoration:none;color:inherit}.ds-cover{aspect-ratio:1;overflow:hidden;border-radius:4px;background:#847bd9;position:relative;isolation:isolate}.ds-cover:before{content:'';position:absolute;inset:-16%;filter:blur(36px);background:radial-gradient(ellipse at 15% 90%,#3e69d5 0%,transparent 60%),radial-gradient(ellipse at 95% 10%,#e8b9e6 0%,transparent 65%),linear-gradient(120deg,#6766ce,#ac8bdd);transform:rotate(-12deg)}.ds-card h2{font:500 1.125rem/1.45 system-ui;margin:1rem 0 .75rem}.ds-card a:hover h2{text-decoration:underline;text-underline-offset:.2em}.ds-card a:focus-visible{outline:3px solid var(--signal,#ffd75e);outline-offset:5px}.ds-meta{display:flex;flex-wrap:wrap;gap:.25rem .75rem;color:var(--muted,#bdbbc9);font:.8125rem/1.6 system-ui}.ds-meta span{color:var(--text,#f3f0fa)}"
+    }
+  ],
+  "narrative": {
+    "overview": "II Games uses a dark, artwork-led studio identity. Preserve the logo, self-hosted Nevis lettering, cyan primary actions, real game imagery, accurate credits, and informal small-team voice. All routes share the same neutral palette and navigation."
+  }
+}
