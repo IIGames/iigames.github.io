@@ -33,3 +33,14 @@ The news archive now comes from `news/catalog.json` and Markdown sources, with s
 - The mechanical detector reports radial-halo warnings only for the explicitly approved gradient article covers. These scoped warnings are accepted: the gradients are cover artwork rather than page-background glows.
 
 The independent screenshot reviewer's final disposition is SHIP. The original enlarged-text issues and the remaining 320px/200% text issues are resolved: the full “Newest first” option is visible, the drawer title stays on one line, and the close control wraps below it. Updated captures show no horizontal overflow. The full 13-route browser suite passed before the final padding/wrapping adjustments; targeted captures of the affected states and 23-page site validation passed afterward. These checks do not establish complete accessibility conformance, cross-browser coverage, or real-device performance. Safari, Firefox, and real-device performance have not been measured for this implementation.
+
+
+## November 8, 2026 approved polish
+
+Applied the reviewed Unslop direction: direct, playful, unsettling, with real game worlds providing the color. The hero names the studio's platformers and atmospheric games; its gameplay is more visible. CubeGame's featured metadata has a checkpoint flag, and the carousel opens on a different boss-encounter screenshot. Homepage utility headings use system sans at 24px/32px, and the About and newsletter sections have tighter spacing and one divider.
+
+Catalogue entries now sit directly on the page with 4px image corners. The two-column desktop and single-column mobile layouts, game order, descriptions, and destination links remain. Filters use an underline, repeated game links are off-white, arrows use 18px/1.5px strokes, and hover feedback uses color or opacity without image zoom or arrow translation. The source generator contains the copy and markup edits. No images were generated.
+
+Validation passed for 25 generated pages, including repeatable generation and preserved content. The existing landing/catalogue browser suite passed on 11 routes at 320, 375, 768, 1024, 1440, and 1920px, plus 200% text at 320, 768, and 1440px. Filters, carousel navigation, mobile menu dismissal, reduced motion, and JavaScript-free fallbacks passed with no reported JavaScript errors. Desktop homepage/catalogue and mobile homepage screenshots were visually reviewed. These checks cover Chromium; Safari, Firefox, and real-device performance were not measured.
+
+Workflow: Unslop by Damir Sokolovsky (https://heydamir.design/unslop), CC BY 4.0.

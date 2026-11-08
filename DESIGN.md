@@ -23,7 +23,7 @@ typography:
     lineHeight: 1.8
 rounded:
   news-cover: "4px"
-  button: "8px"
+  button: "4px"
 spacing:
   gutter: "clamp(1.25rem, 4vw, 5rem)"
   section: "clamp(3rem, 7vw, 7rem)"
@@ -36,25 +36,27 @@ II Games uses a dark, artwork-led studio identity. Preserve the logo, self-hoste
 
 Surface `#0b0c12`, raised surface `#171820`, text `#f3f0fa`, secondary text `#bdbbc9`, line `#34353f`, action `#54e6ff`, focus `#ffd75e`. The homepage studio note uses the page surface, a dividing line, and the shared text colors. Game-specific colors belong in artwork; card backgrounds, headings, and links use shared tokens. Do not reintroduce per-game container colors.
 
-Nevis carries display headings, capped at 96px. System sans serif carries body and controls. Responsive layouts use natural content height, 44px or larger controls, visible focus, enlarged-text support, and native anchors/buttons.
+Nevis carries display headings, capped at 96px. System sans serif carries body, controls, and homepage utility headings. Utility headings use 24px/32px at weight 500; Nevis stays on the hero, page titles, and game names. Responsive layouts use natural content height, 44px or larger controls, visible focus, enlarged-text support, and native anchors/buttons.
 
 ## Homepage
 
-The homepage opens with a faded, looping gameplay video behind the headline “Bold indie experiences.” The overlay keeps white text legible; a cyan action links to the games. A pause/play control is always available with JavaScript. Reduced-motion and data-saving preferences keep the video unloaded until requested. Without JavaScript, the poster remains visible. The full CubeGame image follows, with its description below. Keep that artwork uncropped and the page static during scroll. No decorative cube, corner frame, staggered card offsets, or animated studio mark. The remaining sections use smaller headings and consistent spacing.
+The homepage opens with a looping gameplay video behind the headline “Fast platformers. Unsettling worlds”. The video uses full opacity beneath a neutral overlay that runs from 85% on the left to 15% on the right; mobile retains a uniform 72% overlay. A cyan action links to the games. A pause/play control is always available with JavaScript. Reduced-motion and data-saving preferences keep the video unloaded until requested. Without JavaScript, the poster remains visible. The full CubeGame image follows, with its description below. Keep that artwork uncropped and the page static during scroll. No decorative cube, corner frame, staggered card offsets, or animated studio mark. The remaining sections use smaller headings and consistent spacing.
 
-The gameplay carousel uses native horizontal scroll and snapping, with previous/next buttons, a slide count, arrow/Home/End keys, and touch scrolling. It never advances automatically. Images reserve their dimensions and load lazily. Without JavaScript, visitors can still scroll the screenshots.
+The gameplay carousel uses native horizontal scroll and snapping, with previous/next buttons, a slide count, arrow/Home/End keys, and touch scrolling. It never advances automatically. The first slide shows a CubeGame boss encounter, distinct from the featured forest scene. Images reserve their dimensions and load lazily. Without JavaScript, visitors can still scroll the screenshots.
 
 Copy names the content and action directly: “Gameplay screenshots,” “More games,” and “View game.” Avoid slogans, forced wordplay, and decorative motion controls.
 
 ## Other pages
 
-The catalog uses a two-column desktop grid and one-column mobile layout, neutral game cards, readable platform metadata, and All games/Browser/Windows/macOS filters. The archive remains visible separately. Without JavaScript, every game remains available.
+The catalog uses a two-column desktop grid and one-column mobile layout. Game entries have transparent backgrounds, no enclosing borders or padding, and 4px image corners. Desktop gaps are 32px between columns and 48px between rows; mobile entries have a 32px gap. All games/Browser/Windows/macOS filters use a cyan underline for selection and keep 44px touch targets. The archive remains visible separately. Without JavaScript, every game remains available.
 
 Game details use a neutral download panel and restrained platform tags. About uses third-person studio copy, a Showcase gallery of selected work and a Concepts gallery of environment studies. Responsive JPEG variants preserve the supplied originals. The press page shares the shell and links to a ZIP of named studio logos, a fact sheet and original-resolution game media. Header and footer links make it available throughout the site. News uses a three-column editorial archive and dedicated reading pages; its details are recorded below. Assets and Add-Ons explain their empty state beside real game imagery and a catalog action. All factual game descriptions, destination URLs, and credits remain intact.
 
+The featured CubeGame metadata carries one quiet checkpoint flag. The About and newsletter sections use 32px vertical padding, a 48px gap, and a single divider between them. Shared arrows use an 18px box and 1.5px stroke. Buttons have 4px corners. Hover feedback uses color or opacity changes over 160ms; screenshots do not zoom, brighten, or move their arrows.
+
 ## Verification
 
-`npm run validate` currently validates all 23 generated pages and repeatable generation, deriving news routes from the catalog. `tools/landing-catalog-check.js` is a Playwright CLI run-code function for static scrolling, first-screen artwork, carousel controls, catalog filters, responsive layouts, 200% text, and JavaScript-free fallbacks. See DESIGN-REVIEW.md for the completed verification and limits.
+`npm run validate` currently validates all 25 generated pages and repeatable generation, deriving news routes from the catalog. `tools/landing-catalog-check.js` is a Playwright CLI run-code function for static scrolling, first-screen artwork, carousel controls, catalog filters, responsive layouts, 200% text, and JavaScript-free fallbacks. See DESIGN-REVIEW.md for the completed verification and limits.
 
 ## News and shared navigation
 
