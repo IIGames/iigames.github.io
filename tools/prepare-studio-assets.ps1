@@ -84,5 +84,6 @@ $g.DrawString('Independent games. Driven by play.',$body,[Drawing.Brushes]::Whit
 $g.DrawString('iigames.github.io',$body,[Drawing.Brushes]::White,80,495)
 $banner.Save((Join-Path $root 'assets/optimized/ii-games-social.jpg'),$codec,$null)
 $g.Dispose();$banner.Dispose();$bg.Dispose();$logo.Dispose();$shade.Dispose();$title.Dispose();$body.Dispose()
+& (Join-Path $PSScriptRoot 'prepare-light-logos.ps1')
 Compress-Archive -Path "$press/logos", "$press/screenshots", "$press/trailers", "$press/studio-fact-sheet.txt" -DestinationPath "$press/ii-games-studio-press-kit.zip" -Force
 Write-Output 'Prepared studio artwork, named logos, original-resolution screenshots, trailers and social banner.'

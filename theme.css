@@ -1,0 +1,53 @@
+/* Light is additive: all existing dark-theme rules stay in their own stylesheets. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --surface: #f7f8fa;
+  --raised: #eceef2;
+  --text: #181a23;
+  --muted: #585b68;
+  --line: #d3d5dc;
+  --accent: #006778;
+  --signal: #805600;
+  --violet: #6844a6;
+}
+:root[data-theme="light"] .brand img { filter: brightness(0); }
+:root[data-theme="light"] .site-header nav a:hover { background: #e7e9ee; }
+:root[data-theme="light"] .button-secondary,
+:root[data-theme="light"] .nav-toggle { border-color: #747783; }
+:root[data-theme="light"] .news-entry:hover { background: #e7e9ee; }
+:root[data-theme="light"] .type-cover { background: #252631; }
+/* Gameplay stays in its original world, with readable white text over the video. */
+:root[data-theme="light"] .studio-hero {
+  --surface: #0b0c12;
+  --text: #f3f0fa;
+  --accent: #54e6ff;
+  --signal: #ffd75e;
+  color: var(--text);
+}
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  transition: color 160ms, background 160ms;
+}
+.theme-toggle:hover { color: var(--text); background: var(--raised); }
+.theme-toggle svg { width: 18px; height: 18px; stroke-width: 1.5; }
+.theme-toggle .theme-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .theme-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .theme-moon { display: block; }
+@media (max-width: 760px) {
+  .site-header nav .theme-toggle { margin: .5rem; }
+}
+@media (prefers-contrast: more) {
+  :root[data-theme="light"] { --muted: #323540; --line: #747783; }
+}
+@media (forced-colors: active) {
+  .theme-toggle { border-color: ButtonText; }
+}
