@@ -1,15 +1,19 @@
-Video game development can be a challenging process with many factors to consider. Whether you are a solo developer or part of a larger team, there are several tips you can utilize to build a successful video game.
+A game needs a clear reason to play. Start with the action the player repeats, then test whether that action holds up before building more levels.
 
-First and foremost, it's important to identify your target audience. Who do you want to play your game? Knowing this information will help you design gameplay mechanics and market your game effectively. It's essential to understand the needs and preferences of your target audience to create a game they will enjoy.
+## Test the mechanic first
 
-Next, it's crucial to develop a strong concept and story for your game. This can be the difference between a mediocre game and a great one. Your concept should be unique and intriguing, while your story should be engaging and immersive.
+Build a playable prototype around one decision. Ask players to try it without instructions, then watch where they hesitate. Their actions tell you more than a general question about whether the game was fun.
 
-Once you have an idea in mind, it's essential to create a prototyping process to test your mechanics and gameplay. Prototyping allows you to experiment and iterate quickly, which is essential for game development. Be sure to gather feedback from playtesters during this stage to refine your game mechanics.
+In [CubeGame](/games/cubegame), the respawn flag lets the player choose where to return after hitting lava. That decision changes how a difficult section is approached.
 
-The graphic design of your game is also an important factor to consider. Players expect visually appealing and coherent graphics that complement the gameplay. Consider hiring a graphic designer to ensure your game has a clean look and feel.
+## Give the art a job
 
-Another crucial aspect of game development is creating dynamic and responsive gameplay. Players want to feel in control of their characters and engage with the game world. This is why it's important to create smooth and well-thought-out gameplay mechanics that are easy to learn but challenging to master.
+The player needs to read hazards and routes while moving. Test a level with its final lighting and effects, because a clear gray-box layout can become hard to read once the art is in place.
 
-Finally, it's crucial to effectively market your game to your target audience. Your marketing approach will depend on your target market, but it's important to utilize social media, game review sites, and other channels to expand your reach.
+## Make feedback specific
 
-In conclusion, video game development can be a complex process, but following these tips can help you create a successful game that resonates with your target audience. By focusing on elements such as a strong concept, intuitive gameplay mechanics, and thoughtful graphic design, you can create a game that players will enjoy and remember for years to come.
+Ask where a player lost track of the goal or stopped trusting the controls. Fix the problems that interrupt play, then test the same section again.
+
+## Show the actual game
+
+Use gameplay footage and screenshots that explain what the player does. Keep platform links current and give collaborators clear credits. The [game catalog](/games) has play links and credits for II Games Studio projects.

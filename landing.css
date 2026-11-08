@@ -1,5 +1,18 @@
 /* II Games: the games carry the color; the page gives them room. */
 .landing { --section: clamp(3rem, 6vw, 5rem); }
+.studio-hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: clamp(30rem, 65vh, 48rem); padding: clamp(2rem, 6vw, 6rem); margin-block: 1rem 3.5rem; overflow: hidden; background: #101018; }
+.studio-hero::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(5,6,12,.9), rgba(5,6,12,.58) 60%, rgba(5,6,12,.28)); }
+.hero-video { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .75; }
+.hero-copy { max-width: 46rem; padding-bottom: 2rem; }
+.hero-copy h1 { font-size: clamp(2.75rem, 6vw, 6rem); line-height: 1.05; letter-spacing: -.03em; margin-bottom: 1.5rem; text-wrap: balance; }
+.hero-copy p { max-width: 43ch; margin-bottom: 2rem; color: #f3f0fa; font-size: clamp(1rem, 1.4vw, 1.2rem); }
+.hero-pause { position: absolute; right: 1.25rem; bottom: 1.25rem; min-height: 44px; padding: .5rem 1rem; color: #fff; background: #0b0c12e6; border: 1px solid #7b7b86; border-radius: 4px; font: inherit; cursor: pointer; }
+.hero-pause:hover { background: #292a33; }
+@media (max-width: 760px) {
+  .studio-hero { min-height: 34rem; padding: 2rem 1.25rem 4rem; }
+  .hero-copy h1 { font-size: clamp(2.4rem, 10vw, 4.5rem); }
+  .studio-hero::after { background: rgba(5,6,12,.72); }
+}
 .landing-intro {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr);

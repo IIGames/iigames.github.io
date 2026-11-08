@@ -1,0 +1,50 @@
+II GAMES STUDIO
+Studio fact sheet
+
+Name: II Games Studio
+Also known as: II Games
+Founded: 2020
+Website: https://iigames.github.io/
+Press page: https://iigames.github.io/press
+Contact: https://iigamesofficial.itch.io/
+         https://gamejolt.com/@IIGamesOfficial
+
+ABOUT THE STUDIO
+Founded in 2020, II Games Studio is an independent game development studio
+dedicated to fast-paced gameplay and striking atmospheres. The studio makes
+mechanics-driven platformers and atmospheric horror, primarily in Unity.
+
+GAME SELECTION
+CubeGame (Windows)
+A 2D platformer with player-placed respawn flags and electrical platforms.
+https://iigames.github.io/games/cubegame
+
+No man's land (Browser, Windows; in development)
+A PS1-style first-person game about the fear of World War I trench warfare.
+https://iigames.github.io/games/nomansland
+
+SCP 173 Simulator (Windows)
+A role-reversal horror game built for GMTK Game Jam 2023.
+https://iigames.github.io/games/scp173simulator
+
+Slowly Strange (Windows)
+An ordinary routine turns uneasy in this first-person horror game.
+https://iigames.github.io/games/slowlystrange
+
+EARLIER EXPERIMENTS
+Crystal Stealer (Browser, Windows, macOS)
+Neon Shooter Mayhem (Windows; prototype)
+Station Invasion (Windows, macOS)
+CubeGame Alpha (Windows, Browser)
+Play links and individual credits: https://iigames.github.io/games
+
+CONTENTS
+logos/: transparent white and black PNG wordmarks and symbols, plus the
+supplied studio logo variants. Filenames describe color and background.
+screenshots/: game screenshots at their original source resolution.
+trailers/: CubeGame and CubeGame Alpha trailers; Slowly Strange gameplay clip.
+
+MEDIA NOTES
+Please credit II Games Studio when using these materials in coverage.
+Game pages contain individual collaborator and third-party resource credits.
+Concept studies on the About page are work in progress, not release promises.

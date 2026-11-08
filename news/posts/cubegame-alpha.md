@@ -1,5 +1,3 @@
-This archive entry follows the May 27, 2020 date recorded in the II Games catalog.
-
 CubeGame Alpha is the early version of CubeGame, developed and published by II Games. It combines platforming with puzzles.
 
 ## Keeping the early version

@@ -883,3 +883,28 @@ body:not(.landing) .studio-note p { max-width: 65ch; }
   .nav-panel-top > span { flex: 1 0 min(100%, 8rem); min-width: 0; max-width: 100%; }
   .nav-close { flex-shrink: 0; margin-left: auto; }
 }
+/* Studio media is kept separate from the game catalog. */
+.studio-art-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem 1.5rem; }
+.studio-art-grid figure { min-width: 0; margin: 0; }
+.studio-art-grid a { display: block; overflow: hidden; border-radius: 4px; }
+.studio-art-grid img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+.studio-art-grid figcaption { padding-top: .75rem; color: var(--muted); font-size: .9375rem; }
+.showcase-grid figure:first-child { grid-column: 1/-1; }
+.showcase-grid figure:first-child img { aspect-ratio: 16/8; }
+.art-section .section-heading { flex-wrap: wrap; align-items: baseline; }
+.art-section .section-heading p { color: var(--muted); max-width: 45ch; }
+.press-facts { margin-top: 0; }
+.press-facts > div { display: grid; grid-template-columns: 7rem minmax(0,1fr); gap: 1rem; padding-block: .9rem; border-bottom: 1px solid var(--line); }
+.press-facts dt { color: var(--muted); }
+.press-facts dd { margin: 0; overflow-wrap: anywhere; }
+.press-download-note { color: var(--muted); font-size: .875rem; margin-top: 1rem; }
+.press-logos { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+.press-logos a { display: block; min-width: 0; }
+.logo-preview { background: #171820; border: 1px solid var(--line); margin-bottom: .75rem; }
+.logo-preview-light { background: #f3f0fa; }
+.logo-preview img { width: 100%; height: auto; }
+@media (max-width: 760px) {
+ .studio-art-grid, .press-logos { grid-template-columns: minmax(0,1fr); }
+ .showcase-grid figure:first-child img { aspect-ratio: 16/9; }
+ .press-facts > div { grid-template-columns: minmax(0,1fr); gap: .25rem; }
+}

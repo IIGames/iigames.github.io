@@ -1,13 +1,9 @@
-This archive entry follows the August 18, 2021 date recorded in the II Games catalog.
+Slowly Strange starts with an ordinary day and a list of tasks. Its horror comes from the doubt that settles into that routine.
 
-Slowly Strange begins with a normal day and a list of tasks. It is an early horror project in the II Games archive.
+## Follow the routine
 
-## An early experiment
+The premise insists that everything is as it should be. Watch the surroundings as you complete the tasks and decide how much of that reassurance to trust.
 
-The original description insists that everything is as it should be. That uneasy premise is the starting point for the game.
+The game credits Reddit user u/mh06941 for the idea.
 
-> It’s a normal day. Do your tasks.
-
-The game credits Reddit user u/mh06941 for the idea. Its original page also notes that this is an older project; it stays in the archive as part of the studio’s history.
-
-[Visit the Slowly Strange game page](/games/slowlystrange)
+[Play Slowly Strange](/games/slowlystrange)

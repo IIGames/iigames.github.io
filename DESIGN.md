@@ -30,7 +30,7 @@ spacing:
 ---
 # II Games design
 
-II Games uses a dark, artwork-led studio identity. Preserve the logo, self-hosted Nevis lettering, cyan primary actions, real game imagery, accurate credits, and informal small-team voice. All routes share the same neutral palette and navigation.
+II Games uses a dark, artwork-led studio identity. Preserve the logo, self-hosted Nevis lettering, cyan primary actions, real game imagery, accurate credits, and direct studio copy. Public copy uses II Games Studio, with II Games retained as an alternate name. About copy describes the studio in the third person. All routes share the same neutral palette and navigation.
 
 ## Tokens
 
@@ -40,7 +40,7 @@ Nevis carries display headings, capped at 96px. System sans serif carries body a
 
 ## Homepage
 
-The homepage opens with a compact introduction beside a catalog action. The full CubeGame image follows immediately, with its description below. Keep the artwork uncropped and the page static during scroll. No decorative cube, corner frame, staggered card offsets, or animated studio mark. The remaining sections use smaller headings and consistent spacing.
+The homepage opens with a faded, looping gameplay video behind the headline “Bold indie experiences.” The overlay keeps white text legible; a cyan action links to the games. A pause/play control is always available with JavaScript. Reduced-motion and data-saving preferences keep the video unloaded until requested. Without JavaScript, the poster remains visible. The full CubeGame image follows, with its description below. Keep that artwork uncropped and the page static during scroll. No decorative cube, corner frame, staggered card offsets, or animated studio mark. The remaining sections use smaller headings and consistent spacing.
 
 The gameplay carousel uses native horizontal scroll and snapping, with previous/next buttons, a slide count, arrow/Home/End keys, and touch scrolling. It never advances automatically. Images reserve their dimensions and load lazily. Without JavaScript, visitors can still scroll the screenshots.
 
@@ -50,7 +50,7 @@ Copy names the content and action directly: “Gameplay screenshots,” “More 
 
 The catalog uses a two-column desktop grid and one-column mobile layout, neutral game cards, readable platform metadata, and All games/Browser/Windows/macOS filters. The archive remains visible separately. Without JavaScript, every game remains available.
 
-Game details use a neutral download panel and restrained platform tags. About connects its introduction to actual game artwork and readable editorial sections. News uses a three-column editorial archive and dedicated reading pages; its details are recorded below. Assets and Add-Ons explain their empty state beside real game imagery and a catalog action. All factual game descriptions, destination URLs, and credits remain intact.
+Game details use a neutral download panel and restrained platform tags. About uses third-person studio copy, a Showcase gallery of selected work and a Concepts gallery of environment studies. Responsive JPEG variants preserve the supplied originals. The press page shares the shell and links to a ZIP of named studio logos, a fact sheet and original-resolution game media. Header and footer links make it available throughout the site. News uses a three-column editorial archive and dedicated reading pages; its details are recorded below. Assets and Add-Ons explain their empty state beside real game imagery and a catalog action. All factual game descriptions, destination URLs, and credits remain intact.
 
 ## Verification
 

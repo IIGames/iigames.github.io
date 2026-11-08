@@ -1,4 +1,38 @@
 document.documentElement.classList.add('js');
+// Avoid downloading background motion when the visitor asks for less motion or data.
+const heroVideo = document.querySelector('[data-hero-video]');
+if (heroVideo) {
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const pause = document.querySelector('.hero-pause');
+  let userPaused = false;
+  const label = () => {
+    pause.textContent = heroVideo.paused ? 'Play video' : 'Pause video';
+    pause.setAttribute('aria-label', heroVideo.paused ? 'Play background video' : 'Pause background video');
+  };
+  const play = async () => {
+    const source = heroVideo.querySelector('source');
+    if (!source.hasAttribute('src')) { source.src = source.dataset.src; heroVideo.load(); }
+    try { await heroVideo.play(); } catch { /* The poster remains visible if autoplay is blocked. */ }
+    label();
+  };
+  pause.hidden = false;
+  pause.addEventListener('click', () => {
+    userPaused = !heroVideo.paused;
+    if (heroVideo.paused) play(); else heroVideo.pause();
+    label();
+  });
+  heroVideo.addEventListener('play', label);
+  heroVideo.addEventListener('pause', label);
+  const syncMotion = () => {
+    if (motion.matches || navigator.connection?.saveData || userPaused) { heroVideo.pause(); label(); }
+    else play();
+  };
+  motion.addEventListener('change', syncMotion);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) heroVideo.pause(); else syncMotion();
+  });
+  syncMotion();
+}
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('#site-nav');
 const panel = document.querySelector('.nav-panel');

@@ -8,20 +8,20 @@ const siteOrigin='https://iigames.github.io';
 const news=loadNews(root);
 const newsPages=news.map(p=>'news/'+p.slug+'.html');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'games/catalog.json'),'utf8').replace(/^\uFEFF/,''));
-const pages=['index.html','games.html','game.html','about.html','news.html',...newsPages,'addons.html','assets.html','teaser.html',...catalog.map(g=>'games/'+g.slug.toLowerCase()+'.html')];
+const pages=['index.html','games.html','game.html','about.html','press.html','newsletter.html','news.html',...newsPages,'addons.html','assets.html','teaser.html',...catalog.map(g=>'games/'+g.slug.toLowerCase()+'.html')];
 const outputs=[...pages,'robots.txt','sitemap.xml'];
 const before=new Map(outputs.map(p=>[p,fs.readFileSync(path.join(root,p),'utf8')]));
 execFileSync(process.execPath,['tools/build-site.mjs'],{cwd:root});
-const publicGames=catalog.filter(g=>!g.hidden&&!g.archive);
-const expectedRoutes=['/','/games','/about','/addons','/assets','/news',...news.map(p=>'/news/'+p.slug),...publicGames.map(g=>`/games/${g.slug.toLowerCase()}`)];
+const publicGames=catalog.filter(g=>!g.hidden);
+const expectedRoutes=['/','/games','/about','/press','/addons','/assets','/news','/newsletter',...news.map(p=>'/news/'+p.slug),...publicGames.map(g=>`/games/${g.slug.toLowerCase()}`)];
 const routeForPage=p=>{
  if(p==='index.html')return '/';
  if(p==='game.html')return '/games';
  if(p==='teaser.html')return '/teaser';
  return `/${p.replace(/\.html$/,'')}`;
 };
-const indexablePages=new Set(['index.html','games.html','about.html','news.html',...newsPages,'addons.html','assets.html',...publicGames.map(g=>`games/${g.slug.toLowerCase()}.html`)]);
-const shouldNoIndex=p=>p==='game.html'||p==='teaser.html'||catalog.some(g=>(g.hidden||g.archive)&&`games/${g.slug.toLowerCase()}.html`===p);
+const indexablePages=new Set(['index.html','games.html','about.html','press.html','newsletter.html','news.html',...newsPages,'addons.html','assets.html',...publicGames.map(g=>`games/${g.slug.toLowerCase()}.html`)]);
+const shouldNoIndex=p=>p==='game.html'||p==='teaser.html'||catalog.some(g=>g.hidden&&`games/${g.slug.toLowerCase()}.html`===p);
 const metaContent=(html,regex)=>html.match(regex)?.[1];
 for(const p of pages) {
  assert.equal(path.basename(p),path.basename(p).toLowerCase(),'Page filename must be lowercase: '+p);

@@ -3,9 +3,11 @@
   <url><loc>https://iigames.github.io/</loc></url>
   <url><loc>https://iigames.github.io/games</loc></url>
   <url><loc>https://iigames.github.io/about</loc></url>
+  <url><loc>https://iigames.github.io/press</loc></url>
   <url><loc>https://iigames.github.io/addons</loc></url>
   <url><loc>https://iigames.github.io/assets</loc></url>
   <url><loc>https://iigames.github.io/news</loc></url>
+  <url><loc>https://iigames.github.io/newsletter</loc></url>
   <url><loc>https://iigames.github.io/news/a-new-home-for-news</loc></url>
   <url><loc>https://iigames.github.io/news/no-mans-land</loc></url>
   <url><loc>https://iigames.github.io/news/1</loc></url>
@@ -18,4 +20,6 @@
   <url><loc>https://iigames.github.io/games/neonshootermayhem</loc></url>
   <url><loc>https://iigames.github.io/games/cubegame</loc></url>
   <url><loc>https://iigames.github.io/games/stationinvasion</loc></url>
+  <url><loc>https://iigames.github.io/games/slowlystrange</loc></url>
+  <url><loc>https://iigames.github.io/games/cubegame-alpha</loc></url>
 </urlset>

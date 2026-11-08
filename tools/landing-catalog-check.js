@@ -4,8 +4,8 @@ async page => {
   const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));
   const ready=()=>p.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>{i.loading='eager';return i.decode().catch(()=>{});}));});
   await p.goto('http://127.0.0.1:4173/');await ready();
-  const before=await p.locator('.feature-art').boundingBox();
-  if(before.y>=900)failures.push('Featured artwork is below the first screen');
+  const before=await p.locator('.studio-hero').boundingBox();
+  if(before.y>=900)failures.push('Hero is below the first screen');
   await p.mouse.wheel(0,400);await p.waitForTimeout(200);
   const scrollStatic=await p.evaluate(()=>!window.ScrollTrigger && !document.querySelector('script[src$="landing.js"]'));
   if(!scrollStatic)failures.push('Removed scroll choreography is still loaded');
@@ -19,7 +19,7 @@ async page => {
   await p.emulateMedia({reducedMotion:'reduce'});
   const reducedMotion=await p.evaluate(()=>!window.ScrollTrigger);
   await p.emulateMedia({reducedMotion:'no-preference'});
-  const routes=['/','/games','/about','/news','/assets','/addons','/games/cubegame','/games/nomansland','/news/1'];
+  const routes=['/','/games','/about','/press','/newsletter','/news','/assets','/addons','/games/cubegame','/games/nomansland','/news/1'];
   for(const route of routes) {
     await p.goto('http://127.0.0.1:4173'+route);await ready();
     for(const width of [320,375,768,1024,1440,1920]) {
@@ -51,7 +51,7 @@ async page => {
   const fallback=await context.browser().newContext({javaScriptEnabled:false,viewport:{width:375,height:812}});const f=await fallback.newPage();
   await f.goto('http://127.0.0.1:4173/');
   if(!await f.locator('.carousel-viewport').isVisible()||!await f.locator('#site-nav').isVisible())failures.push('No-JS homepage failed');
-  await f.goto('http://127.0.0.1:4173/games');if(await f.locator('.catalog-grid .game-card:visible').count()!==6)failures.push('No-JS catalog failed');
+  await f.goto('http://127.0.0.1:4173/games');if(await f.locator('.catalog-grid .game-card:visible').count()!==4)failures.push('No-JS catalog failed');
   await fallback.close();await context.close();
   return {failures,errors,artwork:before,scrollStatic,carousel:{next,last},reducedMotion,palette,platforms};
 }

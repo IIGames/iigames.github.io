@@ -8,7 +8,7 @@ const root=path.resolve(import.meta.dirname,'..');
 const post={slug:'example',title:'An example article',summary:'A factual description long enough to use as the article summary.',category:'development',date:'2026-11-05',body:'First paragraph.\n\nSecond paragraph.'};
 test('catalog loads both sources, defaults and original archived dates',()=>{
  const news=loadNews(root);assert.equal(news.length,6);
- assert.ok(news.find(p=>p.slug==='1').html.includes('target audience'));
+ assert.ok(news.find(p=>p.slug==='1').html.includes('Test the mechanic first'));
  assert.ok(news.some(p=>p.bodyFile));assert.ok(news.some(p=>p.body));
  assert.equal(news.find(p=>p.slug==='cubegame').date,'2022-09-23');
  const [entry]=loadNews(root,[post]);assert.equal(entry.author,'II Games');assert.equal(entry.cover.gradient,'iris');

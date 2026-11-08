@@ -1,5 +1,3 @@
-This archive entry follows the September 23, 2022 date recorded in the II Games catalog.
-
 CubeGame sends a cube through platforming levels in a world ruled by bosses. Two of its tools change how you get through a difficult section.
 
 ## Put down a flag
