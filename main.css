@@ -897,6 +897,17 @@ body:not(.landing) .studio-note p { max-width: 65ch; }
 .press-facts dt { color: var(--muted); }
 .press-facts dd { margin: 0; overflow-wrap: anywhere; }
 .press-download-note { color: var(--muted); font-size: .875rem; margin-top: 1rem; }
+.site-footer { flex-wrap: wrap; }
+.site-footer .footer-legal { flex-basis: 100%; min-width: 0; gap: .5rem 1.5rem; }
+.footer-legal a { overflow-wrap: anywhere; max-width: 100%; }
+.legal-copy { max-width: 72ch; }
+.legal-copy h2 { font-family: inherit; font-weight: 500; font-size: 1.5rem; line-height: 1.35; letter-spacing: 0; }
+.legal-updated { color: var(--muted); font-size: .875rem; }
+.game-credits { max-width: 75ch; margin-top: 2rem; color: var(--muted); font-size: .875rem; line-height: 1.7; overflow-wrap: anywhere; }
+.game-credits h2 { color: var(--text); font-family: inherit; font-size: 1.125rem; font-weight: 500; line-height: 1.5; letter-spacing: 0; }
+.game-credits h3 { color: var(--text); font-family: inherit; font-size: 1rem; font-weight: 500; line-height: 1.5; letter-spacing: 0; }
+.game-copyright { max-width: 75ch; margin-top: 1.5rem; color: var(--muted); }
+.game-copyright small { display: block; font-size: .8125rem; line-height: 1.7; }
 .press-logos { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
 .press-logos a { display: block; min-width: 0; }
 .logo-preview { background: #171820; border: 1px solid var(--line); margin-bottom: .75rem; }

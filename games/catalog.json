@@ -19,14 +19,15 @@
         "url": "https://gamejolt.com/games/no-mans-land/912024"
       }
     ],
-    "details": "<h2>About the game</h2><p>A PS1-style FPS about trench warfare in WW1. The game treats war as a frightening experience, with a focused play session inside the trenches.</p><h2>Controls</h2><p>Move: WASD<br>Shoot: Left click<br>Jump: Space</p><h2>Credits</h2><p>Sound effects from freesound.org. Models from Sketchfab.</p><p>PSX font: Suikoden (Monospaced) by Patrick H. Lauke, cloned from Suikoden by the same author. Both are licensed under Creative Commons Attribution 3.0.</p><p><a href=\"https://fontstruct.com/fontstructions/show/1723095\">Suikoden (Monospaced)</a> · <a href=\"https://fontstruct.com/fontstructions/show/1723013\">Suikoden</a> · <a href=\"https://creativecommons.org/licenses/by/3.0/\">CC BY 3.0 license</a></p>",
+    "details": "<h2>About the game</h2><p>A PS1-style FPS about trench warfare in WW1. The game treats war as a frightening experience, with a focused play session inside the trenches.</p><h2>Controls</h2><p>Move: WASD<br>Shoot: Left click<br>Jump: Space</p>",
     "cover": "assets/optimized/NoMansLand-cover.jpg",
     "screenshots": [
       "assets/optimized/NoMansLand-shot-1.jpg",
       "assets/optimized/NoMansLand-shot-2.jpg"
     ],
     "status": "In development",
-    "date": "16 July, 2024"
+    "date": "16 July, 2024",
+    "credits": "<p>Sound effects from freesound.org. Models from Sketchfab.</p><p>PSX font: Suikoden (Monospaced) by Patrick H. Lauke, cloned from Suikoden by the same author. Both are licensed under Creative Commons Attribution 3.0.</p><p><a href=\"https://fontstruct.com/fontstructions/show/1723095\">Suikoden (Monospaced)</a> · <a href=\"https://fontstruct.com/fontstructions/show/1723013\">Suikoden</a> · <a href=\"https://creativecommons.org/licenses/by/3.0/\">CC BY 3.0 license</a></p>"
   },
   {
     "title": "SCP 173 Simulator",
@@ -44,7 +45,7 @@
         "url": "https://iigamesofficial.itch.io/scp-173-simulator"
       }
     ],
-    "details": "<h2>About the game</h2><p>A role-reversal horror game built for GMTK Game Jam 2023. The player controls SCP-173 inside a containment facility.</p><p class=\"notice\">This game contains animations of humans dying, but no visible blood.</p><h2>Controls</h2><p>Keyboard and mouse. Credits are in the game.</p><h2>Install instructions</h2><p>Download the ZIP file, extract it, and run SCP 173 Simulator.exe.</p>",
+    "details": "<h2>About the game</h2><p>A role-reversal horror game built for GMTK Game Jam 2023. The player controls SCP-173 inside a containment facility.</p><p class=\"notice\">This game contains animations of humans dying, but no visible blood.</p><h2>Controls</h2><p>Keyboard and mouse.</p><h2>Install instructions</h2><p>Download the ZIP file, extract it, and run SCP 173 Simulator.exe.</p>",
     "cover": "assets/optimized/SCP173Simulator-cover.jpg",
     "screenshots": [
       "assets/optimized/SCP173Simulator-shot-1.jpg",
@@ -69,13 +70,14 @@
         "url": "https://iigamesofficial.itch.io/crystal-stealer"
       }
     ],
-    "details": "<h2>About the game</h2><p>An astronaut platformer built for Coursera’s 3D Platformer course. Two added levels put the crystal hunt across lava hazards, with tutorial text and post-processing effects.</p><h2>Credits</h2><p>Made by Iliya Soleimani using assets from MSU.</p>",
+    "details": "<h2>About the game</h2><p>An astronaut platformer built for Coursera’s 3D Platformer course. Two added levels put the crystal hunt across lava hazards, with tutorial text and post-processing effects.</p>",
     "cover": "assets/optimized/CrystalStealer-cover.jpg",
     "screenshots": [
       "assets/optimized/CrystalStealer-shot-1.jpg",
       "assets/optimized/CrystalStealer-shot-2.jpg"
     ],
-    "archive": true
+    "archive": true,
+    "credits": "<p>Made by Iliya Soleimani using assets from MSU.</p>"
   },
   {
     "title": "Neon Shooter Mayhem",
@@ -131,7 +133,8 @@
         "url": "https://gamejolt.com/games/CubeGame/748864"
       }
     ],
-    "details": "<h2>About the game</h2><p>A mechanics-driven 2D platformer set in a world ruled by bosses. Take control of a cube with tools that change how you cross each level.</p><h2>How it plays</h2><p><strong>Respawn flag:</strong> Place a flag to choose where you return after hitting lava. Without a flag, you lose health and return to the starting point.</p><p><strong>Electrical platforms:</strong> Cross difficult sections at the cost of one battery charge. Buy more charges at the shop and decide where to use them.</p><h2>Controls</h2><p>Move: WASD<br>Jump: Space<br>Shoot: E<br>Interact: R<br>Place flag: F<br>Menu selection: Enter or left click<br>Menu navigation: Arrow keys</p><p>PlayStation controllers are supported. The in-game controls menu lists gamepad bindings. Play without DS4Windows for the recommended setup.</p><h2>Credits</h2><br />\r\n\r\n          <strong>Programming:</strong><br />\r\n          Iliya Soleymani<br />\r\n          Radin Nasiri<br /><br />\r\n\r\n          <strong>Art:</strong><br />\r\n          Iliya Soleymani<br /><br />\r\n\r\n          <strong>Game design:</strong><br />\r\n          Iliya Soleymani<br />\r\n          Radin Nasiri<br /><br />\r\n\r\n          <strong>Sound effects (freesound.org):</strong><br />\r\n          8-bit damage sound by EVRetro<br />\r\n          shoot02 by V-ktor<br />\r\n          Jump_C_03 by cabled_mess<br />\r\n          laser1 by nsstudios<br />\r\n          UI 03 by rhodesmas<br /><br />\r\n\r\n          <strong>Music (freesound.org):</strong><br />\r\n          Loop_Computer_Feeling_Good_03 by LittleRobotSoundFactory<br />\r\n          hornier remix of victor-natas Freesound #641728 by Timbre<br />\r\n          Success Resolution Video Game Fanfare Sound Effect by FunWithSound<br /><br />\r\n\r\n          <h2>Game testers</h2><br />\r\n\r\n          Mohammad Shayan<br />\r\n          Mohammad Hajikandi<br />\r\n          Parsa Mardani<br />\r\n          MohammadReza Namvar<br /><br />\r\n\r\n          © II Games<br />\r\n        "
+    "details": "<h2>About the game</h2><p>A mechanics-driven 2D platformer set in a world ruled by bosses. Take control of a cube with tools that change how you cross each level.</p><h2>How it plays</h2><p><strong>Respawn flag:</strong> Place a flag to choose where you return after hitting lava. Without a flag, you lose health and return to the starting point.</p><p><strong>Electrical platforms:</strong> Cross difficult sections at the cost of one battery charge. Buy more charges at the shop and decide where to use them.</p><h2>Controls</h2><p>Move: WASD<br>Jump: Space<br>Shoot: E<br>Interact: R<br>Place flag: F<br>Menu selection: Enter or left click<br>Menu navigation: Arrow keys</p><p>PlayStation controllers are supported. The in-game controls menu lists gamepad bindings. Play without DS4Windows for the recommended setup.</p>",
+    "credits": "<p><strong>Programming:</strong><br />\r\n          Iliya Soleimani<br />\r\n          Radin Nasiri</p><p><strong>Art:</strong><br />\r\n          Iliya Soleimani</p><p><strong>Game design:</strong><br />\r\n          Iliya Soleimani<br />\r\n          Radin Nasiri</p><p><strong>Sound effects (freesound.org):</strong><br />\r\n          8-bit damage sound by EVRetro<br />\r\n          shoot02 by V-ktor<br />\r\n          Jump_C_03 by cabled_mess<br />\r\n          laser1 by nsstudios<br />\r\n          UI 03 by rhodesmas</p><p><strong>Music (freesound.org):</strong><br />\r\n          Loop_Computer_Feeling_Good_03 by LittleRobotSoundFactory<br />\r\n          hornier remix of victor-natas Freesound #641728 by Timbre<br />\r\n          Success Resolution Video Game Fanfare Sound Effect by FunWithSound</p><h3>Game testers</h3><p>Mohammad Shayan<br />\r\n          Mohammad Hajikandi<br />\r\n          Parsa Mardani<br />\r\n          MohammadReza Namvar</p><p>© II Games</p>"
   },
   {
     "title": "Station Invasion",
@@ -149,14 +152,15 @@
         "url": "https://iigamesofficial.itch.io/station-invasion"
       }
     ],
-    "details": "<h2>About the game</h2><p>A 3D shooter built from Coursera’s 3D Shooter assignment. The studio added an opening level and redesigned the second level, then added details to the third. An options menu and post-processing effects complete this version.</p><h2>Credits</h2><p>Eilia Soleimani, with assets from MSU.</p>",
+    "details": "<h2>About the game</h2><p>A 3D shooter built from Coursera’s 3D Shooter assignment. The studio added an opening level and redesigned the second level, then added details to the third. An options menu and post-processing effects complete this version.</p>",
     "cover": "assets/optimized/StationInvasion-cover.jpg",
     "screenshots": [
       "assets/optimized/StationInvasion-shot-1.jpg",
       "assets/optimized/StationInvasion-shot-2.jpg"
     ],
     "status": "Released",
-    "archive": true
+    "archive": true,
+    "credits": "<p>Iliya Soleimani, with assets from MSU.</p>"
   },
   {
     "title": "Slowly Strange",
@@ -178,7 +182,8 @@
         "url": "https://gamejolt.com/games/SlowlyStrange/637229"
       }
     ],
-    "details": "<h2>About the game</h2><p>Everyday tasks become a source of unease in Slowly Strange. Follow the routine and watch for what feels wrong.</p><h2>Credits</h2><p>Special thanks to Reddit user u/mh06941 for the idea.</p>"
+    "details": "<h2>About the game</h2><p>Everyday tasks become a source of unease in Slowly Strange. Follow the routine and watch for what feels wrong.</p>",
+    "credits": "<p>Special thanks to Reddit user u/mh06941 for the idea.</p>"
   },
   {
     "title": "CubeGame Alpha",

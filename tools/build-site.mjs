@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {loadNews} from "./news.mjs";
 import {newsIndex, newsArticle} from "./news-view.mjs";
+import {gameCredits, gameCopyright, legalPages, contactEmail} from "./legal-view.mjs";
 const root = path.resolve(import.meta.dirname, "..");
 const siteOrigin = "https://iigames.github.io";
 const read = (p) => fs.readFileSync(path.join(root, p), "utf8");
@@ -61,7 +62,7 @@ function shell(title, body, current, prefix = "./", seo = {}) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="${prefix}javascript/theme.js"></script>${metadata}<title>${escape(pageTitle)}</title><link rel="icon" href="${prefix}assets/optimized/favicon.png"><link rel="stylesheet" href="${prefix}main.css"><script src="${prefix}javascript/site.js" defer></script>${current === "Home" ? `<link rel="stylesheet" href="${prefix}landing.css">` : ""}${current === "News" ? `<link rel="stylesheet" href="${prefix}news.css"><script src="${prefix}javascript/news.js" defer></script>` : ""}<link rel="stylesheet" href="${prefix}theme.css"></head>
 <body class="${current === "Home" ? "landing" : "page-" + (current || "teaser").toLowerCase().replaceAll(" ", "-")}"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="${prefix}" aria-label="II Games home"><img src="${prefix}assets/optimized/ii-games-logo.png" width="230" height="70" alt="II Games"></a><button class="nav-toggle" aria-expanded="false" aria-controls="nav-panel">Menu</button><div class="nav-backdrop" hidden></div><div class="nav-panel" id="nav-panel"><div class="nav-panel-top"><span>II Games</span><button class="nav-close" type="button" aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><nav id="site-nav" aria-label="Main navigation">${nav.map(([label, url]) => `<a href="${prefix}${url}"${current === label ? ' aria-current="page"' : ""}>${label}</a>`).join("")}<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light mode"><svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button></nav><div class="nav-panel-footer"><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a></div></div></header>
-<main id="main" tabindex="-1">${body}</main><footer class="site-footer"><div><p>© II Games Studio · 2020–${new Date().getFullYear()}</p></div><div><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a><a href="${prefix}about">About the studio</a><a href="${prefix}press">Press kit</a><a href="${prefix}newsletter">Newsletter</a></div></footer></body></html>`;
+<main id="main" tabindex="-1">${body}</main><footer class="site-footer"><div><p>© II Games Studio · 2020–${new Date().getFullYear()}</p></div><div><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a><a href="${prefix}about">About the studio</a><a href="${prefix}press">Press kit</a><a href="${prefix}newsletter">Newsletter</a></div><div class="footer-legal"><a href="${prefix}privacy">Privacy Policy</a><a href="${prefix}terms">Terms of Use / Licensing</a><a href="${prefix}contact">Contact and legal notice</a><a href="mailto:${contactEmail}">${contactEmail}</a></div></footer></body></html>`;
 }
 function image(src, alt, eager = false) {
   const small = src.replace(/\.jpg$/, "-small.jpg");
@@ -263,7 +264,7 @@ for (const game of catalog) {
     oldFile,
     shell(
       game.title,
-      `<a class="back-link" href="../games">Back to games</a><header class="game-intro"><h1>${escape(game.title)}</h1><p>${escape(game.summary)}</p><div class="game-facts"><span>${escape(game.genre)}</span><span>${escape(game.platforms.join(" / "))}</span>${game.status ? `<span>${escape(game.status)}</span>` : ""}</div></header>${game.hidden ? '<p class="notice">This is an archived, hidden project page.</p>' : ""}<section class="game-stage">${game.cover ? image("../" + game.cover, game.title + " gameplay", true) : `<div class="type-cover" ><span>${escape(game.title)}</span></div>`}<div class="download-panel"><h2>Play ${escape(game.title)}</h2><p>${escape(game.downloadNote || "Choose a platform below for the game and available downloads.")}</p><div class="actions">${actions || "<p>No public download is available on this page.</p>"}</div>${game.date ? `<p class="game-meta">Released ${escape(game.date)}</p>` : ""}</div></section>${details ? `<section class="game-details section">${details}</section>` : ""}${media}<section class="more-games"><h2>More from the studio</h2><a class="button button-secondary" href="../games">Browse all games</a></section>`,
+      `<a class="back-link" href="../games">Back to games</a><header class="game-intro"><h1>${escape(game.title)}</h1><p>${escape(game.summary)}</p><div class="game-facts"><span>${escape(game.genre)}</span><span>${escape(game.platforms.join(" / "))}</span>${game.status ? `<span>${escape(game.status)}</span>` : ""}</div></header>${game.hidden ? '<p class="notice">This is an archived, hidden project page.</p>' : ""}<section class="game-stage">${game.cover ? image("../" + game.cover, game.title + " gameplay", true) : `<div class="type-cover" ><span>${escape(game.title)}</span></div>`}<div class="download-panel"><h2>Play ${escape(game.title)}</h2><p>${escape(game.downloadNote || "Choose a platform below for the game and available downloads.")}</p><div class="actions">${actions || "<p>No public download is available on this page.</p>"}</div>${game.date ? `<p class="game-meta">Released ${escape(game.date)}</p>` : ""}</div></section>${details ? `<section class="game-details section">${details}</section>` : ""}${media}${gameCredits(game)}<section class="more-games"><h2>More from the studio</h2><a class="button button-secondary" href="../games">Browse all games</a></section>${gameCopyright}`,
       "Games",
       "../",
       {
@@ -320,7 +321,7 @@ write("newsletter.html", shell("Newsletter", `
 const pressKitBytes = fs.statSync(path.join(root, "assets/press-kit/ii-games-studio-press-kit.zip")).size;
 write("press.html", shell("Press kit", `
 <header class="page-intro"><h1>II Games Studio<br>Press kit</h1><p>Studio facts and original-resolution game media for journalists and content creators.</p><div><a class="button" href="./assets/press-kit/ii-games-studio-press-kit.zip" download>Download press kit · ${Math.ceil(pressKitBytes / 1048576)} MB</a><p class="press-download-note">ZIP · Transparent logos, fact sheet, screenshots and video.</p></div></header>
-<section class="studio-note"><h2>Studio facts</h2><div><dl class="press-facts"><div><dt>Name</dt><dd>II Games Studio (also known as II Games)</dd></div><div><dt>Founded</dt><dd>2020</dd></div><div><dt>Focus</dt><dd>Mechanics-driven platformers and atmospheric horror</dd></div><div><dt>Website</dt><dd><a href="https://iigames.github.io/">iigames.github.io</a></dd></div><div><dt>Contact</dt><dd><a href="https://iigamesofficial.itch.io/">itch.io</a> / <a href="https://gamejolt.com/@IIGamesOfficial">Game Jolt</a></dd></div></dl><p>Founded in 2020, II Games Studio is an independent game development studio dedicated to fast-paced gameplay and striking atmospheres.</p><a class="text-link" href="./assets/press-kit/studio-fact-sheet.txt" download>Download the fact sheet</a></div></section>
+<section class="studio-note"><h2>Studio facts</h2><div><dl class="press-facts"><div><dt>Name</dt><dd>II Games Studio (also known as II Games)</dd></div><div><dt>Founded</dt><dd>2020</dd></div><div><dt>Focus</dt><dd>Mechanics-driven platformers and atmospheric horror</dd></div><div><dt>Website</dt><dd><a href="https://iigames.github.io/">iigames.github.io</a></dd></div><div><dt>Operator</dt><dd>Iliya Soleimani</dd></div><div><dt>Location</dt><dd>Iran</dd></div><div><dt>Contact</dt><dd><a href="mailto:${contactEmail}">${contactEmail}</a></dd></div></dl><p>Founded in 2020, II Games Studio is an independent game development studio dedicated to fast-paced gameplay and striking atmospheres.</p><a class="text-link" href="./assets/press-kit/studio-fact-sheet.txt" download>Download the fact sheet</a></div></section>
 <section class="section"><div class="section-heading"><h2>Studio logos</h2><p>Transparent PNGs for light and dark backgrounds.</p></div><div class="press-logos"><a href="./assets/press-kit/logos/ii-games-wordmark-white-transparent.png" download><div class="logo-preview"><img src="./assets/press-kit/logos/ii-games-wordmark-white-transparent.png" alt="II Games white wordmark" width="1920" height="1080" loading="lazy"></div><span>White wordmark · PNG</span></a><a href="./assets/press-kit/logos/ii-games-wordmark-black-transparent.png" download><div class="logo-preview logo-preview-light"><img src="./assets/press-kit/logos/ii-games-wordmark-black-transparent.png" alt="II Games black wordmark" width="1920" height="1080" loading="lazy"></div><span>Light theme logo (black) · PNG</span></a></div><p>The ZIP also includes transparent symbol logos and the supplied studio logo variants.</p></section>
 <section class="studio-note"><h2>Game media</h2><div><p>The ZIP contains original-resolution screenshots for ${catalog.filter(g=>!g.hidden).map(g=>escape(g.title)).join(", ")}.</p><p>Video includes the CubeGame and CubeGame Alpha trailers, plus a Slowly Strange gameplay clip. Screenshots retain their source resolution; no images have been upscaled.</p><p>For platform links and individual game credits, visit the <a href="./games">game catalog</a>. Please credit II Games Studio when using these materials in coverage.</p></div></section>`, "Press kit", "./", {
  canonicalPath: "/press", title: "Press kit — II Games Studio",
@@ -392,6 +393,14 @@ write(
   ),
 );
 
+for (const page of legalPages) {
+  write(page.route + ".html", shell(page.title, page.body, "Legal", "./", {
+    canonicalPath: "/" + page.route,
+    title: page.title + " — II Games Studio",
+    description: page.description,
+  }));
+}
+
 const sitemapPaths = [
   "/",
   "/games",
@@ -401,6 +410,7 @@ const sitemapPaths = [
   "/assets",
   "/news",
   "/newsletter",
+  ...legalPages.map(page => "/" + page.route),
   ...news.map(post => `/news/${post.slug}`),
   ...catalog.filter(game => !game.hidden).map((game) => `/games/${game.slug.toLowerCase()}`),
 ];

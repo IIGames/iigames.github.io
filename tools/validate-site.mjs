@@ -3,24 +3,26 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import {loadNews} from './news.mjs';
+import {legalPages} from './legal-view.mjs';
+const legalFiles=legalPages.map(page=>page.route+'.html');
 const root=path.resolve(import.meta.dirname,'..');
 const siteOrigin='https://iigames.github.io';
 const news=loadNews(root);
 const newsPages=news.map(p=>'news/'+p.slug+'.html');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'games/catalog.json'),'utf8').replace(/^\uFEFF/,''));
-const pages=['index.html','games.html','game.html','about.html','press.html','newsletter.html','news.html',...newsPages,'addons.html','assets.html','teaser.html',...catalog.map(g=>'games/'+g.slug.toLowerCase()+'.html')];
+const pages=['index.html','games.html','game.html','about.html','press.html','newsletter.html','news.html',...newsPages,'addons.html','assets.html','teaser.html',...legalFiles,...catalog.map(g=>'games/'+g.slug.toLowerCase()+'.html')];
 const outputs=[...pages,'robots.txt','sitemap.xml'];
 const before=new Map(outputs.map(p=>[p,fs.readFileSync(path.join(root,p),'utf8')]));
 execFileSync(process.execPath,['tools/build-site.mjs'],{cwd:root});
 const publicGames=catalog.filter(g=>!g.hidden);
-const expectedRoutes=['/','/games','/about','/press','/addons','/assets','/news','/newsletter',...news.map(p=>'/news/'+p.slug),...publicGames.map(g=>`/games/${g.slug.toLowerCase()}`)];
+const expectedRoutes=['/','/games','/about','/press','/addons','/assets','/news','/newsletter',...legalPages.map(page=>'/'+page.route),...news.map(p=>'/news/'+p.slug),...publicGames.map(g=>`/games/${g.slug.toLowerCase()}`)];
 const routeForPage=p=>{
  if(p==='index.html')return '/';
  if(p==='game.html')return '/games';
  if(p==='teaser.html')return '/teaser';
  return `/${p.replace(/\.html$/,'')}`;
 };
-const indexablePages=new Set(['index.html','games.html','about.html','press.html','newsletter.html','news.html',...newsPages,'addons.html','assets.html',...publicGames.map(g=>`games/${g.slug.toLowerCase()}.html`)]);
+const indexablePages=new Set(['index.html','games.html','about.html','press.html','newsletter.html','news.html',...newsPages,'addons.html','assets.html',...legalFiles,...publicGames.map(g=>`games/${g.slug.toLowerCase()}.html`)]);
 const shouldNoIndex=p=>p==='game.html'||p==='teaser.html'||catalog.some(g=>g.hidden&&`games/${g.slug.toLowerCase()}.html`===p);
 const metaContent=(html,regex)=>html.match(regex)?.[1];
 for(const p of pages) {
@@ -28,6 +30,10 @@ for(const p of pages) {
  const html=fs.readFileSync(path.join(root,p),'utf8');
  assert.equal((html.match(/id="nav-panel"/g)||[]).length,1,'One shared drawer required: '+p);
  assert.ok(html.includes('class="nav-close"'),'Drawer close control missing: '+p);
+ for(const route of ['privacy','terms','contact']) {
+  assert.ok(html.includes(`href="${p.includes('/')?'../':'./'}${route}"`),'Footer legal link missing: '+p+' -> '+route);
+ }
+ assert.ok(html.includes('href="mailto:iigamesofficial@gmail.com"'),'Public contact email missing: '+p);
  assert.equal(html,before.get(p),'Build is not repeatable: '+p);
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,'One primary heading required: '+p);
  const pageTitle=html.match(/<title>([^<]+)<\/title>/)?.[1];
@@ -73,6 +79,13 @@ for(const p of pages) {
   assert.ok(jsonLd,'VideoGame structured data required: '+p);
   assert.equal(JSON.parse(jsonLd[1])['@type'],'VideoGame','Invalid game structured data: '+p);
  }
+ if(p.startsWith('games/')) {
+  assert.ok(html.includes('class="game-credits section"'),'Game credits missing: '+p);
+  assert.ok(html.includes("open <strong>Credits</strong> from the game's main menu."), 'Main-menu credit direction missing: '+p);
+  assert.equal((html.match(/<h2[^>]*>Credits and licensing<\/h2>/g)||[]).length,1,'Credits must be consolidated: '+p);
+  assert.ok(!/<h2[^>]*>Credits<\/h2>/i.test(html),'Legacy Credits heading remains: '+p);
+  assert.ok(html.includes('Copyright and contributor credits are provided in the game itself.'),'In-game copyright note missing: '+p);
+ }
  for(const [,url] of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
   if(/^(https?:|mailto:|#)/.test(url))continue;
   let target=path.resolve(root,path.dirname(p),decodeURIComponent(url.split(/[?#]/)[0]));
@@ -97,7 +110,7 @@ assert.match(robotsTxt,/^User-agent: \*\nAllow: \/\nSitemap: https:\/\/iigames\.
 for(const p of outputs)assert.equal(fs.readFileSync(path.join(root,p),'utf8'),before.get(p),'Build is not repeatable: '+p);
 const article=fs.readFileSync(path.join(root,'news/article.html'),'utf8');
 assert.ok(article.length>500,'Article content lost during build');
-assert.ok(catalog.find(g=>g.slug==='CubeGame').details.includes('Radin Nasiri'),'Original game credits lost');
+assert.ok(catalog.find(g=>g.slug==='CubeGame').credits.includes('Radin Nasiri'),'Original game credits lost');
 assert.ok(catalog.find(g=>g.slug==='CubeGame-Alpha').trailer,'Alpha trailer missing');
 assert.match(fs.readFileSync(path.join(root,'index.html'),'utf8'),/google-site-verification" content="KfsYoNDCpkQhF7QEryFJC1IH0r2B3b7TfLn7jHr0Cg0"/,'Google site verification token lost during build');
 assert.match(fs.readFileSync(path.join(root,'about.html'),'utf8'),/How we make games/,'Existing about-page content lost during build');

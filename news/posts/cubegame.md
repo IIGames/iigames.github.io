@@ -12,14 +12,14 @@ An electrical platform can help you skip a difficult section. Each use takes one
 
 ## Keyboard controls
 
-| Action | Key |
-| --- | --- |
-| Move | WASD |
-| Jump | Space |
-| Shoot | E |
-| Interact | R |
-| Place a flag | F |
+| Action       | Key   |
+| ------------ | ----- |
+| Move         | WASD  |
+| Jump         | Space |
+| Shoot        | E     |
+| Interact     | R     |
+| Place a flag | F     |
 
-Programming and game design are credited to Iliya Soleymani and Radin Nasiri. The game page has the full art, audio and testing credits, along with download links.
+Programming and game design are credited to Iliya Soleimani and Radin Nasiri. The game page has the full art, audio and testing credits, along with download links.
 
 [Visit the CubeGame game page](/games/cubegame)
