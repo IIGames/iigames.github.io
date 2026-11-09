@@ -37,7 +37,8 @@ function shell(title, body, current, prefix = "./", seo = {}) {
   );
   const metadata = [
     `<meta name="description" content="${escape(description)}">`,
-    seo.noIndex ? '<meta name="robots" content="noindex,follow">' : "",
+    seo.keywords ? `<meta name="keywords" content="${escape(seo.keywords)}">` : "",
+    seo.noIndex ? '<meta name="robots" content="noindex,follow">' : '<meta name="robots" content="index,follow">',
     `<link rel="canonical" href="${canonicalUrl}">`,
     `<meta property="og:type" content="${seo.type || "website"}">`,
     `<meta property="og:site_name" content="II Games Studio">`,
@@ -84,21 +85,28 @@ const studioStructuredData = {
       "@type": "Organization",
       "@id": `${siteOrigin}/#organization`,
       name: "II Games Studio",
-      alternateName: "II Games",
+      alternateName: ["II Games", "IIGames", "II Games Official"],
       url: `${siteOrigin}/`,
       logo: absoluteUrl("assets/optimized/ii-games-logo.png"),
       foundingDate: "2020",
-      description: "An independent game development studio focused on fast-paced gameplay and striking atmospheres.",
+      description:
+        "II Games Studio is an independent game development studio making 2D platformers and atmospheric horror games.",
       sameAs: [
         "https://iigamesofficial.itch.io/",
         "https://gamejolt.com/@IIGamesOfficial/games",
+        "https://substack.com/@iigames",
+        "https://iigames.substack.com/",
+        "https://www.tiktok.com/@iigamesstudio",
+        "https://www.youtube.com/@iigamesstudio",
+        "https://x.com/IIGamesOfficial",
+        "https://www.instagram.com/iigamesstudio",
       ],
     },
     {
       "@type": "WebSite",
       "@id": `${siteOrigin}/#website`,
       name: "II Games Studio",
-      alternateName: "II Games",
+      alternateName: ["II Games", "IIGames", "II Games Official"],
       url: `${siteOrigin}/`,
       publisher: { "@id": `${siteOrigin}/#organization` },
       inLanguage: "en",
@@ -112,7 +120,7 @@ write(
     `
 <section class="studio-hero" aria-labelledby="landing-title">
   <video class="hero-video" muted loop playsinline preload="none" poster="./assets/optimized/neon-platforms.jpg" aria-hidden="true" tabindex="-1" data-hero-video><source data-src="./assets/ii-games-hero.mp4" type="video/mp4"></video>
-  <div class="hero-copy"><h1 id="landing-title">Fast platformers.<br>Unsettling worlds</h1><p>II Games Studio makes 2D platformers and atmospheric horror games built around a clear mechanic.</p><a class="button" href="./games">Explore the games <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+  <div class="hero-copy"><h1 id="landing-title">II Games Studio</h1><p class="hero-tagline">Fast platformers. Unsettling worlds.</p><p>II Games Studio makes 2D platformers and atmospheric horror games built around a clear mechanic.</p><a class="button" href="./games">Explore the games <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
   <button class="hero-pause" type="button" hidden aria-label="Pause background video">Pause video</button>
 </section>
 <section class="world-section" aria-labelledby="featured-title"><div class="world-stage featured-game">
@@ -146,9 +154,12 @@ write(
     "./",
     {
       canonicalPath: "/",
-      title: "II Games Studio",
+      title:
+        "II Games Studio | Official Site – Indie 2D Platformer & Horror Games",
       description:
         "II Games Studio is an independent game developer founded in 2020. Play mechanics-driven 2D platformers and atmospheric horror games.",
+      keywords:
+        "II Games Studio, II Games, IIGames, II Games Official, II-Games, indie game studio, 2D platformers, atmospheric horror games, indie games",
       image: "assets/optimized/ii-games-social.jpg",
       imageAlt: "II Games Studio — independent games",
       structuredData: studioStructuredData,
@@ -421,9 +432,10 @@ const xmlEscape = (value) =>
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&apos;");
+const sitemapDate = "2026-11-09";
 write(
   "sitemap.xml",
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPaths.map((route) => `  <url><loc>${xmlEscape(absoluteUrl(route))}</loc></url>`).join("\n")}\n</urlset>\n`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPaths.map((route) => `  <url>\n    <loc>${xmlEscape(absoluteUrl(route))}</loc>\n    <lastmod>${sitemapDate}</lastmod>\n  </url>`).join("\n")}\n</urlset>\n`,
 );
 write(
   "robots.txt",

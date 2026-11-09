@@ -57,7 +57,7 @@ for(const p of pages) {
  assert.equal(metaContent(html,/<meta property="og:description" content="([^"]+)">/),description,'Open Graph description must match meta description: '+p);
  assert.equal(metaContent(html,/<meta name="twitter:description" content="([^"]+)">/),description,'Twitter description must match meta description: '+p);
  const robots=metaContent(html,/<meta name="robots" content="([^"]+)">/);
- assert.equal(robots,shouldNoIndex(p)?'noindex,follow':undefined,'Incorrect robots indexing policy: '+p);
+ assert.equal(robots,shouldNoIndex(p)?'noindex,follow':'index,follow','Incorrect robots indexing policy: '+p);
  const jsonLd=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
  if(p==='index.html') {
   assert.ok(jsonLd,'Organization and website structured data required on homepage');
@@ -105,6 +105,8 @@ assert.equal(new Set(indexableTitles).size,indexableTitles.length,'Indexable pag
 const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 const sitemapUrls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([,url])=>url);
 assert.deepEqual(sitemapUrls,expectedRoutes.map(route=>siteOrigin+route),'Sitemap must list exactly the canonical, discoverable routes');
+const sitemapDates=[...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map(([,date])=>date);
+assert.equal(sitemapDates.length,sitemapUrls.length,'Every sitemap URL must have a lastmod date');
 const robotsTxt=fs.readFileSync(path.join(root,'robots.txt'),'utf8');
 assert.match(robotsTxt,/^User-agent: \*\nAllow: \/\nSitemap: https:\/\/iigames\.github\.io\/sitemap\.xml\n$/,'robots.txt must allow crawling and reference the sitemap');
 for(const p of outputs)assert.equal(fs.readFileSync(path.join(root,p),'utf8'),before.get(p),'Build is not repeatable: '+p);
