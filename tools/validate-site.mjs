@@ -30,6 +30,10 @@ for(const p of pages) {
  const html=fs.readFileSync(path.join(root,p),'utf8');
  assert.equal((html.match(/id="nav-panel"/g)||[]).length,1,'One shared drawer required: '+p);
  assert.ok(html.includes('class="nav-close"'),'Drawer close control missing: '+p);
+ assert.ok(html.includes("<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"2314680be6ba4e528932fd39c221b888\"}'></script><!-- End Cloudflare Web Analytics --></head>"),'Cloudflare analytics snippet missing in head: '+p);
+ if(p==='privacy.html') {
+  assert.ok(html.includes('Cloudflare Web Analytics') && html.includes('track the number of page visits'),'Privacy policy must state Cloudflare analytics tracking page visits');
+ }
  for(const route of ['privacy','terms','contact']) {
   assert.ok(html.includes(`href="${p.includes('/')?'../':'./'}${route}"`),'Footer legal link missing: '+p+' -> '+route);
  }

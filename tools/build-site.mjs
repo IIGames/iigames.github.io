@@ -1,9 +1,14 @@
 // Optional authoring tool. GitHub Pages serves the generated HTML directly.
 import fs from "node:fs";
 import path from "node:path";
-import {loadNews} from "./news.mjs";
-import {newsIndex, newsArticle} from "./news-view.mjs";
-import {gameCredits, gameCopyright, legalPages, contactEmail} from "./legal-view.mjs";
+import { loadNews } from "./news.mjs";
+import { newsIndex, newsArticle } from "./news-view.mjs";
+import {
+  gameCredits,
+  gameCopyright,
+  legalPages,
+  contactEmail,
+} from "./legal-view.mjs";
 const root = path.resolve(import.meta.dirname, "..");
 const siteOrigin = "https://iigames.github.io";
 const read = (p) => fs.readFileSync(path.join(root, p), "utf8");
@@ -37,8 +42,12 @@ function shell(title, body, current, prefix = "./", seo = {}) {
   );
   const metadata = [
     `<meta name="description" content="${escape(description)}">`,
-    seo.keywords ? `<meta name="keywords" content="${escape(seo.keywords)}">` : "",
-    seo.noIndex ? '<meta name="robots" content="noindex,follow">' : '<meta name="robots" content="index,follow">',
+    seo.keywords
+      ? `<meta name="keywords" content="${escape(seo.keywords)}">`
+      : "",
+    seo.noIndex
+      ? '<meta name="robots" content="noindex,follow">'
+      : '<meta name="robots" content="index,follow">',
     `<link rel="canonical" href="${canonicalUrl}">`,
     `<meta property="og:type" content="${seo.type || "website"}">`,
     `<meta property="og:site_name" content="II Games Studio">`,
@@ -47,7 +56,13 @@ function shell(title, body, current, prefix = "./", seo = {}) {
     `<meta property="og:url" content="${canonicalUrl}">`,
     `<meta property="og:image" content="${imageUrl}">`,
     `<meta property="og:image:alt" content="${escape(seo.imageAlt || "II Games Studio — independent games")}">`,
-    ...(imageUrl.endsWith('ii-games-social.jpg') ? ['<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="630">', '<meta property="og:image:type" content="image/jpeg">'] : []),
+    ...(imageUrl.endsWith("ii-games-social.jpg")
+      ? [
+          '<meta property="og:image:width" content="1200">',
+          '<meta property="og:image:height" content="630">',
+          '<meta property="og:image:type" content="image/jpeg">',
+        ]
+      : []),
     '<meta name="twitter:card" content="summary_large_image">',
     `<meta name="twitter:title" content="${escape(pageTitle)}">`,
     `<meta name="twitter:description" content="${escape(description)}">`,
@@ -61,7 +76,7 @@ function shell(title, body, current, prefix = "./", seo = {}) {
     .filter(Boolean)
     .join("");
   return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="${prefix}javascript/theme.js"></script>${metadata}<title>${escape(pageTitle)}</title><link rel="icon" href="${prefix}assets/optimized/favicon.png"><link rel="stylesheet" href="${prefix}main.css"><script src="${prefix}javascript/site.js" defer></script>${current === "Home" ? `<link rel="stylesheet" href="${prefix}landing.css">` : ""}${current === "News" ? `<link rel="stylesheet" href="${prefix}news.css"><script src="${prefix}javascript/news.js" defer></script>` : ""}<link rel="stylesheet" href="${prefix}theme.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="${prefix}javascript/theme.js"></script>${metadata}<title>${escape(pageTitle)}</title><link rel="icon" href="${prefix}assets/optimized/favicon.png"><link rel="stylesheet" href="${prefix}main.css"><script src="${prefix}javascript/site.js" defer></script>${current === "Home" ? `<link rel="stylesheet" href="${prefix}landing.css">` : ""}${current === "News" ? `<link rel="stylesheet" href="${prefix}news.css"><script src="${prefix}javascript/news.js" defer></script>` : ""}<link rel="stylesheet" href="${prefix}theme.css"><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2314680be6ba4e528932fd39c221b888"}'></script><!-- End Cloudflare Web Analytics --></head>
 <body class="${current === "Home" ? "landing" : "page-" + (current || "teaser").toLowerCase().replaceAll(" ", "-")}"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="${prefix}" aria-label="II Games home"><img src="${prefix}assets/optimized/ii-games-logo.png" width="230" height="70" alt="II Games"></a><button class="nav-toggle" aria-expanded="false" aria-controls="nav-panel">Menu</button><div class="nav-backdrop" hidden></div><div class="nav-panel" id="nav-panel"><div class="nav-panel-top"><span>II Games</span><button class="nav-close" type="button" aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><nav id="site-nav" aria-label="Main navigation">${nav.map(([label, url]) => `<a href="${prefix}${url}"${current === label ? ' aria-current="page"' : ""}>${label}</a>`).join("")}<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light mode"><svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button></nav><div class="nav-panel-footer"><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a></div></div></header>
 <main id="main" tabindex="-1">${body}</main><footer class="site-footer"><div><p>© II Games Studio · 2020–${new Date().getFullYear()}</p></div><div><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a><a href="${prefix}about">About the studio</a><a href="${prefix}press">Press kit</a><a href="${prefix}newsletter">Newsletter</a></div><div class="footer-legal"><a href="${prefix}privacy">Privacy Policy</a><a href="${prefix}terms">Terms of Use / Licensing</a><a href="${prefix}contact">Contact and legal notice</a><a href="mailto:${contactEmail}">${contactEmail}</a></div></footer></body></html>`;
 }
@@ -136,9 +151,7 @@ write(
 <section class="gameplay-carousel section" data-carousel aria-roledescription="carousel" aria-labelledby="carousel-title"><div class="section-heading"><h2 id="carousel-title">Gameplay screenshots</h2><div class="carousel-controls" hidden><button type="button" class="icon-button carousel-prev" aria-label="Previous screenshot"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button><output class="carousel-count" aria-live="polite">1 / 5</output><button type="button" class="icon-button carousel-next" aria-label="Next screenshot"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div></div><div class="carousel-viewport" tabindex="0" aria-label="Gameplay screenshots. Use the left and right arrow keys to browse."><figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 5"><a href="./games/cubegame"><img src="./assets/optimized/CubeGame-shot-7.jpg" alt="CubeGame boss encounter above a series of platforms" width="1280" height="720" loading="lazy" decoding="async"></a><figcaption><div><h3>CubeGame</h3><p>2D · Platformer · Story</p></div><a class="text-link" href="./games/cubegame">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></figcaption></figure><figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 5"><a href="./games/nomansland"><img src="./assets/optimized/NoMansLand-shot-1.jpg" alt="No man's land gameplay screenshot" width="1280" height="720" loading="lazy" decoding="async"></a><figcaption><div><h3>No man's land</h3><p>3D · First-person shooter</p></div><a class="text-link" href="./games/nomansland">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></figcaption></figure><figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 5"><a href="./games/crystalstealer"><img src="./assets/optimized/CrystalStealer-shot-1.jpg" alt="Crystal Stealer gameplay screenshot" width="1280" height="720" loading="lazy" decoding="async"></a><figcaption><div><h3>Crystal Stealer</h3><p>3D · Platformer</p></div><a class="text-link" href="./games/crystalstealer">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></figcaption></figure><figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 5"><a href="./games/scp173simulator"><img src="./assets/optimized/SCP173Simulator-shot-1.jpg" alt="SCP 173 Simulator gameplay screenshot" width="1280" height="720" loading="lazy" decoding="async"></a><figcaption><div><h3>SCP 173 Simulator</h3><p>3D · Horror · Simulation</p></div><a class="text-link" href="./games/scp173simulator">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></figcaption></figure><figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 5"><a href="./games/neonshootermayhem"><img src="./assets/optimized/NeonShooterMayhem-shot-1.jpg" alt="Neon Shooter Mayhem gameplay screenshot" width="1280" height="720" loading="lazy" decoding="async"></a><figcaption><div><h3>Neon Shooter Mayhem</h3><p>2D · Top-down shooter</p></div><a class="text-link" href="./games/neonshootermayhem">View game <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></figcaption></figure></div></section>
 <section class="section world-selection" aria-labelledby="worlds-title"><div class="section-heading"><h2 id="worlds-title">More games</h2><a class="text-link" href="./games">All games <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div><div class="game-grid">${catalog
       .filter((g) =>
-        ["SCP173Simulator", "NoMansLand", "SlowlyStrange"].includes(
-          g.slug,
-        ),
+        ["SCP173Simulator", "NoMansLand", "SlowlyStrange"].includes(g.slug),
       )
       .map((g) =>
         card(g)
@@ -256,21 +269,20 @@ for (const game of catalog) {
     game.hidden || game.archive
       ? `${game.title} is an archived project from II Games Studio. Play this earlier experiment or browse the studio’s current game selection.`
       : `${game.summary} ${game.genre} game${game.platforms.length ? ` for ${game.platforms.join(", ")}` : ""}.`;
-  const gameStructuredData =
-    !game.hidden
-      ? {
-          "@context": "https://schema.org",
-          "@type": "VideoGame",
-          name: game.title,
-          description: game.summary,
-          image: game.cover ? absoluteUrl(game.cover) : undefined,
-          url: absoluteUrl(canonicalPath),
-          genre: game.genre,
-          gamePlatform: game.platforms,
-          publisher: { "@id": `${siteOrigin}/#organization` },
-          inLanguage: "en",
-        }
-      : undefined;
+  const gameStructuredData = !game.hidden
+    ? {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        name: game.title,
+        description: game.summary,
+        image: game.cover ? absoluteUrl(game.cover) : undefined,
+        url: absoluteUrl(canonicalPath),
+        genre: game.genre,
+        gamePlatform: game.platforms,
+        publisher: { "@id": `${siteOrigin}/#organization` },
+        inLanguage: "en",
+      }
+    : undefined;
   write(
     oldFile,
     shell(
@@ -292,23 +304,51 @@ for (const game of catalog) {
 }
 write("games/catalog.json", JSON.stringify(catalog, null, 2) + "\n");
 const studioArt = [
-  ["city-at-night", "City at night", "Concrete architecture above a city skyline under a cloudy night sky"],
-  ["red-room", "Red room", "A distorted red-lit room with a figure behind vertical bars"],
-  ["neon-platforms", "Neon platforms", "A purple forest platforming scene with bright pink hazards"],
-  ["facility-corridor", "Facility corridor", "A dim tiled corridor with exposed pipes and harsh overhead light"],
-  ["red-lit-stairwell", "Stairwell lighting", "A red-lit stairwell beside a green exit light"],
-  ["creature-study", "Creature study", "A shadowed creature with bright eyes in a dark room"],
-  ["light-in-the-dark", "Light in the dark", "A narrow beam of light across wooden floorboards"]
+  [
+    "city-at-night",
+    "City at night",
+    "Concrete architecture above a city skyline under a cloudy night sky",
+  ],
+  [
+    "red-room",
+    "Red room",
+    "A distorted red-lit room with a figure behind vertical bars",
+  ],
+  [
+    "neon-platforms",
+    "Neon platforms",
+    "A purple forest platforming scene with bright pink hazards",
+  ],
+  [
+    "facility-corridor",
+    "Facility corridor",
+    "A dim tiled corridor with exposed pipes and harsh overhead light",
+  ],
+  [
+    "red-lit-stairwell",
+    "Stairwell lighting",
+    "A red-lit stairwell beside a green exit light",
+  ],
+  [
+    "creature-study",
+    "Creature study",
+    "A shadowed creature with bright eyes in a dark room",
+  ],
+  [
+    "light-in-the-dark",
+    "Light in the dark",
+    "A narrow beam of light across wooden floorboards",
+  ],
 ];
-function artFigure([slug,title,alt]) {
- return `<figure><a href="./assets/optimized/${slug}.jpg" aria-label="Open ${escape(title)}"><img src="./assets/optimized/${slug}.jpg" srcset="./assets/optimized/${slug}-small.jpg 640w, ./assets/optimized/${slug}.jpg 1600w" sizes="(max-width: 760px) 92vw, 48vw" alt="${escape(alt)}" width="1600" height="900" loading="lazy" decoding="async"></a><figcaption>${title}</figcaption></figure>`;
+function artFigure([slug, title, alt]) {
+  return `<figure><a href="./assets/optimized/${slug}.jpg" aria-label="Open ${escape(title)}"><img src="./assets/optimized/${slug}.jpg" srcset="./assets/optimized/${slug}-small.jpg 640w, ./assets/optimized/${slug}.jpg 1600w" sizes="(max-width: 760px) 92vw, 48vw" alt="${escape(alt)}" width="1600" height="900" loading="lazy" decoding="async"></a><figcaption>${title}</figcaption></figure>`;
 }
 write(
   "about.html",
   shell(
     "About",
     `<header class="page-intro"><h1>About II Games Studio</h1><p>Founded in 2020, II Games Studio is an independent game development studio dedicated to fast-paced gameplay and striking atmospheres.</p><p>The studio starts with a mechanic and builds a world around it. A respawn flag changes the route through a platformer. A horror game puts the creature in the player’s hands.</p></header>
-<section class="section art-section" aria-labelledby="showcase-title"><div class="section-heading"><h2 id="showcase-title">Showcase</h2><p>Selected work from the studio.</p></div><div class="studio-art-grid showcase-grid">${studioArt.slice(0,3).map(artFigure).join("")}</div></section>
+<section class="section art-section" aria-labelledby="showcase-title"><div class="section-heading"><h2 id="showcase-title">Showcase</h2><p>Selected work from the studio.</p></div><div class="studio-art-grid showcase-grid">${studioArt.slice(0, 3).map(artFigure).join("")}</div></section>
 <section class="studio-note"><h2>What the studio makes</h2><div><p><em>CubeGame</em> is a retro-styled platformer with player-placed checkpoints and boss fights. <em>SCP 173 Simulator</em> reverses the usual horror perspective: the player controls SCP-173 inside a containment facility.</p><p><em>No man’s land</em> brings PS1-inspired graphics to the trenches of World War I. Its focus is the fear of combat. <em>Slowly Strange</em> finds horror in an everyday routine.</p></div></section>
 <section class="section art-section" aria-labelledby="concepts-title"><div class="section-heading"><h2 id="concepts-title">Concepts</h2><p>Environment and lighting studies. Work in progress.</p></div><div class="studio-art-grid concepts-grid">${studioArt.slice(3).map(artFigure).join("")}</div></section>
 <section class="studio-note"><h2>How we make games</h2><div><p>The studio works primarily in Unity, with Unreal Engine for selected projects and Blender for 3D models. Game pages credit collaborators and external resources.</p><p>Game jams are a place to test a mechanic under a deadline. Earlier prototypes remain playable in the <a href="./games">game catalog</a>.</p></div></section>
@@ -323,21 +363,50 @@ write(
     },
   ),
 );
-write("newsletter.html", shell("Newsletter", `
-<header class="page-intro"><h1>The II Games Studio newsletter</h1><p>Follow II Games Studio on Substack. Read the newsletter and subscribe for future posts.</p><div><a class="button" href="https://iigames.substack.com/?utm_campaign=pub&amp;utm_medium=web">Read and subscribe on Substack <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></header>
-<section class="studio-note"><h2>Stay in touch</h2><div><p>Read posts on Substack or subscribe there to receive the newsletter by email.</p><p>For game releases and development notes on this site, visit <a href="./news">studio news</a>. Ready to play? <a href="./games">Browse the games</a>.</p></div></section>`, "Newsletter", "./", {
- canonicalPath: "/newsletter", title: "Newsletter — II Games Studio",
- description: "Read the II Games Studio newsletter on Substack. Subscribe to receive future posts by email, or browse studio news and games on the website."
-}));
-const pressKitBytes = fs.statSync(path.join(root, "assets/press-kit/ii-games-studio-press-kit.zip")).size;
-write("press.html", shell("Press kit", `
+write(
+  "newsletter.html",
+  shell(
+    "Newsletter",
+    `
+<header class="page-intro"><h1>The II Games Studio newsletter</h1><p>Follow II Games Studio on Substack. Read the newsletter and subscribe for future posts.</p><div><a class="button" href="https://iigames.substack.com/subscribe?simple=true&next=https%3A%2F%2Fiigames.substack.com%2F%3Futm_campaign%3Dpub%26utm_medium%3Dweb">Read and subscribe on Substack <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></header>
+<section class="studio-note"><h2>Stay in touch</h2><div><p>Read posts on Substack or subscribe there to receive the newsletter by email.</p><p>For game releases and development notes on this site, visit <a href="./news">studio news</a>. Ready to play? <a href="./games">Browse the games</a>.</p></div></section>`,
+    "Newsletter",
+    "./",
+    {
+      canonicalPath: "/newsletter",
+      title: "Newsletter — II Games Studio",
+      description:
+        "Read the II Games Studio newsletter on Substack. Subscribe to receive future posts by email, or browse studio news and games on the website.",
+    },
+  ),
+);
+const pressKitBytes = fs.statSync(
+  path.join(root, "assets/press-kit/ii-games-studio-press-kit.zip"),
+).size;
+write(
+  "press.html",
+  shell(
+    "Press kit",
+    `
 <header class="page-intro"><h1>II Games Studio<br>Press kit</h1><p>Studio facts and original-resolution game media for journalists and content creators.</p><div><a class="button" href="./assets/press-kit/ii-games-studio-press-kit.zip" download>Download press kit · ${Math.ceil(pressKitBytes / 1048576)} MB</a><p class="press-download-note">ZIP · Transparent logos, fact sheet, screenshots and video.</p></div></header>
 <section class="studio-note"><h2>Studio facts</h2><div><dl class="press-facts"><div><dt>Name</dt><dd>II Games Studio (also known as II Games)</dd></div><div><dt>Founded</dt><dd>2020</dd></div><div><dt>Focus</dt><dd>Mechanics-driven platformers and atmospheric horror</dd></div><div><dt>Website</dt><dd><a href="https://iigames.github.io/">iigames.github.io</a></dd></div><div><dt>Operator</dt><dd>Iliya Soleimani</dd></div><div><dt>Location</dt><dd>Iran</dd></div><div><dt>Contact</dt><dd><a href="mailto:${contactEmail}">${contactEmail}</a></dd></div></dl><p>Founded in 2020, II Games Studio is an independent game development studio dedicated to fast-paced gameplay and striking atmospheres.</p><a class="text-link" href="./assets/press-kit/studio-fact-sheet.txt" download>Download the fact sheet</a></div></section>
 <section class="section"><div class="section-heading"><h2>Studio logos</h2><p>Transparent PNGs for light and dark backgrounds.</p></div><div class="press-logos"><a href="./assets/press-kit/logos/ii-games-wordmark-white-transparent.png" download><div class="logo-preview"><img src="./assets/press-kit/logos/ii-games-wordmark-white-transparent.png" alt="II Games white wordmark" width="1920" height="1080" loading="lazy"></div><span>White wordmark · PNG</span></a><a href="./assets/press-kit/logos/ii-games-wordmark-black-transparent.png" download><div class="logo-preview logo-preview-light"><img src="./assets/press-kit/logos/ii-games-wordmark-black-transparent.png" alt="II Games black wordmark" width="1920" height="1080" loading="lazy"></div><span>Light theme logo (black) · PNG</span></a></div><p>The ZIP also includes transparent symbol logos and the supplied studio logo variants.</p></section>
-<section class="studio-note"><h2>Game media</h2><div><p>The ZIP contains original-resolution screenshots for ${catalog.filter(g=>!g.hidden).map(g=>escape(g.title)).join(", ")}.</p><p>Video includes the CubeGame and CubeGame Alpha trailers, plus a Slowly Strange gameplay clip. Screenshots retain their source resolution; no images have been upscaled.</p><p>For platform links and individual game credits, visit the <a href="./games">game catalog</a>. Please credit II Games Studio when using these materials in coverage.</p></div></section>`, "Press kit", "./", {
- canonicalPath: "/press", title: "Press kit — II Games Studio",
- description: "Download the II Games Studio press kit: transparent studio logos, a fact sheet, original-resolution game screenshots and trailers for press and content creators."
-}));
+<section class="studio-note"><h2>Game media</h2><div><p>The ZIP contains original-resolution screenshots for ${catalog
+      .filter((g) => !g.hidden)
+      .map((g) => escape(g.title))
+      .join(
+        ", ",
+      )}.</p><p>Video includes the CubeGame and CubeGame Alpha trailers, plus a Slowly Strange gameplay clip. Screenshots retain their source resolution; no images have been upscaled.</p><p>For platform links and individual game credits, visit the <a href="./games">game catalog</a>. Please credit II Games Studio when using these materials in coverage.</p></div></section>`,
+    "Press kit",
+    "./",
+    {
+      canonicalPath: "/press",
+      title: "Press kit — II Games Studio",
+      description:
+        "Download the II Games Studio press kit: transparent studio logos, a fact sheet, original-resolution game screenshots and trailers for press and content creators.",
+    },
+  ),
+);
 for (const [file, title, word] of [
   ["addons.html", "Add-Ons", "add-ons"],
   ["assets.html", "Assets", "assets"],
@@ -369,22 +438,50 @@ for (const [file, title, word] of [
 }
 // News pages are generated from JSON and Markdown, never from generated HTML.
 for (const post of news) {
-  const canonicalPath = '/news/' + post.slug;
-  write('news/' + post.slug + '.html', shell(post.title,newsArticle(post,news),'News','../',{
-    canonicalPath, title:post.title+' — II Games Studio', description:post.summary, type:'article',
-    image:post.cover.image, imageAlt:post.cover.alt,
-    headExtra:'<meta property="article:published_time" content="'+post.date+'T00:00:00Z">',
-    structuredData:{'@context':'https://schema.org','@type':'NewsArticle',headline:post.title,
-      description:post.summary,datePublished:post.date,author:{'@type':'Organization',name:post.author},
-      publisher:{'@type':'Organization',name:'II Games Studio',url:siteOrigin},
-      mainEntityOfPage:absoluteUrl(canonicalPath),articleSection:post.categoryLabel,
-      image:absoluteUrl(post.cover.image || 'assets/optimized/ii-games-logo.png')}
-  }));
+  const canonicalPath = "/news/" + post.slug;
+  write(
+    "news/" + post.slug + ".html",
+    shell(post.title, newsArticle(post, news), "News", "../", {
+      canonicalPath,
+      title: post.title + " — II Games Studio",
+      description: post.summary,
+      type: "article",
+      image: post.cover.image,
+      imageAlt: post.cover.alt,
+      headExtra:
+        '<meta property="article:published_time" content="' +
+        post.date +
+        'T00:00:00Z">',
+      structuredData: {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        headline: post.title,
+        description: post.summary,
+        datePublished: post.date,
+        author: { "@type": "Organization", name: post.author },
+        publisher: {
+          "@type": "Organization",
+          name: "II Games Studio",
+          url: siteOrigin,
+        },
+        mainEntityOfPage: absoluteUrl(canonicalPath),
+        articleSection: post.categoryLabel,
+        image: absoluteUrl(
+          post.cover.image || "assets/optimized/ii-games-logo.png",
+        ),
+      },
+    }),
+  );
 }
-write('news.html',shell('News',newsIndex(news),'News','./',{
-  canonicalPath:'/news',title:'News — II Games Studio',
-  description:'Release news and development notes from II Games Studio. Read about the mechanics behind the games and browse the studio archive.'
-}));
+write(
+  "news.html",
+  shell("News", newsIndex(news), "News", "./", {
+    canonicalPath: "/news",
+    title: "News — II Games Studio",
+    description:
+      "Release news and development notes from II Games Studio. Read about the mechanics behind the games and browse the studio archive.",
+  }),
+);
 write(
   "teaser.html",
   shell(
@@ -405,11 +502,14 @@ write(
 );
 
 for (const page of legalPages) {
-  write(page.route + ".html", shell(page.title, page.body, "Legal", "./", {
-    canonicalPath: "/" + page.route,
-    title: page.title + " — II Games Studio",
-    description: page.description,
-  }));
+  write(
+    page.route + ".html",
+    shell(page.title, page.body, "Legal", "./", {
+      canonicalPath: "/" + page.route,
+      title: page.title + " — II Games Studio",
+      description: page.description,
+    }),
+  );
 }
 
 const sitemapPaths = [
@@ -421,9 +521,11 @@ const sitemapPaths = [
   "/assets",
   "/news",
   "/newsletter",
-  ...legalPages.map(page => "/" + page.route),
-  ...news.map(post => `/news/${post.slug}`),
-  ...catalog.filter(game => !game.hidden).map((game) => `/games/${game.slug.toLowerCase()}`),
+  ...legalPages.map((page) => "/" + page.route),
+  ...news.map((post) => `/news/${post.slug}`),
+  ...catalog
+    .filter((game) => !game.hidden)
+    .map((game) => `/games/${game.slug.toLowerCase()}`),
 ];
 const xmlEscape = (value) =>
   String(value)
