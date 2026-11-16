@@ -3,7 +3,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 const root = path.resolve(import.meta.dirname,'..');
-const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff':'font/woff','.mp4':'video/mp4','.ico':'image/x-icon'};
+const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff':'font/woff','.mp4':'video/mp4','.ico':'image/x-icon','.svg':'image/svg+xml'};
 http.createServer((req,res)=>{
   let pathname;
   try { pathname = decodeURIComponent(new URL(req.url,'http://localhost').pathname); }

@@ -33,6 +33,52 @@ const nav = [
   ["About", "about"],
   ["Press kit", "press"],
 ];
+// Shared by Organization.sameAs and the static footer links.
+const socialProfiles = [
+  [
+    "Game Jolt",
+    "gamejolt",
+    "https://gamejolt.com/@IIGamesOfficial"
+  ],
+  [
+    "itch.io",
+    "itchdotio",
+    "https://iigamesofficial.itch.io/"
+  ],
+  [
+    "Instagram",
+    "instagram",
+    "https://www.instagram.com/iigamesstudio/"
+  ],
+  [
+    "Threads",
+    "threads",
+    "https://www.threads.com/@iigamesstudio"
+  ],
+  [
+    "X",
+    "x",
+    "https://x.com/IIGamesOfficial"
+  ],
+  [
+    "YouTube",
+    "youtube",
+    "https://www.youtube.com/@iigamesstudio"
+  ],
+  [
+    "TikTok",
+    "tiktok",
+    "https://www.tiktok.com/@iigamesstudio"
+  ],
+  [
+    "Substack",
+    "substack",
+    "https://substack.com/@iigames"
+  ]
+];
+function socialLinks(prefix) {
+  return `<nav class="footer-social" aria-label="II Games Studio social profiles">${socialProfiles.map(([name, icon, url]) => `<a href="${url}" rel="me"><span class="social-icon"><img src="${prefix}assets/icons/social/${icon}.svg" width="20" height="20" alt="" loading="lazy" decoding="async"></span><span>${name}</span></a>`).join("")}</nav>`;
+}
 function shell(title, body, current, prefix = "./", seo = {}) {
   const pageTitle = seo.title || `${title} · II Games Studio`;
   const description = seo.description || `${title} from II Games Studio.`;
@@ -78,7 +124,7 @@ function shell(title, body, current, prefix = "./", seo = {}) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="${prefix}javascript/theme.js"></script>${metadata}<title>${escape(pageTitle)}</title><link rel="icon" href="${prefix}assets/optimized/favicon.png"><link rel="stylesheet" href="${prefix}main.css"><script src="${prefix}javascript/site.js" defer></script>${current === "Home" ? `<link rel="stylesheet" href="${prefix}landing.css">` : ""}${current === "News" ? `<link rel="stylesheet" href="${prefix}news.css"><script src="${prefix}javascript/news.js" defer></script>` : ""}<link rel="stylesheet" href="${prefix}theme.css"><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2314680be6ba4e528932fd39c221b888"}'></script><!-- End Cloudflare Web Analytics --></head>
 <body class="${current === "Home" ? "landing" : "page-" + (current || "teaser").toLowerCase().replaceAll(" ", "-")}"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="${prefix}" aria-label="II Games home"><img src="${prefix}assets/optimized/ii-games-logo.png" width="230" height="70" alt="II Games"></a><button class="nav-toggle" aria-expanded="false" aria-controls="nav-panel">Menu</button><div class="nav-backdrop" hidden></div><div class="nav-panel" id="nav-panel"><div class="nav-panel-top"><span>II Games</span><button class="nav-close" type="button" aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><nav id="site-nav" aria-label="Main navigation">${nav.map(([label, url]) => `<a href="${prefix}${url}"${current === label ? ' aria-current="page"' : ""}>${label}</a>`).join("")}<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light mode"><svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg></button></nav><div class="nav-panel-footer"><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a></div></div></header>
-<main id="main" tabindex="-1">${body}</main><footer class="site-footer"><div><p>© II Games Studio · 2020–${new Date().getFullYear()}</p></div><div><a href="https://iigamesofficial.itch.io/">itch.io</a><a href="https://gamejolt.com/@IIGamesOfficial/games">Game Jolt</a><a href="${prefix}about">About the studio</a><a href="${prefix}press">Press kit</a><a href="${prefix}newsletter">Newsletter</a></div><div class="footer-legal"><a href="${prefix}privacy">Privacy Policy</a><a href="${prefix}terms">Terms of Use / Licensing</a><a href="${prefix}contact">Contact and legal notice</a><a href="mailto:${contactEmail}">${contactEmail}</a></div></footer></body></html>`;
+<main id="main" tabindex="-1">${body}</main><footer class="site-footer"><div><p>© II Games Studio · 2020–${new Date().getFullYear()}</p></div><div><a href="${prefix}about">About the studio</a><a href="${prefix}press">Press kit</a><a href="${prefix}newsletter">Newsletter</a></div>${socialLinks(prefix)}<div class="footer-legal"><a href="${prefix}privacy">Privacy Policy</a><a href="${prefix}terms">Terms of Use / Licensing</a><a href="${prefix}contact">Contact and legal notice</a><a href="mailto:${contactEmail}">${contactEmail}</a></div></footer></body></html>`;
 }
 function image(src, alt, eager = false) {
   const small = src.replace(/\.jpg$/, "-small.jpg");
@@ -106,16 +152,7 @@ const studioStructuredData = {
       foundingDate: "2020",
       description:
         "II Games Studio is an independent game development studio making 2D platformers and atmospheric horror games.",
-      sameAs: [
-        "https://iigamesofficial.itch.io/",
-        "https://gamejolt.com/@IIGamesOfficial/games",
-        "https://substack.com/@iigames",
-        "https://iigames.substack.com/",
-        "https://www.tiktok.com/@iigamesstudio",
-        "https://www.youtube.com/@iigamesstudio",
-        "https://x.com/IIGamesOfficial",
-        "https://www.instagram.com/iigamesstudio",
-      ],
+      sameAs: socialProfiles.map(([, , url]) => url),
     },
     {
       "@type": "WebSite",

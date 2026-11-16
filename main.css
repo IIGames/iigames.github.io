@@ -918,3 +918,37 @@ body:not(.landing) .studio-note p { max-width: 65ch; }
  .showcase-grid figure:first-child img { aspect-ratio: 16/9; }
  .press-facts > div { grid-template-columns: minmax(0,1fr); gap: .25rem; }
 }
+
+/* Static profile links share the site's neutral surfaces in both themes. */
+.site-footer .footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  gap: .75rem 1.5rem;
+}
+.footer-social a {
+  gap: .625rem;
+  color: var(--text);
+}
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--raised);
+}
+.social-icon img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+.footer-social a:hover .social-icon { border-color: var(--muted); }
+:root[data-theme="light"] .social-icon img { filter: brightness(0); }
+@media (forced-colors: active) {
+  .social-icon { background: Canvas; border-color: LinkText; }
+  .social-icon img { forced-color-adjust: none; }
+}
