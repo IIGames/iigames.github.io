@@ -7,7 +7,7 @@ export const categories = [
   {id:'development', label:'Development', gradient:'iris'},
   {id:'studio', label:'Studio', gradient:'ember'},
 ];
-export const gradientPresets = new Set(['sky','iris','ember']);
+export const gradientPresets = new Set(['sky','iris','ember','aurora']);
 const text = value => typeof value === 'string' && value.trim().length > 0;
 const error = (slug, message) => { throw new Error(`News [${slug}]: ${message}`); };
 export const escapeHtml = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');

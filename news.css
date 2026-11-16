@@ -26,6 +26,8 @@
 .gradient-iris::before { background: radial-gradient(ellipse at 15% 90%, #3e69d5 0%, transparent 60%), radial-gradient(ellipse at 95% 10%, #e8b9e6 0%, transparent 65%), linear-gradient(120deg, #6766ce, #ac8bdd); transform: rotate(-12deg); }
 .gradient-ember { background: #e9a08d; }
 .gradient-ember::before { background: radial-gradient(ellipse at 5% 5%, #f4d37d 0%, transparent 56%), radial-gradient(ellipse at 80% 90%, #c88dc6 0%, transparent 60%), linear-gradient(135deg, #eeb98b, #d9908d); transform: rotate(12deg); }
+.gradient-aurora { background: #327d78; }
+.gradient-aurora::before { background: radial-gradient(ellipse at 12% 15%, #c5e7a1 0%, transparent 52%), radial-gradient(ellipse at 90% 85%, #174c68 0%, transparent 58%), linear-gradient(145deg, #70c2a5, #398c98); transform: rotate(-8deg); }
 .gradient-sky { background: #8db5cb; }
 .gradient-sky::before { background: radial-gradient(ellipse at 0% 80%, #81a68b 0%, transparent 48%), radial-gradient(ellipse at 90% 15%, #d3e4f5 0%, transparent 60%), linear-gradient(130deg, #73a4d5, #a3b8e6); }
 .news-empty { padding-block: 3rem; color: var(--muted); }

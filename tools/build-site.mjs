@@ -35,6 +35,7 @@ const nav = [
 ];
 // Shared by Organization.sameAs and the static footer links.
 const socialProfiles = [
+  ["Discord", "discord", "https://discord.gg/d34Yb6GbnP"],
   [
     "Game Jolt",
     "gamejolt",

@@ -1,5 +1,16 @@
 [
   {
+    "slug": "join-our-discord-server",
+    "title": "The II Games Discord server is live",
+    "date": "2026-11-16",
+    "category": "studio",
+    "summary": "II Games Studio now has a Discord server. Join the community and talk about the games.",
+    "cover": {
+      "gradient": "aurora"
+    },
+    "bodyFile": "posts/join-our-discord-server.md"
+  },
+  {
     "slug": "a-new-home-for-news",
     "title": "A new home for II Games news",
     "date": "2026-11-05",
